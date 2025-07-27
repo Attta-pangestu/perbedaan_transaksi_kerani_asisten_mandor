@@ -1,0 +1,1031 @@
+2025-04-21 14:49:27,572 - INFO - Histogram saved to reports\histogram.png
+2025-04-21 14:49:27,791 - INFO - PDF report generated: reports\verification_report_20250421_144927.pdf
+2025-04-21 14:59:03,538 - INFO - Histogram saved to reports\histogram.png
+2025-04-21 14:59:03,925 - INFO - PDF report generated: reports\verification_report_20250421_145901.pdf
+2025-04-21 15:01:31,813 - INFO - Histogram saved to reports\histogram.png
+2025-04-21 15:01:32,201 - INFO - PDF report generated: reports\verification_report_20250421_150130.pdf
+2025-04-21 15:06:34,909 - INFO - Histogram saved to reports\histogram.png
+2025-04-21 15:06:35,122 - INFO - PDF report generated: reports\verification_report_20250421_150634.pdf
+2025-04-21 15:19:37,377 - INFO - Histogram saved to reports\histogram.png
+2025-04-21 15:19:37,377 - ERROR - Error generating PDF report: cannot access local variable 'diff_data' where it is not associated with a value
+2025-04-21 15:23:39,781 - INFO - Histogram saved to reports\histogram.png
+2025-04-21 15:23:42,345 - INFO - PDF report generated: reports\verification_report_20250421_152337.pdf
+2025-04-21 15:29:49,297 - INFO - Histogram saved to reports\histogram.png
+2025-04-21 15:29:51,690 - INFO - PDF report generated: reports\verification_report_20250421_152948.pdf
+2025-04-21 15:42:06,322 - INFO - Histogram saved to reports\histogram.png
+2025-04-21 15:42:08,866 - INFO - PDF report generated: reports\verification_report_20250421_154205.pdf
+2025-04-21 15:44:48,884 - INFO - Histogram saved to reports\histogram.png
+2025-04-21 15:44:51,542 - INFO - PDF report generated: reports\verification_report_20250421_154448.pdf
+2025-04-21 15:54:15,396 - INFO - Histogram saved to reports\histogram.png
+2025-04-21 15:54:18,449 - INFO - PDF report generated: reports\verification_report_20250421_155414.pdf
+2025-04-21 16:04:45,592 - INFO - Histogram saved to reports\histogram.png
+2025-04-21 16:04:48,278 - INFO - PDF report generated: reports\verification_report_20250421_160445.pdf
+2025-04-21 16:10:02,383 - INFO - Histogram saved to reports\histogram.png
+2025-04-21 16:10:05,149 - INFO - PDF report generated: reports\verification_report_20250421_161001.pdf
+2025-04-21 16:11:54,703 - INFO - Histogram saved to reports\histogram.png
+2025-04-21 16:12:03,275 - INFO - PDF report generated: reports\verification_report_20250421_161152.pdf
+2025-04-21 16:18:00,458 - INFO - Histogram saved to reports\histogram.png
+2025-04-21 16:18:03,525 - INFO - PDF report generated: reports\verification_report_20250421_161759.pdf
+2025-04-22 08:39:53,857 - INFO - No differences found in the data for PDF report.
+2025-04-22 08:39:53,968 - INFO - PDF report generated: reports\comparison_report_20250422_083953.pdf
+2025-04-22 09:46:12,115 - INFO - No differences found in the data for PDF report.
+2025-04-22 09:46:15,522 - INFO - Kerani scatter plot saved to reports\kerani_DJULI_DARTA_(_ADDIANI_)_scatter.png
+2025-04-22 09:46:19,153 - INFO - Kerani scatter plot saved to reports\kerani_ERLY_(_MARDIAH_)_scatter.png
+2025-04-22 09:46:22,554 - INFO - Kerani scatter plot saved to reports\kerani_IRWANSYAH_(_Agustina_)_scatter.png
+2025-04-22 09:46:23,652 - INFO - Kerani scatter plot saved to reports\kerani_SALASATUN_(_TUKIYEM_)_scatter.png
+2025-04-22 09:46:24,685 - INFO - Kerani scatter plot saved to reports\kerani_ZULHARI_(_AMINAH_)_scatter.png
+2025-04-22 09:46:28,129 - INFO - PDF report generated: reports\comparison_report_20250422_094612.pdf
+2025-04-22 10:13:45,267 - INFO - No differences found in the data for PDF report.
+2025-04-22 10:13:47,196 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 10:13:49,617 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 10:13:51,128 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 10:13:52,317 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 10:13:53,581 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 10:13:56,842 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 10:14:02,030 - INFO - PDF report generated: reports\comparison_report_20250422_101345.pdf
+2025-04-22 10:26:57,446 - INFO - No differences found in the data for PDF report.
+2025-04-22 10:26:58,199 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 10:26:59,283 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 10:27:00,014 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 10:27:00,666 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 10:27:01,192 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 10:27:02,308 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 10:27:02,741 - INFO - PDF report generated: reports\comparison_report_20250422_102657.pdf
+2025-04-22 10:38:07,416 - INFO - No differences found in the data for PDF report.
+2025-04-22 10:38:08,043 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 10:38:08,845 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 10:38:09,340 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 10:38:09,817 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 10:38:10,302 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 10:38:11,305 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 10:38:13,473 - INFO - PDF report generated: reports\comparison_report_20250422_103807.pdf
+2025-04-22 10:39:11,778 - INFO - No differences found in the data for PDF report.
+2025-04-22 10:39:12,374 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 10:39:12,951 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 10:39:13,419 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 10:39:13,852 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 10:39:14,378 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 10:39:16,148 - INFO - PDF report generated: reports\comparison_report_20250422_103911.pdf
+2025-04-22 10:43:25,973 - INFO - No differences found in the data for PDF report.
+2025-04-22 10:43:26,508 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 10:43:27,101 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 10:43:27,561 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 10:43:28,032 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 10:43:28,574 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 10:43:30,421 - INFO - PDF report generated: reports\comparison_report_20250422_104325.pdf
+2025-04-22 11:00:24,803 - INFO - No differences found in the data for PDF report.
+2025-04-22 11:00:25,282 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 11:00:25,863 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 11:00:26,315 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 11:00:26,744 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 11:00:27,290 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 11:00:30,039 - INFO - PDF report generated: reports\comparison_report_20250422_110024.pdf
+2025-04-22 11:03:41,591 - INFO - No differences found in the data for PDF report.
+2025-04-22 11:03:42,106 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 11:03:42,613 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 11:03:43,067 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 11:03:43,520 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 11:03:43,999 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 11:03:46,054 - INFO - PDF report generated: reports\comparison_report_20250422_110341.pdf
+2025-04-22 11:06:40,060 - INFO - No differences found in the data for PDF report.
+2025-04-22 11:06:40,633 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 11:06:41,416 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 11:06:41,880 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 11:06:42,299 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 11:06:42,728 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 11:06:43,666 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 11:06:45,838 - INFO - PDF report generated: reports\comparison_report_20250422_110640.pdf
+2025-04-22 11:19:40,188 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 11:19:40,987 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 11:19:41,512 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 11:19:42,050 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 11:19:42,474 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 11:19:43,442 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 11:19:44,032 - INFO - Difference histogram saved to reports\diff_histogram_all.png
+2025-04-22 11:19:44,528 - INFO - Difference histogram saved to reports\diff_histogram_djuli_darta_(_addiani_).png
+2025-04-22 11:19:45,015 - INFO - Difference histogram saved to reports\diff_histogram_erly_(_mardiah_).png
+2025-04-22 11:19:45,515 - INFO - Difference histogram saved to reports\diff_histogram_irwansyah_(_agustina_).png
+2025-04-22 11:19:45,526 - ERROR - Error generating PDF report: cannot access local variable 'header_style' where it is not associated with a value
+2025-04-22 11:23:48,281 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 11:23:49,083 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 11:23:49,717 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 11:23:50,268 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 11:23:50,864 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 11:23:51,913 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 11:23:52,434 - INFO - Difference histogram saved to reports\diff_histogram_all.png
+2025-04-22 11:23:52,895 - INFO - Difference histogram saved to reports\diff_histogram_djuli_darta_(_addiani_).png
+2025-04-22 11:23:53,398 - INFO - Difference histogram saved to reports\diff_histogram_erly_(_mardiah_).png
+2025-04-22 11:23:53,932 - INFO - Difference histogram saved to reports\diff_histogram_irwansyah_(_agustina_).png
+2025-04-22 11:23:57,914 - INFO - PDF report generated: reports\comparison_report_20250422_112347.pdf
+2025-04-22 11:34:13,534 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 11:34:14,424 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 11:34:15,282 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 11:34:16,013 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 11:34:16,602 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 11:34:17,645 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 11:34:18,244 - INFO - Difference histogram saved to reports\diff_histogram_all.png
+2025-04-22 11:34:19,106 - INFO - Difference histogram saved to reports\diff_histogram_djuli_darta_(_addiani_).png
+2025-04-22 11:34:19,959 - INFO - Difference histogram saved to reports\diff_histogram_erly_(_mardiah_).png
+2025-04-22 11:34:20,571 - INFO - Difference histogram saved to reports\diff_histogram_irwansyah_(_agustina_).png
+2025-04-22 11:34:25,620 - INFO - PDF report generated: reports\comparison_report_20250422_113412.pdf
+2025-04-22 11:53:48,115 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 11:53:51,014 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 11:53:52,747 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 11:53:54,351 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 11:53:55,868 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 11:54:00,165 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 11:54:02,015 - INFO - Difference histogram saved to reports\diff_histogram_all.png
+2025-04-22 11:54:08,548 - INFO - PDF report generated: reports\comparison_report_20250422_115345.pdf
+2025-04-22 12:10:40,853 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 12:10:43,443 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 12:10:45,051 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 12:10:46,585 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 12:10:48,031 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 12:10:49,731 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 12:10:50,505 - INFO - Difference histogram saved to reports\diff_histogram_all.png
+2025-04-22 12:10:51,547 - INFO - PDF report generated: reports\comparison_report_20250422_121038.pdf
+2025-04-22 12:32:17,632 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 12:32:19,162 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 12:32:19,687 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 12:32:20,173 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 12:32:20,605 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 12:32:21,596 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 12:32:22,162 - INFO - Difference histogram saved to reports\diff_histogram_all.png
+2025-04-22 12:32:22,871 - INFO - PDF report generated: reports\comparison_report_20250422_123216.pdf
+2025-04-22 12:42:57,831 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 12:42:58,536 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 12:42:58,959 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 12:42:59,442 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 12:42:59,850 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 12:43:00,776 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 12:43:01,164 - INFO - PDF report generated: reports\comparison_report_20250422_124257.pdf
+2025-04-22 12:50:46,152 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 12:50:48,555 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 12:50:49,899 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 12:50:51,130 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 12:50:52,317 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 12:50:55,418 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 12:50:56,361 - INFO - PDF report generated: reports\comparison_report_20250422_125044.pdf
+2025-04-22 13:09:37,180 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 13:09:39,846 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 13:09:41,382 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 13:09:42,764 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 13:09:44,170 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 13:09:47,633 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 13:09:48,766 - INFO - PDF report generated: reports\comparison_report_20250422_130935.pdf
+2025-04-22 13:26:14,264 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 13:26:17,617 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 13:26:20,892 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 13:26:24,015 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 13:26:27,079 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 13:26:30,942 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 13:26:35,593 - INFO - PDF report generated: reports\comparison_report_20250422_132610.pdf
+2025-04-22 13:42:01,032 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 13:42:04,595 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 13:42:08,074 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 13:42:11,030 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 13:42:14,031 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 13:42:18,460 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 13:42:22,630 - INFO - PDF report generated: reports\comparison_report_20250422_134157.pdf
+2025-04-22 13:53:06,735 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 13:53:19,474 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 13:53:32,064 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 13:53:42,899 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 13:53:53,820 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 13:54:07,297 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 13:54:07,337 - ERROR - Error generating PDF report: 
+fileName='reports\\total_scatter_all.png' identity=[ImageReader@0x25a82d8da90 filename='reports\\total_scatter_all.png'] Image size (256163236 pixels) exceeds limit of 178956970 pixels, could be decompression bomb DOS attack.
+2025-04-22 13:56:34,279 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 13:56:45,764 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 13:56:56,757 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 13:57:07,696 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 13:57:18,933 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 13:57:31,604 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 13:57:31,652 - ERROR - Error generating PDF report: 
+fileName='reports\\total_scatter_all.png' identity=[ImageReader@0x188f410e510 filename='reports\\total_scatter_all.png'] Image size (256163236 pixels) exceeds limit of 178956970 pixels, could be decompression bomb DOS attack.
+2025-04-22 14:04:10,110 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:04:10,564 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 14:04:10,757 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:04:11,402 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 14:04:11,573 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:04:11,948 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 14:04:12,100 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:04:12,134 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:04:12,424 - INFO - Total scatter plot saved to reports\total_scatter_kerani_salasatun_(_tukiyem_).png
+2025-04-22 14:04:12,567 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:04:12,604 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:04:12,871 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 14:04:13,214 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:04:14,201 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 14:04:14,568 - INFO - PDF report generated: reports\comparison_report_20250422_140409.pdf
+2025-04-22 14:20:18,664 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:20:18,777 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:20:19,324 - INFO - Total scatter plot saved to reports\total_scatter_kerani_karyawan-4703.png
+2025-04-22 14:20:19,693 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:20:19,801 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:20:20,458 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sri_isroyani_(_sema_).png
+2025-04-22 14:20:20,787 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:20:20,901 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:20:21,487 - INFO - Total scatter plot saved to reports\total_scatter_kerani_supriadi_(_selima_).png
+2025-04-22 14:20:21,824 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:20:21,904 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:20:22,432 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yuda_hermawan_(tjhin_lie_tju).png
+2025-04-22 14:20:22,769 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:20:22,905 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:20:23,666 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 14:20:24,014 - INFO - PDF report generated: reports\comparison_report_20250422_142018.pdf
+2025-04-22 14:27:17,449 - INFO - No differences found in the data for PDF report.
+2025-04-22 14:27:17,739 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:27:17,836 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:27:18,312 - INFO - Total scatter plot saved to reports\total_scatter_kerani_antonius_(_haseni_).png
+2025-04-22 14:27:18,614 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:27:18,671 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:27:19,113 - INFO - Total scatter plot saved to reports\total_scatter_kerani_dicky_pratama_(devi_gustiyanti).png
+2025-04-22 14:27:19,486 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:27:19,558 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:27:20,068 - INFO - Total scatter plot saved to reports\total_scatter_kerani_rio_resfati_(_misrusiana_).png
+2025-04-22 14:27:20,440 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:27:21,075 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sarwono_(_sariyah_).png
+2025-04-22 14:27:21,539 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:27:21,612 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:27:22,236 - INFO - Total scatter plot saved to reports\total_scatter_kerani_supriadi_(_suryati_).png
+2025-04-22 14:27:22,421 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:27:22,440 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:27:22,661 - INFO - Total scatter plot saved to reports\total_scatter_kerani_widodo_joko_purwanto_(_maryati_).png
+2025-04-22 14:27:22,816 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:27:23,093 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yuli_trianto_(_sukinah_).png
+2025-04-22 14:27:23,306 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:27:23,659 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 14:27:23,842 - INFO - PDF report generated: reports\comparison_report_20250422_142717.pdf
+2025-04-22 14:32:46,775 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:32:46,819 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:32:47,026 - INFO - Total scatter plot saved to reports\total_scatter_kerani_arjono_(_atik_).png
+2025-04-22 14:32:47,204 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:32:47,259 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:32:47,615 - INFO - Total scatter plot saved to reports\total_scatter_kerani_eka_retno_safitri_(_hery_mudayanah_).png
+2025-04-22 14:32:47,828 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:32:47,926 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:32:48,580 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erwin_susanto_(_senia_).png
+2025-04-22 14:32:48,750 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:32:48,783 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:32:48,991 - INFO - Total scatter plot saved to reports\total_scatter_kerani_evi_tamala_(jakdia).png
+2025-04-22 14:32:49,139 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:32:49,197 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:32:49,568 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yogie_febrian_(_windayati_).png
+2025-04-22 14:32:50,094 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:32:50,290 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:32:51,260 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 14:32:51,893 - INFO - PDF report generated: reports\comparison_report_20250422_143246.pdf
+2025-04-22 14:53:44,759 - INFO - No differences found in the data for PDF report.
+2025-04-22 14:53:44,891 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:53:44,929 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:53:45,119 - INFO - Total scatter plot saved to reports\total_scatter_kerani_antonius_(_haseni_).png
+2025-04-22 14:53:45,247 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:53:45,271 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:53:45,450 - INFO - Total scatter plot saved to reports\total_scatter_kerani_dicky_pratama_(devi_gustiyanti).png
+2025-04-22 14:53:45,589 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:53:45,624 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:53:45,869 - INFO - Total scatter plot saved to reports\total_scatter_kerani_rio_resfati_(_misrusiana_).png
+2025-04-22 14:53:46,030 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:53:46,329 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sarwono_(_sariyah_).png
+2025-04-22 14:53:46,482 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:53:46,505 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:53:46,737 - INFO - Total scatter plot saved to reports\total_scatter_kerani_supriadi_(_suryati_).png
+2025-04-22 14:53:46,890 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:53:46,909 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:53:47,076 - INFO - Total scatter plot saved to reports\total_scatter_kerani_widodo_joko_purwanto_(_maryati_).png
+2025-04-22 14:53:47,259 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:53:47,516 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yuli_trianto_(_sukinah_).png
+2025-04-22 14:53:47,709 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:53:47,964 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 14:53:48,146 - INFO - PDF report generated: reports\comparison_report_20250422_145344.pdf
+2025-04-22 14:58:41,832 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:58:42,430 - INFO - Total scatter plot saved to reports\total_scatter_kerani_arjono_(_atik_).png
+2025-04-22 14:58:42,808 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:58:42,965 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:58:43,776 - INFO - Total scatter plot saved to reports\total_scatter_kerani_eka_retno_safitri_(_hery_mudayanah_).png
+2025-04-22 14:58:44,158 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:58:44,229 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:58:44,824 - INFO - Total scatter plot saved to reports\total_scatter_kerani_evi_tamala_(jakdia).png
+2025-04-22 14:58:45,241 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:58:45,406 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:58:46,265 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yogie_febrian_(_windayati_).png
+2025-04-22 14:58:46,645 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:58:46,842 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 14:58:47,948 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 14:58:48,332 - INFO - PDF report generated: reports\comparison_report_20250422_145841.pdf
+2025-04-22 15:02:31,175 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:02:31,373 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:02:32,322 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-04-22 15:02:32,724 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:02:34,406 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-04-22 15:02:34,766 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:02:34,864 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:02:35,493 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-04-22 15:02:35,810 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:02:35,895 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:02:36,353 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-04-22 15:02:36,826 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:02:37,164 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:02:38,834 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 15:02:39,245 - INFO - PDF report generated: reports\comparison_report_20250422_150230.pdf
+2025-04-22 15:10:45,835 - INFO - No differences found in the data for PDF report.
+2025-04-22 15:10:45,966 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:10:45,997 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:10:46,167 - INFO - Total scatter plot saved to reports\total_scatter_kerani_antonius_(_haseni_).png
+2025-04-22 15:10:46,326 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:10:46,345 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:10:46,544 - INFO - Total scatter plot saved to reports\total_scatter_kerani_dicky_pratama_(devi_gustiyanti).png
+2025-04-22 15:10:46,714 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:10:46,741 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:10:46,921 - INFO - Total scatter plot saved to reports\total_scatter_kerani_rio_resfati_(_misrusiana_).png
+2025-04-22 15:10:47,104 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:10:47,384 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sarwono_(_sariyah_).png
+2025-04-22 15:10:47,535 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:10:47,572 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:10:47,791 - INFO - Total scatter plot saved to reports\total_scatter_kerani_supriadi_(_suryati_).png
+2025-04-22 15:10:47,950 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:10:47,970 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:10:48,135 - INFO - Total scatter plot saved to reports\total_scatter_kerani_widodo_joko_purwanto_(_maryati_).png
+2025-04-22 15:10:48,258 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:10:48,498 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yuli_trianto_(_sukinah_).png
+2025-04-22 15:10:48,692 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-04-22 15:10:48,912 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-04-22 15:10:49,063 - INFO - PDF report generated: reports\comparison_report_20250422_151045.pdf
+2025-05-02 08:41:09,251 - INFO - No differences found in the data for PDF report.
+2025-05-02 08:41:09,464 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:41:09,525 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:41:09,712 - INFO - Total scatter plot saved to reports\total_scatter_kerani_budi_yanti_(hernawati).png
+2025-05-02 08:41:09,860 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:41:09,879 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:41:10,068 - INFO - Total scatter plot saved to reports\total_scatter_kerani_dicky_saputra_(suryani).png
+2025-05-02 08:41:10,261 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:41:10,285 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:41:10,531 - INFO - Total scatter plot saved to reports\total_scatter_kerani_rahmat_hidayat_(_lidarti_).png
+2025-05-02 08:41:10,717 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:41:10,741 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:41:11,003 - INFO - Total scatter plot saved to reports\total_scatter_kerani_ramdani_(marhama).png
+2025-05-02 08:41:11,185 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:41:11,486 - INFO - Total scatter plot saved to reports\total_scatter_kerani_suryadi_(jamila).png
+2025-05-02 08:41:11,679 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:41:11,711 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:41:11,902 - INFO - Total scatter plot saved to reports\total_scatter_kerani_teddi_saputra_(sudiarti).png
+2025-05-02 08:41:12,110 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:41:12,148 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:41:12,448 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 08:41:12,627 - INFO - PDF report generated: reports\comparison_report_20250502_084109.pdf
+2025-05-02 08:42:23,414 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:42:23,578 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:42:24,408 - INFO - Total scatter plot saved to reports\total_scatter_kerani_suryani_(_zaini_).png
+2025-05-02 08:42:24,813 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:42:24,952 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:42:25,761 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 08:42:26,106 - INFO - PDF report generated: reports\comparison_report_20250502_084223.pdf
+2025-05-02 08:49:28,467 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:49:28,573 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:49:29,002 - INFO - Total scatter plot saved to reports\total_scatter_kerani_dewi_(_yati_).png
+2025-05-02 08:49:29,256 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:49:29,328 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:49:29,787 - INFO - Total scatter plot saved to reports\total_scatter_kerani_elisa_sugiarti_(_sumiati_).png
+2025-05-02 08:49:30,123 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:49:30,210 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:49:30,770 - INFO - Total scatter plot saved to reports\total_scatter_kerani_miko_rinaldi_(lidia).png
+2025-05-02 08:49:31,073 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 08:49:31,616 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 08:49:31,898 - INFO - PDF report generated: reports\comparison_report_20250502_084928.pdf
+2025-05-02 14:37:38,688 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:37:38,776 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:37:39,239 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-05-02 14:37:39,527 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:37:39,675 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:37:40,377 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-05-02 14:37:40,613 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:37:40,661 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:37:41,054 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-05-02 14:37:41,308 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:37:41,366 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:37:41,734 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-05-02 14:37:42,072 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:37:42,216 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:37:43,114 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 14:37:43,417 - INFO - PDF report generated: reports\comparison_report_20250502_143738.pdf
+2025-05-02 14:49:53,065 - INFO - No differences found in the data for PDF report.
+2025-05-02 14:49:53,192 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:49:53,368 - INFO - Total scatter plot saved to reports\total_scatter_kerani_harsono_(_hajiah_).png
+2025-05-02 14:49:53,514 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:49:53,538 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:49:53,712 - INFO - Total scatter plot saved to reports\total_scatter_kerani_miko_agnesta_(_aida_).png
+2025-05-02 14:49:53,804 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:49:53,820 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:49:53,943 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yudik_purwanto_(_hasanah_).png
+2025-05-02 14:49:54,112 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:49:54,132 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:49:54,255 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 14:49:54,413 - INFO - PDF report generated: reports\comparison_report_20250502_144953.pdf
+2025-05-02 14:50:17,319 - INFO - No differences found in the data for PDF report.
+2025-05-02 14:50:17,433 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:50:17,597 - INFO - Total scatter plot saved to reports\total_scatter_kerani_harsono_(_hajiah_).png
+2025-05-02 14:50:17,718 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:50:17,735 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:50:17,876 - INFO - Total scatter plot saved to reports\total_scatter_kerani_miko_agnesta_(_aida_).png
+2025-05-02 14:50:18,003 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:50:18,024 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:50:18,156 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yudik_purwanto_(_hasanah_).png
+2025-05-02 14:50:18,348 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:50:18,364 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:50:18,503 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 14:50:18,642 - INFO - PDF report generated: reports\comparison_report_20250502_145017.pdf
+2025-05-02 14:53:51,936 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:53:51,979 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:53:52,182 - INFO - Total scatter plot saved to reports\total_scatter_kerani_dicky_pratama_(devi_gustiyanti).png
+2025-05-02 14:53:52,376 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:53:52,415 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:53:52,658 - INFO - Total scatter plot saved to reports\total_scatter_kerani_khairul_alamsyah_nasution_(farida_safitri).png
+2025-05-02 14:53:52,823 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:53:52,855 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:53:53,040 - INFO - Total scatter plot saved to reports\total_scatter_kerani_rio_resfati_(_misrusiana_).png
+2025-05-02 14:53:53,214 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:53:53,240 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:53:53,470 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sudirman_(_maisum_).png
+2025-05-02 14:53:53,632 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:53:53,651 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:53:53,913 - INFO - Total scatter plot saved to reports\total_scatter_kerani_supriadi_(_suryati_).png
+2025-05-02 14:53:54,123 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:53:54,158 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:53:54,320 - INFO - Total scatter plot saved to reports\total_scatter_kerani_widodo_joko_purwanto_(_maryati_).png
+2025-05-02 14:53:54,427 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:53:54,447 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:53:54,641 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 14:53:54,771 - INFO - PDF report generated: reports\comparison_report_20250502_145351.pdf
+2025-05-02 14:56:36,160 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:56:36,189 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:56:36,353 - INFO - Total scatter plot saved to reports\total_scatter_kerani_muji_widodo_(_suwartinah_).png
+2025-05-02 14:56:36,456 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:56:36,482 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:56:36,653 - INFO - Total scatter plot saved to reports\total_scatter_kerani_samuel_febrianto_simanjuntak,_sp_(_astradia_simanu.png
+2025-05-02 14:56:36,773 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:56:36,795 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:56:36,962 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sri_isroyani_(_sema_).png
+2025-05-02 14:56:37,086 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:56:37,307 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yuda_hermawan_(tjhin_lie_tju).png
+2025-05-02 14:56:37,435 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:56:37,463 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:56:37,667 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 14:56:37,820 - INFO - PDF report generated: reports\comparison_report_20250502_145636.pdf
+2025-05-02 14:57:46,082 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:57:46,110 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:57:46,335 - INFO - Total scatter plot saved to reports\total_scatter_kerani_eka_retno_safitri_(_hery_mudayanah_).png
+2025-05-02 14:57:46,463 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:57:46,481 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:57:46,621 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erpan_(erni_yusnita).png
+2025-05-02 14:57:46,713 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:57:46,736 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:57:46,881 - INFO - Total scatter plot saved to reports\total_scatter_kerani_fitria_(_mariani_).png
+2025-05-02 14:57:47,046 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:57:47,081 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:57:47,241 - INFO - Total scatter plot saved to reports\total_scatter_kerani_ivan_saputra_(_nurmah_).png
+2025-05-02 14:57:47,350 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:57:47,380 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:57:47,600 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yogie_febrian_(_windayati_).png
+2025-05-02 14:57:47,717 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:57:47,751 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:57:48,019 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 14:57:48,201 - INFO - PDF report generated: reports\comparison_report_20250502_145745.pdf
+2025-05-02 14:59:09,961 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:59:10,159 - INFO - Total scatter plot saved to reports\total_scatter_kerani_hendrial_(_maryam_).png
+2025-05-02 14:59:10,272 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:59:10,547 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yulita_septiartini_(_sumiati_).png
+2025-05-02 14:59:10,667 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 14:59:10,881 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 14:59:11,007 - INFO - PDF report generated: reports\comparison_report_20250502_145909.pdf
+2025-05-02 15:02:17,431 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:02:17,460 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:02:17,625 - INFO - Total scatter plot saved to reports\total_scatter_kerani_afriwantoni_(_yusna_yetti_).png
+2025-05-02 15:02:17,719 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:02:17,740 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:02:17,874 - INFO - Total scatter plot saved to reports\total_scatter_kerani_fikri_(suhaini).png
+2025-05-02 15:02:18,007 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:02:18,072 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:02:18,507 - INFO - Total scatter plot saved to reports\total_scatter_kerani_rozi_susanto_(_sarminah_).png
+2025-05-02 15:02:18,617 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:02:18,638 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:02:18,798 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sardewi_(_sohati_).png
+2025-05-02 15:02:18,900 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:02:18,940 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:02:19,252 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sazela_(_mastina_).png
+2025-05-02 15:02:19,457 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:02:19,551 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:02:20,006 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 15:02:20,180 - INFO - PDF report generated: reports\comparison_report_20250502_150217.pdf
+2025-05-02 15:21:08,694 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:21:08,763 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:21:09,093 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-05-02 15:21:09,272 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:21:09,902 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-05-02 15:21:10,135 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:21:10,172 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:21:10,437 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-05-02 15:21:10,573 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:21:10,600 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:21:10,918 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-05-02 15:21:11,111 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:21:11,245 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:21:12,004 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 15:21:12,253 - INFO - PDF report generated: reports\comparison_report_20250502_152108.pdf
+2025-05-02 15:22:37,893 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:22:38,169 - INFO - Total scatter plot saved to reports\total_scatter_kerani_hendrial_(_maryam_).png
+2025-05-02 15:22:38,331 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:22:38,688 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yulita_septiartini_(_sumiati_).png
+2025-05-02 15:22:38,931 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:22:39,334 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 15:22:39,501 - INFO - PDF report generated: reports\comparison_report_20250502_152237.pdf
+2025-05-02 15:25:47,955 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:25:48,019 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:25:48,300 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-05-02 15:25:48,456 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:25:49,034 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-05-02 15:25:49,182 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:25:49,228 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:25:49,459 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-05-02 15:25:49,654 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:25:49,701 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:25:49,935 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-05-02 15:25:50,127 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:25:50,228 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:25:50,835 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 15:25:51,014 - INFO - PDF report generated: reports\comparison_report_20250502_152547.pdf
+2025-05-02 15:28:22,150 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:28:22,366 - INFO - Total scatter plot saved to reports\total_scatter_kerani_hendrial_(_maryam_).png
+2025-05-02 15:28:22,511 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:28:22,779 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yulita_septiartini_(_sumiati_).png
+2025-05-02 15:28:23,008 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:28:23,397 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 15:28:23,618 - INFO - PDF report generated: reports\comparison_report_20250502_152821.pdf
+2025-05-02 15:32:00,867 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:32:00,934 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:32:01,311 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-05-02 15:32:01,473 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:32:02,024 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-05-02 15:32:02,178 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:32:02,217 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:32:02,457 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-05-02 15:32:02,585 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:32:02,619 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:32:02,823 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-05-02 15:32:03,016 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:32:03,120 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:32:03,693 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 15:32:03,861 - INFO - PDF report generated: reports\comparison_report_20250502_153200.pdf
+2025-05-02 15:36:47,189 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:36:47,249 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:36:47,575 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-05-02 15:36:47,753 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:36:48,347 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-05-02 15:36:48,521 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:36:48,562 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:36:48,814 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-05-02 15:36:48,970 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:36:49,000 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:36:49,214 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-05-02 15:36:49,459 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:36:49,582 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:36:50,324 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 15:36:50,533 - INFO - PDF report generated: reports\comparison_report_20250502_153647.pdf
+2025-05-02 15:41:53,878 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:41:54,148 - INFO - Total scatter plot saved to reports\total_scatter_kerani_hendrial_(_maryam_).png
+2025-05-02 15:41:54,315 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:41:54,657 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yulita_septiartini_(_sumiati_).png
+2025-05-02 15:41:54,832 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:41:55,185 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 15:41:55,357 - INFO - PDF report generated: reports\comparison_report_20250502_154153.pdf
+2025-05-02 15:43:24,968 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:43:25,016 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:43:25,316 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-05-02 15:43:25,551 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:43:25,618 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:43:26,009 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-05-02 15:43:26,202 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:43:26,236 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:43:26,523 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-05-02 15:43:26,755 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:43:26,786 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:43:27,161 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-05-02 15:43:27,384 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:43:27,465 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:43:27,893 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 15:43:28,100 - INFO - PDF report generated: reports\comparison_report_20250502_154324.pdf
+2025-05-02 15:44:38,160 - INFO - No differences found in the data for PDF report.
+2025-05-02 15:44:38,381 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:44:38,411 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:44:38,606 - INFO - Total scatter plot saved to reports\total_scatter_kerani_budi_yanti_(hernawati).png
+2025-05-02 15:44:38,797 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:44:38,817 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:44:39,168 - INFO - Total scatter plot saved to reports\total_scatter_kerani_dicky_saputra_(suryani).png
+2025-05-02 15:44:39,356 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:44:39,390 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:44:39,616 - INFO - Total scatter plot saved to reports\total_scatter_kerani_rahmat_hidayat_(_lidarti_).png
+2025-05-02 15:44:39,781 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:44:39,808 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:44:40,065 - INFO - Total scatter plot saved to reports\total_scatter_kerani_ramdani_(marhama).png
+2025-05-02 15:44:40,239 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:44:40,538 - INFO - Total scatter plot saved to reports\total_scatter_kerani_suryadi_(jamila).png
+2025-05-02 15:44:40,712 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:44:40,731 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:44:40,986 - INFO - Total scatter plot saved to reports\total_scatter_kerani_teddi_saputra_(sudiarti).png
+2025-05-02 15:44:41,199 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:44:41,225 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:44:41,448 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 15:44:41,659 - INFO - PDF report generated: reports\comparison_report_20250502_154438.pdf
+2025-05-02 15:45:13,278 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:45:13,310 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:45:13,593 - INFO - Total scatter plot saved to reports\total_scatter_kerani_dicky_pratama_(devi_gustiyanti).png
+2025-05-02 15:45:13,728 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:45:13,755 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:45:14,027 - INFO - Total scatter plot saved to reports\total_scatter_kerani_khairul_alamsyah_nasution_(farida_safitri).png
+2025-05-02 15:45:14,252 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:45:14,272 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:45:14,523 - INFO - Total scatter plot saved to reports\total_scatter_kerani_rio_resfati_(_misrusiana_).png
+2025-05-02 15:45:14,666 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:45:14,691 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:45:14,915 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sudirman_(_maisum_).png
+2025-05-02 15:45:15,113 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:45:15,136 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:45:15,345 - INFO - Total scatter plot saved to reports\total_scatter_kerani_supriadi_(_suryati_).png
+2025-05-02 15:45:15,559 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:45:15,588 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:45:15,790 - INFO - Total scatter plot saved to reports\total_scatter_kerani_widodo_joko_purwanto_(_maryati_).png
+2025-05-02 15:45:15,942 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:45:15,978 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 15:45:16,191 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 15:45:16,373 - INFO - PDF report generated: reports\comparison_report_20250502_154513.pdf
+2025-05-02 16:15:08,408 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:15:08,476 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:15:08,772 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-05-02 16:15:08,920 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:15:09,456 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-05-02 16:15:09,601 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:15:09,633 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:15:09,866 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-05-02 16:15:09,993 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:15:10,020 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:15:10,183 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-05-02 16:15:10,381 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:15:10,478 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:15:11,025 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 16:15:11,189 - INFO - PDF report generated: reports\comparison_report_20250502_161508.pdf
+2025-05-02 16:26:11,446 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:26:11,523 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:26:11,950 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-05-02 16:26:12,126 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:26:12,746 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-05-02 16:26:12,916 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:26:12,962 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:26:13,250 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-05-02 16:26:13,395 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:26:13,425 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:26:13,625 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-05-02 16:26:13,897 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:26:14,018 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:26:14,717 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 16:26:14,922 - INFO - PDF report generated: reports\comparison_report_20250502_162611.pdf
+2025-05-02 16:28:28,240 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:28:28,299 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:28:28,600 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-05-02 16:28:28,766 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:28:29,436 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-05-02 16:28:29,602 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:28:29,634 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:28:29,880 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-05-02 16:28:30,019 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:28:30,055 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:28:30,229 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-05-02 16:28:30,417 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:28:30,531 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:28:31,176 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 16:28:31,338 - INFO - PDF report generated: reports\comparison_report_20250502_162828.pdf
+2025-05-02 16:30:01,984 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:02,036 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:02,312 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-05-02 16:30:02,540 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:02,628 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:03,193 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-05-02 16:30:03,384 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:03,406 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:03,760 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-05-02 16:30:03,995 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:04,032 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:04,281 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-05-02 16:30:04,524 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:04,611 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:05,117 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 16:30:05,312 - INFO - PDF report generated: reports\comparison_report_20250502_163001.pdf
+2025-05-02 16:30:24,230 - INFO - No differences found in the data for PDF report.
+2025-05-02 16:30:24,367 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:24,637 - INFO - Total scatter plot saved to reports\total_scatter_kerani_harsono_(_hajiah_).png
+2025-05-02 16:30:24,831 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:24,867 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:25,050 - INFO - Total scatter plot saved to reports\total_scatter_kerani_miko_agnesta_(_aida_).png
+2025-05-02 16:30:25,192 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:25,219 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:25,416 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yudik_purwanto_(_hasanah_).png
+2025-05-02 16:30:25,623 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:25,658 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:30:25,872 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 16:30:26,071 - INFO - PDF report generated: reports\comparison_report_20250502_163024.pdf
+2025-05-02 16:32:36,499 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:32:36,548 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:32:36,818 - INFO - Total scatter plot saved to reports\total_scatter_kerani_dicky_pratama_(devi_gustiyanti).png
+2025-05-02 16:32:36,990 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:32:37,023 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:32:37,201 - INFO - Total scatter plot saved to reports\total_scatter_kerani_khairul_alamsyah_nasution_(farida_safitri).png
+2025-05-02 16:32:37,372 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:32:37,404 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:32:37,591 - INFO - Total scatter plot saved to reports\total_scatter_kerani_rio_resfati_(_misrusiana_).png
+2025-05-02 16:32:37,796 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:32:37,832 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:32:38,048 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sudirman_(_maisum_).png
+2025-05-02 16:32:38,203 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:32:38,228 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:32:38,439 - INFO - Total scatter plot saved to reports\total_scatter_kerani_supriadi_(_suryati_).png
+2025-05-02 16:32:38,585 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:32:38,616 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:32:38,844 - INFO - Total scatter plot saved to reports\total_scatter_kerani_widodo_joko_purwanto_(_maryati_).png
+2025-05-02 16:32:39,014 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:32:39,043 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:32:39,300 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 16:32:39,489 - INFO - PDF report generated: reports\comparison_report_20250502_163236.pdf
+2025-05-02 16:33:49,703 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:33:49,784 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:33:50,344 - INFO - Total scatter plot saved to reports\total_scatter_kerani_muji_widodo_(_suwartinah_).png
+2025-05-02 16:33:50,738 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:33:50,837 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:33:51,487 - INFO - Total scatter plot saved to reports\total_scatter_kerani_samuel_febrianto_simanjuntak,_sp_(_astradia_simanu.png
+2025-05-02 16:33:51,866 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:33:51,954 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:33:52,571 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sri_isroyani_(_sema_).png
+2025-05-02 16:33:53,392 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:33:54,784 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yuda_hermawan_(tjhin_lie_tju).png
+2025-05-02 16:33:55,460 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:33:55,589 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:33:56,369 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 16:33:56,763 - INFO - PDF report generated: reports\comparison_report_20250502_163349.pdf
+2025-05-02 16:35:09,436 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:09,468 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:09,733 - INFO - Total scatter plot saved to reports\total_scatter_kerani_eka_retno_safitri_(_hery_mudayanah_).png
+2025-05-02 16:35:09,900 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:09,934 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:10,183 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erpan_(erni_yusnita).png
+2025-05-02 16:35:10,355 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:10,406 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:10,684 - INFO - Total scatter plot saved to reports\total_scatter_kerani_fitria_(_mariani_).png
+2025-05-02 16:35:10,878 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:10,914 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:11,146 - INFO - Total scatter plot saved to reports\total_scatter_kerani_ivan_saputra_(_nurmah_).png
+2025-05-02 16:35:11,327 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:11,358 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:11,656 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yogie_febrian_(_windayati_).png
+2025-05-02 16:35:11,858 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:11,907 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:12,221 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 16:35:12,461 - INFO - PDF report generated: reports\comparison_report_20250502_163509.pdf
+2025-05-02 16:35:47,718 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:47,787 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:48,136 - INFO - Total scatter plot saved to reports\total_scatter_kerani_afriwantoni_(_yusna_yetti_).png
+2025-05-02 16:35:48,387 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:48,436 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:48,746 - INFO - Total scatter plot saved to reports\total_scatter_kerani_fikri_(suhaini).png
+2025-05-02 16:35:49,042 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:49,186 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:50,056 - INFO - Total scatter plot saved to reports\total_scatter_kerani_rozi_susanto_(_sarminah_).png
+2025-05-02 16:35:50,293 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:50,334 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:50,675 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sardewi_(_sohati_).png
+2025-05-02 16:35:50,922 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:51,012 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:51,381 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sazela_(_mastina_).png
+2025-05-02 16:35:51,745 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:51,894 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:35:52,805 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 16:35:53,088 - INFO - PDF report generated: reports\comparison_report_20250502_163547.pdf
+2025-05-02 16:36:51,235 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:36:51,267 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:36:51,566 - INFO - Total scatter plot saved to reports\total_scatter_kerani_dewi_(_yati_).png
+2025-05-02 16:36:51,763 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:36:51,795 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:36:52,130 - INFO - Total scatter plot saved to reports\total_scatter_kerani_elisa_sugiarti_(_sumiati_).png
+2025-05-02 16:36:52,331 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:36:52,684 - INFO - Total scatter plot saved to reports\total_scatter_kerani_miko_rinaldi_(lidia).png
+2025-05-02 16:36:52,929 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:36:53,287 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 16:36:53,500 - INFO - PDF report generated: reports\comparison_report_20250502_163651.pdf
+2025-05-02 16:37:33,270 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:37:33,535 - INFO - Total scatter plot saved to reports\total_scatter_kerani_hendrial_(_maryam_).png
+2025-05-02 16:37:33,779 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:37:34,143 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yulita_septiartini_(_sumiati_).png
+2025-05-02 16:37:34,302 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:37:34,685 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 16:37:34,892 - INFO - PDF report generated: reports\comparison_report_20250502_163733.pdf
+2025-05-02 16:37:52,629 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:37:52,675 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:37:53,186 - INFO - Total scatter plot saved to reports\total_scatter_kerani_suryani_(_zaini_).png
+2025-05-02 16:37:53,609 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:37:53,677 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:37:54,198 - INFO - Total scatter plot saved to reports\total_scatter_kerani_trisno_zumarto_(_marnili_).png
+2025-05-02 16:37:54,543 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:37:54,635 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:37:55,365 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 16:37:55,770 - INFO - PDF report generated: reports\comparison_report_20250502_163752.pdf
+2025-05-02 16:39:57,269 - INFO - No differences found in the data for PDF report.
+2025-05-02 16:39:57,480 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:39:57,515 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:39:57,766 - INFO - Total scatter plot saved to reports\total_scatter_kerani_budi_yanti_(hernawati).png
+2025-05-02 16:39:57,944 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:39:57,963 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:39:58,148 - INFO - Total scatter plot saved to reports\total_scatter_kerani_dicky_saputra_(suryani).png
+2025-05-02 16:39:58,262 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:39:58,286 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:39:58,531 - INFO - Total scatter plot saved to reports\total_scatter_kerani_rahmat_hidayat_(_lidarti_).png
+2025-05-02 16:39:58,738 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:39:58,758 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:39:58,963 - INFO - Total scatter plot saved to reports\total_scatter_kerani_ramdani_(marhama).png
+2025-05-02 16:39:59,193 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:39:59,422 - INFO - Total scatter plot saved to reports\total_scatter_kerani_suryadi_(jamila).png
+2025-05-02 16:39:59,562 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:39:59,583 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:39:59,798 - INFO - Total scatter plot saved to reports\total_scatter_kerani_teddi_saputra_(sudiarti).png
+2025-05-02 16:40:00,070 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:40:00,094 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-05-02 16:40:00,349 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-05-02 16:40:00,513 - INFO - PDF report generated: reports\comparison_report_20250502_163957.pdf
+2025-06-20 11:27:59,986 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:28:00,024 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:28:00,176 - INFO - Total scatter plot saved to reports\total_scatter_kerani_hendrial_(_maryam_).png
+2025-06-20 11:28:00,330 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:28:00,369 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:28:00,539 - INFO - Total scatter plot saved to reports\total_scatter_kerani_imelda_febrianti_(_masrifah_).png
+2025-06-20 11:28:00,723 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:28:00,758 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:28:00,923 - INFO - Total scatter plot saved to reports\total_scatter_kerani_muara_hotben_tambunan_(_risma_simanjuntak_).png
+2025-06-20 11:28:01,051 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:28:01,072 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:28:01,243 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yulita_septiartini_(_sumiati_).png
+2025-06-20 11:28:01,363 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:28:01,383 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:28:01,553 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-06-20 11:28:01,671 - INFO - PDF report generated: reports\comparison_report_20250620_112759.pdf
+2025-06-20 11:30:30,733 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:30:30,760 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:30:30,882 - INFO - Total scatter plot saved to reports\total_scatter_kerani_dewi_(_yati_).png
+2025-06-20 11:30:30,957 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:30:30,973 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:30:31,087 - INFO - Total scatter plot saved to reports\total_scatter_kerani_elisa_sugiarti_(_sumiati_).png
+2025-06-20 11:30:31,158 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:30:31,178 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:30:31,302 - INFO - Total scatter plot saved to reports\total_scatter_kerani_miko_rinaldi_(lidia).png
+2025-06-20 11:30:31,381 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:30:31,399 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:30:31,531 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-06-20 11:30:31,624 - INFO - PDF report generated: reports\comparison_report_20250620_113030.pdf
+2025-06-20 11:31:58,964 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:31:58,992 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:31:59,130 - INFO - Total scatter plot saved to reports\total_scatter_kerani_eka_retno_safitri_(_hery_mudayanah_).png
+2025-06-20 11:31:59,199 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:31:59,215 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:31:59,308 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erpan_(erni_yusnita).png
+2025-06-20 11:31:59,387 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:31:59,402 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:31:59,506 - INFO - Total scatter plot saved to reports\total_scatter_kerani_evi_tamala_(jakdia).png
+2025-06-20 11:31:59,584 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:31:59,600 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:31:59,709 - INFO - Total scatter plot saved to reports\total_scatter_kerani_fitria_(_mariani_).png
+2025-06-20 11:31:59,806 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:31:59,829 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:31:59,998 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yogie_febrian_(_windayati_).png
+2025-06-20 11:32:00,093 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:32:00,111 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:32:00,236 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-06-20 11:32:00,336 - INFO - PDF report generated: reports\comparison_report_20250620_113158.pdf
+2025-06-20 11:33:36,043 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:33:36,063 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:33:36,177 - INFO - Total scatter plot saved to reports\total_scatter_kerani_afriwantoni_(_yusna_yetti_).png
+2025-06-20 11:33:36,259 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:33:36,390 - INFO - Total scatter plot saved to reports\total_scatter_kerani_fikri_(suhaini).png
+2025-06-20 11:33:36,468 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:33:36,482 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:33:36,582 - INFO - Total scatter plot saved to reports\total_scatter_kerani_karyawan-1965.png
+2025-06-20 11:33:36,660 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:33:36,689 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:33:36,853 - INFO - Total scatter plot saved to reports\total_scatter_kerani_rozi_susanto_(_sarminah_).png
+2025-06-20 11:33:36,928 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:33:36,943 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:33:37,057 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sardewi_(_sohati_).png
+2025-06-20 11:33:37,140 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:33:37,172 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:33:37,361 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sazela_(_mastina_).png
+2025-06-20 11:33:37,457 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:33:37,494 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:33:37,772 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-06-20 11:33:37,885 - INFO - PDF report generated: reports\comparison_report_20250620_113335.pdf
+2025-06-20 11:35:04,494 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:35:04,519 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:35:04,625 - INFO - Total scatter plot saved to reports\total_scatter_kerani_antonius.png
+2025-06-20 11:35:04,699 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:35:04,717 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:35:04,815 - INFO - Total scatter plot saved to reports\total_scatter_kerani_dicky_saputra_(suryani).png
+2025-06-20 11:35:04,888 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:35:04,904 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:35:05,011 - INFO - Total scatter plot saved to reports\total_scatter_kerani_rahmat_hidayat_(_lidarti_).png
+2025-06-20 11:35:05,080 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:35:05,093 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:35:05,180 - INFO - Total scatter plot saved to reports\total_scatter_kerani_ramdani_(marhama).png
+2025-06-20 11:35:05,245 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:35:05,261 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:35:05,360 - INFO - Total scatter plot saved to reports\total_scatter_kerani_suryadi_(jamila).png
+2025-06-20 11:35:05,426 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:35:05,441 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:35:05,531 - INFO - Total scatter plot saved to reports\total_scatter_kerani_teddi_saputra_(sudiarti).png
+2025-06-20 11:35:05,602 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:35:05,615 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:35:05,716 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-06-20 11:35:05,803 - INFO - PDF report generated: reports\comparison_report_20250620_113504.pdf
+2025-06-20 11:36:17,874 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:36:17,910 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:36:18,097 - INFO - Total scatter plot saved to reports\total_scatter_kerani_suryani_(_zaini_).png
+2025-06-20 11:36:18,185 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:36:18,392 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-06-20 11:36:18,505 - INFO - PDF report generated: reports\comparison_report_20250620_113617.pdf
+2025-06-20 11:38:43,901 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:38:43,923 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:38:44,037 - INFO - Total scatter plot saved to reports\total_scatter_kerani_muji_widodo_(_suwartinah_).png
+2025-06-20 11:38:44,115 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:38:44,133 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:38:44,249 - INFO - Total scatter plot saved to reports\total_scatter_kerani_poppy_adeyanti_(_susilawati_).png
+2025-06-20 11:38:44,322 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:38:44,335 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:38:44,422 - INFO - Total scatter plot saved to reports\total_scatter_kerani_samuel_febrianto_simanjuntak,_sp_(_astradia_simanu.png
+2025-06-20 11:38:44,491 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:38:44,509 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:38:44,641 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sri_isroyani_(_sema_).png
+2025-06-20 11:38:44,714 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:38:44,730 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:38:44,857 - INFO - Total scatter plot saved to reports\total_scatter_kerani_yuda_hermawan_(tjhin_lie_tju).png
+2025-06-20 11:38:44,943 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:38:45,114 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-06-20 11:38:45,210 - INFO - PDF report generated: reports\comparison_report_20250620_113843.pdf
+2025-06-20 11:40:12,380 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:40:12,506 - INFO - Total scatter plot saved to reports\total_scatter_kerani_dicky_pratama_(devi_gustiyanti).png
+2025-06-20 11:40:12,586 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:40:12,598 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:40:12,690 - INFO - Total scatter plot saved to reports\total_scatter_kerani_khairul_alamsyah_nasution_(farida_safitri).png
+2025-06-20 11:40:12,759 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:40:12,779 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:40:12,875 - INFO - Total scatter plot saved to reports\total_scatter_kerani_rio_resfati_(_misrusiana_).png
+2025-06-20 11:40:12,943 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:40:12,957 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:40:13,045 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sarwono_(_sariyah_).png
+2025-06-20 11:40:13,121 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:40:13,135 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:40:13,231 - INFO - Total scatter plot saved to reports\total_scatter_kerani_sudirman_(_maisum_).png
+2025-06-20 11:40:13,302 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:40:13,421 - INFO - Total scatter plot saved to reports\total_scatter_kerani_supriadi_(_suryati_).png
+2025-06-20 11:40:13,491 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:40:13,502 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:40:13,588 - INFO - Total scatter plot saved to reports\total_scatter_kerani_widodo_joko_purwanto_(_maryati_).png
+2025-06-20 11:40:13,662 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:40:13,674 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 11:40:13,774 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-06-20 11:40:13,866 - INFO - PDF report generated: reports\comparison_report_20250620_114012.pdf
+2025-06-20 12:17:06,746 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:17:06,779 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:17:06,873 - INFO - Total scatter plot saved to reports\total_scatter_kerani_harsono_(_hajiah_).png
+2025-06-20 12:17:06,943 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:17:06,967 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:17:07,063 - INFO - Total scatter plot saved to reports\total_scatter_kerani_miko_agnesta_(_aida_).png
+2025-06-20 12:17:07,137 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:17:07,157 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:17:07,256 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-06-20 12:17:07,359 - INFO - PDF report generated: reports\comparison_report_20250620_121706.pdf
+2025-06-20 12:21:34,838 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:21:34,871 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:21:35,032 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-06-20 12:21:35,117 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:21:35,150 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:21:35,338 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-06-20 12:21:35,405 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:21:35,419 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:21:35,513 - INFO - Total scatter plot saved to reports\total_scatter_kerani_irwansyah_(_agustina_).png
+2025-06-20 12:21:35,587 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:21:35,600 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:21:35,688 - INFO - Total scatter plot saved to reports\total_scatter_kerani_zulhari_(_aminah_).png
+2025-06-20 12:21:35,796 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:21:35,837 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-20 12:21:36,067 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-06-20 12:21:36,157 - INFO - PDF report generated: reports\comparison_report_20250620_122134.pdf
+2025-06-28 10:22:53,012 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-28 10:22:53,067 - WARNING - Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-28 10:22:53,251 - INFO - Total scatter plot saved to reports\total_scatter_kerani_djuli_darta_(_addiani_).png
+2025-06-28 10:22:53,380 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-28 10:22:53,562 - INFO - Total scatter plot saved to reports\total_scatter_kerani_erly_(_mardiah_).png
+2025-06-28 10:22:53,711 - WARNING - Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
+2025-06-28 10:22:53,982 - INFO - Total scatter plot saved to reports\total_scatter_all.png
+2025-06-28 10:22:54,133 - INFO - PDF report generated: reports\comparison_report_20250628_102252.pdf

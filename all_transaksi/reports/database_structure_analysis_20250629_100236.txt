@@ -1,0 +1,77 @@
+ANALISIS STRUKTUR DATABASE MULTI ESTATE
+================================================================================
+
+Estate: Estate PGE 1A
+Path: C:\Users\nbgmf\Downloads\PTRJ_P1A\PTRJ_P1A.FDB
+Status: OK
+Bulan tersedia: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+Total records: 50450
+
+Estate: Estate PGE 1B
+Path: C:\Users\nbgmf\Downloads\PTRJ_P1B\PTRJ_P1B.FDB
+Status: OK
+Bulan tersedia: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+Total records: 27154
+
+Estate: Estate PGE 2A
+Path: C:\Users\nbgmf\Downloads\IFESS_PGE_2A_19-06-2025
+Status: OK
+Bulan tersedia: []
+Total records: N/A
+
+Estate: Estate PGE 2B
+Path: C:\Users\nbgmf\Downloads\IFESS_2B_19-06-2025\PTRJ_P2B.FDB
+Status: OK
+Bulan tersedia: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+Total records: 27107
+
+Estate: Estate IJL
+Path: C:\Users\nbgmf\Downloads\IFESS_IJL_19-06-2025\PTRJ_IJL_IMPIANJAYALESTARI.FDB
+Status: OK
+Bulan tersedia: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+Total records: 9948
+
+Estate: Estate DME
+Path: C:\Users\nbgmf\Downloads\IFESS_DME_19-06-2025\PTRJ_DME.FDB
+Status: OK
+Bulan tersedia: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+Total records: 39456
+
+Estate: Estate AreB2
+Path: C:\Users\nbgmf\Downloads\IFESS_ARE_B2_19-06-2025\PTRJ_AB2.FDB
+Status: OK
+Bulan tersedia: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+Total records: 39125
+
+Estate: Estate AreB1
+Path: C:\Users\nbgmf\Downloads\IFESS_ARE_B1_19-06-2025\PTRJ_AB1.FDB
+Status: OK
+Bulan tersedia: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+Total records: 38006
+
+Estate: Estate AreA
+Path: C:\Users\nbgmf\Downloads\IFESS_ARE_A_19-06-2025\PTRJ_ARA.FDB
+Status: OK
+Bulan tersedia: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+Total records: 43117
+
+Estate: Estate AreC
+Path: C:\Users\nbgmf\Downloads\IFESS_ARE_C_19-06-2025\PTRJ_ARC.FDB
+Status: OK
+Bulan tersedia: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+Total records: 68608
+
+Query kompatibel:
+
+        SELECT
+            a.SCANUSERID,
+            a.RECORDTAG,
+            a.TRANSSTATUS,
+            a.TRANSNO,
+            a.TRANSDATE,
+            a.FIELDID,
+            'Tidak Diketahui' as DIVISION_NAME
+        FROM FFBSCANNERDATA{month:02d} a
+        WHERE a.TRANSDATE >= '{start_date}' AND a.TRANSDATE < '{end_date}'
+        ORDER BY a.SCANUSERID, a.TRANSNO, a.TRANSDATE
+        
