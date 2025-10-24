@@ -13,7 +13,7 @@ from datetime import datetime, date
 import threading
 from firebird_connector import FirebirdConnector
 from reportlab.lib.pagesizes import A4, landscape
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, Image
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
 from reportlab.lib import colors
@@ -24,7 +24,7 @@ class MultiEstateFFBAnalysisGUI:
     
     def __init__(self, root):
         self.root = root
-        self.root.title("Laporan Kinerja Kerani, Mandor, dan Asisten - Multi-Estate")
+        self.root.title("LAPORAN KINERJA KERANI, MANDOR, DAN ASISTEN - Multi-Estate")
         self.root.geometry("1100x800") # Lebarkan window untuk path
         self.root.configure(bg='#f0f0f0')
         
@@ -76,7 +76,7 @@ class MultiEstateFFBAnalysisGUI:
                 json.dump(data_to_save, f, indent=4)
             
             if data_to_save: # Hanya tampilkan pesan jika ada data untuk disimpan
-                 self.log_message(f"✓ Konfigurasi berhasil disimpan ke {self.CONFIG_FILE}")
+                 self.log_message(f"Konfigurasi berhasil disimpan ke {self.CONFIG_FILE}")
         except IOError as e:
             messagebox.showerror("Error Konfigurasi", f"Gagal menyimpan {self.CONFIG_FILE}: {e}")
 
@@ -87,7 +87,7 @@ class MultiEstateFFBAnalysisGUI:
         main_frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
         
         # Title
-        title_label = ttk.Label(main_frame, text="Laporan Kinerja Kerani, Mandor, dan Asisten - Multi-Estate", 
+        title_label = ttk.Label(main_frame, text="LAPORAN KINERJA KERANI, MANDOR, DAN ASISTEN - Multi-Estate", 
                                font=('Arial', 16, 'bold'))
         title_label.grid(row=0, column=0, columnspan=3, pady=(0, 20))
         
@@ -266,16 +266,16 @@ class MultiEstateFFBAnalysisGUI:
                     estate_results = self.analyze_estate(estate_name, db_path, start_date, end_date)
                     if estate_results:
                         all_results.extend(estate_results)
-                        self.log_message(f"✓ {estate_name}: {len(estate_results)} divisi")
+                        self.log_message(f"{estate_name}: {len(estate_results)} divisi")
                     else:
-                        self.log_message(f"✗ {estate_name}: Tidak ada data")
+                        self.log_message(f"{estate_name}: Tidak ada data")
                 except Exception as e:
-                    self.log_message(f"✗ {estate_name}: {str(e)}")
+                    self.log_message(f"{estate_name}: {str(e)}")
             
             if all_results:
                 self.log_message("Membuat laporan kinerja PDF...")
                 pdf_path = self.create_pdf_report(all_results, start_date, end_date)
-                self.log_message(f"✓ Laporan kinerja PDF: {pdf_path}")
+                self.log_message(f"Laporan kinerja PDF: {pdf_path}")
             
             self.progress_var.set("Analisis selesai")
             
@@ -309,71 +309,10 @@ class MultiEstateFFBAnalysisGUI:
             month_num = start_date.month
             use_status_704_filter = (start_date.month == 5 or end_date.month == 5) # Aktif jika rentang menyentuh bulan Mei
             
-            # DATA TARGET DARI PROGRAM ANALISIS PERBEDAAN PANEN - SEMUA ESTATE MEI 2025
-            target_differences = {}
+            # REMOVED STATIC TARGET VALUES - Now using pure transaction-by-transaction analysis
             if use_status_704_filter:
-                # Target differences berdasarkan data yang diberikan user
-                if estate_name == "PGE 1A":
-                    target_differences = {
-                        '183': 40,    # DJULI DARTA ( ADDIANI )
-                        '4771': 71,   # ERLY ( MARDIAH )
-                        '4201': 0,    # IRWANSYAH ( Agustina )
-                        '112': 0,     # ZULHARI ( AMINAH )
-                        '3613': 0,    # DARWIS HERMAN SIANTURI ( Rotuan Tambunan )
-                        '187': 0,     # SUHAYAT ( ZALIAH )
-                        '604': 0,     # SURANTO ( NURKEUMI )
-                        '5044': 0,    # SURANTO ( Nurkelumi )
-                    }
-                elif estate_name == "PGE 1B":
-                    target_differences = {
-                        'MIKO': 1,    # MIKO AGNESTA ( AIDA )
-                    }
-                elif estate_name == "PGE 2A":
-                    target_differences = {
-                        'SUPRIADI': 1,  # SUPRIADI ( SURYATI )
-                    }
-                elif estate_name == "PGE 2B":
-                    target_differences = {
-                        'MUJI': 2,      # MUJI WIDODO ( SUWARTINAH )
-                        'POPPY': 2,     # POPPY ADEYANTI ( SUSILAWATI )
-                        'SRI': 14,      # SRI ISROYANI ( SEMA )
-                        'YUDA': 12,     # YUDA HERMAWAN (Tjhin Lie Tju)
-                    }
-                elif estate_name == "Are A":
-                    target_differences = {
-                        'DEWI': 3,      # DEWI ( YATI ) - termasuk 1 transaksi >5
-                        'ELISA': 3,     # ELISA SUGIARTI ( SUMIATI )
-                        'MIKO_R': 9,    # MIKO RINALDI (LIDIA)
-                    }
-                elif estate_name == "Are B1":
-                    target_differences = {
-                        'EKA': 5,       # EKA RETNO SAFITRI ( HERY MUDAYANAH ) - termasuk 4 transaksi >5
-                        'YOGIE': 1,     # YOGIE FEBRIAN ( WINDAYATI )
-                    }
-                elif estate_name == "Are B2":
-                    target_differences = {
-                        'AFRI': 1,      # AFRIWANTONI ( Yusna Yetti )
-                        'FIKRI': 1,     # FIKRI (SUHAINI)
-                        'ROZI': 30,     # ROZI SUSANTO ( SARMINAH )
-                        'SARDEWI': 2,   # SARDEWI ( SOHATI )
-                        'SAZELA': 65,   # SAZELA ( MASTINA )
-                    }
-                elif estate_name == "Are C":
-                    target_differences = {
-                        'MUARA': 1,     # MUARA HOTBEN TAMBUNAN ( RISMA SIMANJUNTAK )
-                        'YULITA': 6,    # YULITA SEPTIARTINI ( SUMIATI ) - termasuk 2 transaksi >5
-                    }
-                elif estate_name == "DME":
-                    target_differences = {
-                        'RAHMAT': 1,    # RAHMAT HIDAYAT ( LIDARTI )
-                    }
-                elif estate_name == "IJL":
-                    target_differences = {
-                        'SURYANI': 48,  # SURYANI ( ZAINI ) - termasuk 3 transaksi >5
-                    }
-                
                 self.log_message(f"  *** FILTER TRANSSTATUS 704 AKTIF untuk {estate_name} bulan {month_num} ***")
-                self.log_message(f"  🎯 Target differences: {len(target_differences)} karyawan")
+                self.log_message(f"  Menggunakan analisis transaksi real (bukan nilai statis)")
             
             # Akumulasi per karyawan dari semua divisi
             estate_employee_totals = {}
@@ -403,102 +342,19 @@ class MultiEstateFFBAnalysisGUI:
                     
                     estate_results.append(result)
             
-            # PENYESUAIAN OTOMATIS: Sesuaikan hasil akumulasi dengan target dari program analisis perbedaan panen
+            # NO STATIC ADJUSTMENTS - Using pure transaction-by-transaction analysis results
             if use_status_704_filter:
-                self.log_message(f"  🔧 PENYESUAIAN OTOMATIS AKTIF:")
-                total_adjustment = 0
+                total_actual_differences = sum(emp_data['kerani_differences'] for emp_data in estate_employee_totals.values())
+                self.log_message(f"  HASIL ANALISIS REAL: {total_actual_differences} total perbedaan ditemukan")
                 
-                # Hitung penyesuaian proporsional per karyawan
+                # Log detail per karyawan untuk transparansi
                 for emp_id, emp_data in estate_employee_totals.items():
-                    # Gunakan mapping nama untuk mendapatkan key target
-                    emp_name = emp_data['name']
-                    target_key = self.get_employee_key_for_target(emp_name, estate_name)
-                    
-                    if target_key and target_key in target_differences:
-                        original_total = emp_data['kerani_differences']
-                        target_total = target_differences[target_key]
-                        
-                        # Hitung total penyesuaian yang diperlukan
-                        total_adjustment_needed = target_total - original_total
-                        
-                        if total_adjustment_needed != 0:
-                            # Distribusikan penyesuaian secara proporsional ke setiap divisi
-                            adjustment_distribution = {}
-                            total_adjustment_calculated = 0
-                            
-                            # Hitung total perbedaan per divisi untuk karyawan ini
-                            divisional_totals = {}
-                            for result in estate_results:
-                                div_name = result['division']
-                                if emp_id in result['employee_details']:
-                                    div_diff = result['employee_details'][emp_id]['kerani_differences']
-                                    if div_diff > 0:
-                                        divisional_totals[div_name] = div_diff
-                            
-                            # Jika ada perbedaan di beberapa divisi, distribusikan secara proporsional
-                            if divisional_totals:
-                                total_divisional = sum(divisional_totals.values())
-                                
-                                # Hitung penyesuaian proporsional dengan penanganan pembulatan
-                                adjustment_distribution = {}
-                                total_adjustment_calculated = 0
-                                
-                                # Urutkan divisi berdasarkan proporsi (terbesar dulu)
-                                sorted_divisions = sorted(divisional_totals.items(), key=lambda x: x[1], reverse=True)
-                                
-                                for i, (div_name, div_diff) in enumerate(sorted_divisions):
-                                    # Hitung proporsi penyesuaian untuk divisi ini
-                                    proportion = div_diff / total_divisional
-                                    
-                                    if i == len(sorted_divisions) - 1:
-                                        # Untuk divisi terakhir, gunakan sisa penyesuaian untuk menghindari pembulatan
-                                        adjustment_for_division = total_adjustment_needed - total_adjustment_calculated
-                                    else:
-                                        adjustment_for_division = round(total_adjustment_needed * proportion)
-                                        total_adjustment_calculated += adjustment_for_division
-                                    
-                                    adjustment_distribution[div_name] = adjustment_for_division
-                                
-                                # Terapkan penyesuaian ke setiap divisi
-                                for result in estate_results:
-                                    div_name = result['division']
-                                    if div_name in adjustment_distribution:
-                                        emp_data_div = result['employee_details'].get(emp_id)
-                                        if emp_data_div:
-                                            original_div_diff = emp_data_div['kerani_differences']
-                                            adjustment = adjustment_distribution[div_name]
-                                            new_div_diff = max(0, original_div_diff + adjustment)  # Tidak boleh negatif
-                                            emp_data_div['kerani_differences'] = new_div_diff
-                                
-                                # Update total estate
-                                emp_data['kerani_differences'] = target_total
-                                
-                                # Log detail penyesuaian
-                                user_name = emp_data['name']
-                                if total_adjustment_needed > 0:
-                                    self.log_message(f"    ➕ {user_name} (ID: {emp_id}) - Menambah {total_adjustment_needed} perbedaan (Aktual: {original_total} → Target: {target_total})")
-                                elif total_adjustment_needed < 0:
-                                    self.log_message(f"    ➖ {user_name} (ID: {emp_id}) - Mengurangi {abs(total_adjustment_needed)} perbedaan (Aktual: {original_total} → Target: {target_total})")
-                                
-                                # Log distribusi per divisi
-                                for div_name, adj in adjustment_distribution.items():
-                                    if adj != 0:
-                                        adj_text = f"+{adj}" if adj > 0 else f"{adj}"
-                                        self.log_message(f"      📂 {div_name}: {adj_text} perbedaan")
-                            else:
-                                # Jika tidak ada perbedaan di divisi manapun, set ke target
-                                emp_data['kerani_differences'] = target_total
-                                user_name = emp_data['name']
-                                self.log_message(f"    ✅ {user_name} (ID: {emp_id}) - Set ke target: {target_total} (tidak ada perbedaan di divisi)")
-                        else:
-                            user_name = emp_data['name']
-                            self.log_message(f"    ✅ {user_name} (ID: {emp_id}) - Tidak ada penyesuaian (Aktual: {original_total} = Target: {target_total})")
-                        
-                        total_adjustment += total_adjustment_needed
-                
-                total_target = sum(target_differences.values())
-                total_actual = sum(emp_data['kerani_differences'] for emp_data in estate_employee_totals.values())
-                self.log_message(f"  📊 TOTAL PENYESUAIAN: {total_adjustment} (Target: {total_target}, Hasil: {total_actual})")
+                    if emp_data['kerani_differences'] > 0:
+                        user_name = emp_data['name']
+                        differences = emp_data['kerani_differences']
+                        verified = emp_data['kerani_verified']
+                        percentage = (differences / verified * 100) if verified > 0 else 0
+                        self.log_message(f"    {user_name}: {differences} perbedaan dari {verified} transaksi terverifikasi ({percentage:.1f}%)")
             
             return estate_results
             
@@ -521,77 +377,8 @@ class MultiEstateFFBAnalysisGUI:
         except:
             return {}
     
-    def get_employee_key_for_target(self, emp_name, estate_name):
-        """Mendapatkan key untuk target differences berdasarkan nama karyawan dan estate"""
-        emp_name_upper = emp_name.upper()
-        
-        # Mapping berdasarkan estate dan nama karyawan
-        if estate_name == "PGE 1A":
-            if "DJULI DARTA" in emp_name_upper:
-                return '183'
-            elif "ERLY" in emp_name_upper:
-                return '4771'
-            elif "IRWANSYAH" in emp_name_upper:
-                return '4201'
-            elif "ZULHARI" in emp_name_upper:
-                return '112'
-            elif "DARWIS HERMAN" in emp_name_upper:
-                return '3613'
-            elif "SUHAYAT" in emp_name_upper:
-                return '187'
-            elif "SURANTO" in emp_name_upper:
-                return '604'  # atau '5044' tergantung nama lengkap
-        elif estate_name == "PGE 1B":
-            if "MIKO AGNESTA" in emp_name_upper:
-                return 'MIKO'
-        elif estate_name == "PGE 2A":
-            if "SUPRIADI" in emp_name_upper:
-                return 'SUPRIADI'
-        elif estate_name == "PGE 2B":
-            if "MUJI WIDODO" in emp_name_upper:
-                return 'MUJI'
-            elif "POPPY ADEYANTI" in emp_name_upper:
-                return 'POPPY'
-            elif "SRI ISROYANI" in emp_name_upper:
-                return 'SRI'
-            elif "YUDA HERMAWAN" in emp_name_upper:
-                return 'YUDA'
-        elif estate_name == "Are A":
-            if "DEWI" in emp_name_upper and "YATI" in emp_name_upper:
-                return 'DEWI'
-            elif "ELISA SUGIARTI" in emp_name_upper:
-                return 'ELISA'
-            elif "MIKO RINALDI" in emp_name_upper:
-                return 'MIKO_R'
-        elif estate_name == "Are B1":
-            if "EKA RETNO SAFITRI" in emp_name_upper:
-                return 'EKA'
-            elif "YOGIE FEBRIAN" in emp_name_upper:
-                return 'YOGIE'
-        elif estate_name == "Are B2":
-            if "AFRIWANTONI" in emp_name_upper:
-                return 'AFRI'
-            elif "FIKRI" in emp_name_upper:
-                return 'FIKRI'
-            elif "ROZI SUSANTO" in emp_name_upper:
-                return 'ROZI'
-            elif "SARDEWI" in emp_name_upper:
-                return 'SARDEWI'
-            elif "SAZELA" in emp_name_upper:
-                return 'SAZELA'
-        elif estate_name == "Are C":
-            if "MUARA HOTBEN" in emp_name_upper:
-                return 'MUARA'
-            elif "YULITA SEPTIARTINI" in emp_name_upper:
-                return 'YULITA'
-        elif estate_name == "DME":
-            if "RAHMAT HIDAYAT" in emp_name_upper:
-                return 'RAHMAT'
-        elif estate_name == "IJL":
-            if "SURYANI" in emp_name_upper and "ZAINI" in emp_name_upper:
-                return 'SURYANI'
-        
-        return None
+    # REMOVED: get_employee_key_for_target function no longer needed
+    # Now using pure transaction-by-transaction analysis without static targets
     
     def get_divisions(self, connector, start_date, end_date):
         # Generate all month tables within the date range
@@ -704,7 +491,7 @@ class MultiEstateFFBAnalysisGUI:
                         matching_transactions = df[(df['TRANSNO'] == kerani_row['TRANSNO']) & 
                                                   (df['RECORDTAG'] != 'PM')]
                         
-                        # FILTER KHUSUS: Untuk Estate 1A bulan Mei, hanya hitung perbedaan jika 
+                        # FILTER KHUSUS: Untuk bulan Mei, hanya hitung perbedaan jika 
                         # Mandor/Asisten memiliki TRANSSTATUS = 704 (Kerani bisa 731/732/704)
                         if use_status_704_filter:
                             # Filter hanya transaksi Mandor/Asisten dengan TRANSSTATUS 704 untuk perhitungan perbedaan
@@ -726,14 +513,22 @@ class MultiEstateFFBAnalysisGUI:
                             fields_to_compare = ['RIPEBCH', 'UNRIPEBCH', 'BLACKBCH', 'ROTTENBCH', 
                                                'LONGSTALKBCH', 'RATDMGBCH', 'LOOSEFRUIT']
                             
+                            # Count as 1 transaction difference if ANY field differs (not per field)
+                            has_difference = False
                             for field in fields_to_compare:
                                 try:
                                     kerani_val = float(kerani_row[field]) if kerani_row[field] else 0
                                     other_val = float(other_row[field]) if other_row[field] else 0
                                     if kerani_val != other_val:
-                                        differences_count += 1
-                                except:
+                                        has_difference = True
+                                        break  # Exit loop once we find any difference
+                                except (ValueError, TypeError) as e:
+                                    print(f"Warning: Error comparing {field}: {e}")
                                     continue
+                            
+                            # Count as 1 transaction difference if any field differs
+                            if has_difference:
+                                differences_count += 1
                 
                 # Hitung persentase terverifikasi
                 verified_count = len(group[group['TRANSNO'].isin(verified_transnos)])
@@ -771,11 +566,19 @@ class MultiEstateFFBAnalysisGUI:
         div_kerani_verified_total = sum(d['kerani_verified'] for d in employee_details.values())
         verification_rate = (div_kerani_verified_total / kerani_total * 100) if kerani_total > 0 else 0
         
-        # Log informasi khusus untuk Estate 1A bulan Mei
-        if estate_name == "PGE 1A" and use_status_704_filter:
-            self.log_message(f"  *** FILTER TRANSSTATUS 704 AKTIF untuk {estate_name} bulan Mei ***")
+        # Log informasi untuk analisis dengan filter status 704
+        if use_status_704_filter:
+            self.log_message(f"  *** FILTER TRANSSTATUS 704 AKTIF untuk {estate_name} ***")
             total_differences = sum(d['kerani_differences'] for d in employee_details.values())
-            self.log_message(f"  Total perbedaan input dengan filter 704: {total_differences}")
+            self.log_message(f"  Total perbedaan transaksi dengan filter 704: {total_differences}")
+            
+            # Log detail per karyawan untuk transparansi
+            for emp_id, emp_data in employee_details.items():
+                if emp_data['kerani_differences'] > 0:
+                    verified = emp_data.get('kerani_verified', 0)
+                    differences = emp_data['kerani_differences']
+                    percentage = (differences / verified * 100) if verified > 0 else 0
+                    self.log_message(f"    👤 {emp_data['name']}: {differences} perbedaan dari {verified} terverifikasi ({percentage:.1f}%)")
         
         return {
             'estate': estate_name,
@@ -798,29 +601,110 @@ class MultiEstateFFBAnalysisGUI:
             filename = f"Laporan_Kinerja_Kerani_Mandor_Asisten_{period}_{timestamp}.pdf"
             filepath = os.path.join(output_dir, filename)
             
-            # Create PDF document with LANDSCAPE orientation
-            doc = SimpleDocTemplate(filepath, pagesize=landscape(A4))
+            # Create PDF document with LANDSCAPE orientation and custom margins
+            doc = SimpleDocTemplate(
+                filepath, 
+                pagesize=landscape(A4),
+                leftMargin=30,
+                rightMargin=30,
+                topMargin=40,
+                bottomMargin=40
+            )
             styles = getSampleStyleSheet()
             story = []
             
-            # Title
+            # Company Header with Logo
+            try:
+                logo_path = r"D:\Gawean Rebinmas\Monitoring Database\Laporan_Ifess_beda_transno\all_transaksi\assets\logo_rebinmas.jpeg"
+                if os.path.exists(logo_path):
+                    # Create logo with proper sizing (200x200 pixels converted to points)
+                    logo = Image(logo_path, width=72, height=72)  # 1 inch = 72 points
+                    logo.hAlign = 'CENTER'
+                    story.append(logo)
+                    story.append(Spacer(1, 10))
+            except Exception as e:
+                print(f"Logo loading error: {e}")
+            
+            header_style = ParagraphStyle(
+                'CompanyHeader',
+                parent=styles['Normal'],
+                fontSize=12,
+                textColor=colors.HexColor('#2E4057'),
+                alignment=1,
+                spaceAfter=5,
+                fontName='Helvetica-Bold'
+            )
+            
+            company_header = Paragraph(
+                "<b>PT. REBINMAS JAYA</b><br/>SISTEM MONITORING TRANSAKSI FFB", 
+                header_style
+            )
+            story.append(company_header)
+            story.append(Spacer(1, 10))
+            
+            # Main Title with Enhanced Styling
             title_style = ParagraphStyle(
                 'CustomTitle',
                 parent=styles['Heading1'],
-                fontSize=14,
-                spaceAfter=20,
-                alignment=1  # Center
+                fontSize=18,
+                textColor=colors.HexColor('#1A365D'),
+                spaceAfter=8,
+                spaceBefore=10,
+                alignment=1,
+                fontName='Helvetica-Bold'
             )
-            title = Paragraph(f"LAPORAN KINERJA KERANI, MANDOR, DAN ASISTEN<br/>Periode: {start_date.strftime('%d %B %Y')} - {end_date.strftime('%d %B %Y')}", title_style)
+            
+            subtitle_style = ParagraphStyle(
+                'Subtitle',
+                parent=styles['Normal'],
+                fontSize=12,
+                textColor=colors.HexColor('#4A5568'),
+                spaceAfter=25,
+                alignment=1,
+                fontName='Helvetica'
+            )
+            
+            title = Paragraph("LAPORAN KINERJA KERANI, MANDOR, DAN ASISTEN", title_style)
+            subtitle = Paragraph(f"Periode: {start_date.strftime('%d %B %Y')} - {end_date.strftime('%d %B %Y')}", subtitle_style)
+            
             story.append(title)
+            story.append(subtitle)
+            
+            # Add summary statistics box
+            total_estates = len(set(result['estate'] for result in all_results))
+            total_divisions = len(all_results)
+            
+            summary_style = ParagraphStyle(
+                'SummaryBox',
+                parent=styles['Normal'],
+                fontSize=9,
+                textColor=colors.HexColor('#2D3748'),
+                alignment=1,
+                spaceAfter=20,
+                leftIndent=50,
+                rightIndent=50
+            )
+            
+            summary_text = f"""<b>RINGKASAN ANALISIS:</b> {total_estates} Estate • {total_divisions} Divisi • 
+            Analisis Transaksi Real-time • Verifikasi Otomatis"""
+            
+            summary_box = Paragraph(summary_text, summary_style)
+            story.append(summary_box)
             story.append(Spacer(1, 15))
             
-            # Create table data with simplified columns
+            # Create table data with enhanced columns
             table_data = []
             
-            # Header - Simplified columns
+            # Enhanced Header with White Text (No Boxes)
+            header_style = ParagraphStyle('HeaderStyle', parent=styles['Normal'], fontSize=8, alignment=1, fontName='Helvetica-Bold', textColor=colors.white)
             header = [
-                'Estate', 'Divisi', 'Karyawan', 'Role', 'Jumlah_Transaksi', 'Persentase Terverifikasi', 'Keterangan'
+                Paragraph('ESTATE', header_style),
+                Paragraph('DIVISI', header_style),
+                Paragraph('KARYAWAN', header_style),
+                Paragraph('ROLE', header_style),
+                Paragraph('JUMLAH<br/>TRANSAKSI', header_style),
+                Paragraph('PERSENTASE<br/>TERVERIFIKASI', header_style),
+                Paragraph('KETERANGAN<br/>PERBEDAAN', header_style)
             ]
             table_data.append(header)
             
@@ -843,17 +727,30 @@ class MultiEstateFFBAnalysisGUI:
                 
                 # Add division summary row
                 # Total transaksi = hanya dari Kerani (tanpa Asisten/Mandor)
-                # Persentase terverifikasi = (Asisten + Mandor) / Total Kerani
+                # Persentase terverifikasi = Verified Kerani Transactions / Total Kerani
                 total_kerani_only = kerani_total
-                total_verifier = mandor_total + asisten_total
-                division_verification_rate = (total_verifier / total_kerani_only * 100) if total_kerani_only > 0 else 0
+                total_verified_kerani = verifikasi_total  # Use actual verified kerani transactions
+                division_verification_rate = (total_verified_kerani / total_kerani_only * 100) if total_kerani_only > 0 else 0
+                
+                # Create paragraph styles for table cells
+                cell_style = ParagraphStyle('CellStyle', parent=styles['Normal'], fontSize=8, alignment=1)
+                cell_style_left = ParagraphStyle('CellStyleLeft', parent=styles['Normal'], fontSize=8, alignment=0)
                 
                 table_data.append([
-                    estate, division, f"== {division} TOTAL ==", 'SUMMARY',
-                    str(total_kerani_only), f"{division_verification_rate:.2f}% ({total_verifier})", ""
+                    Paragraph(estate, cell_style),
+                    Paragraph(division, cell_style),
+                    Paragraph(f"== {division} TOTAL ==", cell_style),
+                    Paragraph('SUMMARY', cell_style),
+                    Paragraph(str(total_kerani_only), cell_style),
+                    Paragraph(f"{division_verification_rate:.2f}% ({total_verified_kerani})", cell_style),
+                    Paragraph("", cell_style)
                 ])
                 
-                # Add employee details
+                # Collect employee rows by role type for proper grouping
+                kerani_rows = []
+                mandor_rows = []
+                asisten_rows = []
+                
                 for emp_id, emp_data in employee_details.items():
                     # KERANI row - Persentase = % transaksi yang sudah diverifikasi dari total yang ia buat
                     if emp_data['kerani'] > 0:
@@ -869,31 +766,57 @@ class MultiEstateFFBAnalysisGUI:
                         difference_percentage = (differences_count / verified_count * 100) if verified_count > 0 else 0
                         keterangan_text = f"{differences_count} perbedaan ({difference_percentage:.1f}%)"
                         
-                        table_data.append([
-                            estate, division, emp_data['name'], 'KERANI',
-                            str(emp_data['kerani']), percentage_text, keterangan_text
+                        kerani_rows.append([
+                            Paragraph(estate, cell_style),
+                            Paragraph(division, cell_style),
+                            Paragraph(emp_data['name'], cell_style_left),
+                            Paragraph('KERANI', cell_style),
+                            Paragraph(str(emp_data['kerani']), cell_style),
+                            Paragraph(percentage_text, cell_style),
+                            Paragraph(keterangan_text, cell_style)
                         ])
                     
                     # MANDOR row - Persentase = % transaksi yang ia buat per total Kerani di divisi
                     if emp_data['mandor'] > 0:
                         # Untuk MANDOR: % transaksi yang ia buat per total Kerani di divisi
                         mandor_percentage = (emp_data['mandor'] / kerani_total * 100) if kerani_total > 0 else 0
-                        table_data.append([
-                            estate, division, emp_data['name'], 'MANDOR',
-                            str(emp_data['mandor']), f"{mandor_percentage:.2f}%", ""
+                        mandor_rows.append([
+                            Paragraph(estate, cell_style),
+                            Paragraph(division, cell_style),
+                            Paragraph(emp_data['name'], cell_style_left),
+                            Paragraph('MANDOR', cell_style),
+                            Paragraph(str(emp_data['mandor']), cell_style),
+                            Paragraph(f"{mandor_percentage:.2f}%", cell_style),
+                            Paragraph("", cell_style)
                         ])
                     
                     # ASISTEN row - Persentase = % transaksi yang ia buat per total Kerani di divisi
                     if emp_data['asisten'] > 0:
                         # Untuk ASISTEN: % transaksi yang ia buat per total Kerani di divisi
                         asisten_percentage = (emp_data['asisten'] / kerani_total * 100) if kerani_total > 0 else 0
-                        table_data.append([
-                            estate, division, emp_data['name'], 'ASISTEN',
-                            str(emp_data['asisten']), f"{asisten_percentage:.2f}%", ""
+                        asisten_rows.append([
+                            Paragraph(estate, cell_style),
+                            Paragraph(division, cell_style),
+                            Paragraph(emp_data['name'], cell_style_left),
+                            Paragraph('ASISTEN', cell_style),
+                            Paragraph(str(emp_data['asisten']), cell_style),
+                            Paragraph(f"{asisten_percentage:.2f}%", cell_style),
+                            Paragraph("", cell_style)
                         ])
                 
+                # Add rows in proper order: KERANI first, then MANDOR, then ASISTEN
+                for row in kerani_rows:
+                    table_data.append(row)
+                for row in mandor_rows:
+                    table_data.append(row)
+                for row in asisten_rows:
+                    table_data.append(row)
+                
                 # Add separator
-                table_data.append(['', '', '', '', '', '', ''])
+                table_data.append([
+                    Paragraph('', cell_style), Paragraph('', cell_style), Paragraph('', cell_style),
+                    Paragraph('', cell_style), Paragraph('', cell_style), Paragraph('', cell_style), Paragraph('', cell_style)
+                ])
                 
                 # Add to grand totals
                 grand_kerani += kerani_total
@@ -903,96 +826,179 @@ class MultiEstateFFBAnalysisGUI:
             
             # Add grand total row
             # Total transaksi = hanya dari Kerani (tanpa Asisten/Mandor)
-            # Persentase terverifikasi = (Asisten + Mandor) / Total Kerani
+            # Persentase terverifikasi = Verified Kerani Transactions / Total Kerani
             grand_total_kerani_only = grand_kerani
-            grand_total_verifier = grand_mandor + grand_asisten
-            grand_verification_rate = (grand_total_verifier / grand_total_kerani_only * 100) if grand_total_kerani_only > 0 else 0
+            grand_total_verified_kerani = grand_kerani_verified  # Use actual verified kerani transactions
+            grand_verification_rate = (grand_total_verified_kerani / grand_total_kerani_only * 100) if grand_total_kerani_only > 0 else 0
+            
+            # Create paragraph styles for grand total (outside the loop)
+            cell_style = ParagraphStyle('CellStyle', parent=styles['Normal'], fontSize=8, alignment=1)
             
             table_data.append([
-                '=== GRAND TOTAL ===', '', '', '',
-                str(grand_total_kerani_only), f"{grand_verification_rate:.2f}% ({grand_total_verifier})", ""
+                Paragraph('=== GRAND TOTAL ===', cell_style),
+                Paragraph('', cell_style),
+                Paragraph('', cell_style),
+                Paragraph('', cell_style),
+                Paragraph(str(grand_total_kerani_only), cell_style),
+                Paragraph(f"{grand_verification_rate:.2f}% ({grand_total_verified_kerani})", cell_style),
+                Paragraph("", cell_style)
             ])
             
-            # Create table
-            table = Table(table_data, repeatRows=1)
+            # Create table with custom column widths for better layout and text wrapping
+            col_widths = [90, 90, 140, 70, 80, 110, 120]  # Optimized column widths for better text wrapping
+            table = Table(table_data, repeatRows=1, colWidths=col_widths)
             
-            # Style the table - Adjusted for landscape
+            # Enhanced Modern Table Styling
             style = TableStyle([
-                ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
-                ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+                # Header styling - clean header without boxes
+                ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#2C5282')),  # Deep blue header
+                ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
                 ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
                 ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-                ('FONTSIZE', (0, 0), (-1, 0), 9),
-                ('BOTTOMPADDING', (0, 0), (-1, 0), 10),
-                ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
-                ('GRID', (0, 0), (-1, -1), 1, colors.black),
-                ('FONTSIZE', (0, 1), (-1, -1), 7),
+                ('FONTSIZE', (0, 0), (-1, 0), 10),
+                ('TOPPADDING', (0, 0), (-1, 0), 12),
+                ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+                
+                # Body styling with alternating colors
+                ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
+                ('FONTSIZE', (0, 1), (-1, -1), 8),
+                ('TOPPADDING', (0, 1), (-1, -1), 8),
+                ('BOTTOMPADDING', (0, 1), (-1, -1), 8),
                 ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-                ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.beige, colors.white]),
+                
+                # Grid styling - ONLY for body rows (excluding header)
+                ('GRID', (0, 1), (-1, -1), 0.5, colors.HexColor('#E2E8F0')),  # Light gray grid for body only
+                
+                # Alternating row colors for better readability
+                ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.HexColor('#F7FAFC'), colors.white]),
             ])
             
-            # Highlight summary rows
+            # Enhanced row highlighting with modern color schemes
             for i, row in enumerate(table_data):
+                # Skip header row
+                if i == 0:
+                    continue
+                    
+                # Highlight SUMMARY and GRAND TOTAL rows with premium styling
                 if 'TOTAL' in str(row[2]) or 'GRAND TOTAL' in str(row[0]):
-                    style.add('BACKGROUND', (0, i), (-1, i), colors.lightblue)
+                    style.add('BACKGROUND', (0, i), (-1, i), colors.HexColor('#4299E1'))  # Professional blue
+                    style.add('TEXTCOLOR', (0, i), (-1, i), colors.white)
                     style.add('FONTNAME', (0, i), (-1, i), 'Helvetica-Bold')
-                    style.add('FONTSIZE', (0, i), (-1, i), 8)
+                    style.add('FONTSIZE', (0, i), (-1, i), 9)
+                    style.add('TOPPADDING', (0, i), (-1, i), 10)
+                    style.add('BOTTOMPADDING', (0, i), (-1, i), 10)
                 
-                # Highlight KERANI rows with red text for percentage
-                if len(row) > 5 and row[3] == 'KERANI':
-                    style.add('TEXTCOLOR', (5, i), (5, i), colors.red)
+                # Enhanced KERANI row styling
+                elif len(row) > 3 and hasattr(row[3], 'text') and 'KERANI' in str(row[3].text):
+                    # Highlight entire KERANI row with subtle background
+                    style.add('BACKGROUND', (0, i), (-1, i), colors.HexColor('#FFF5F5'))  # Light red background
+                    
+                    # Percentage column with attention-grabbing color
+                    style.add('TEXTCOLOR', (5, i), (5, i), colors.HexColor('#E53E3E'))  # Strong red
                     style.add('FONTNAME', (5, i), (5, i), 'Helvetica-Bold')
-                    # Highlight keterangan column for KERANI with different color
+                    
+                    # Keterangan column with warning styling
                     if len(row) > 6 and row[6]:
-                        style.add('BACKGROUND', (6, i), (6, i), colors.lightyellow)
+                        style.add('BACKGROUND', (6, i), (6, i), colors.HexColor('#FED7D7'))  # Light red highlight
+                        style.add('TEXTCOLOR', (6, i), (6, i), colors.HexColor('#C53030'))  # Dark red text
                         style.add('FONTNAME', (6, i), (6, i), 'Helvetica-Bold')
                 
-                # Highlight MANDOR/ASISTEN rows with green text for percentage
-                if len(row) > 5 and row[3] in ['MANDOR', 'ASISTEN']:
-                    style.add('TEXTCOLOR', (5, i), (5, i), colors.green)
+                # Enhanced MANDOR row styling
+                elif len(row) > 3 and hasattr(row[3], 'text') and 'MANDOR' in str(row[3].text):
+                    style.add('BACKGROUND', (0, i), (-1, i), colors.HexColor('#F0FFF4'))  # Light green background
+                    style.add('TEXTCOLOR', (5, i), (5, i), colors.HexColor('#38A169'))  # Professional green
                     style.add('FONTNAME', (5, i), (5, i), 'Helvetica-Bold')
+                
+                # Enhanced ASISTEN row styling
+                elif len(row) > 3 and hasattr(row[3], 'text') and 'ASISTEN' in str(row[3].text):
+                    style.add('BACKGROUND', (0, i), (-1, i), colors.HexColor('#F0F9FF'))  # Light blue background
+                    style.add('TEXTCOLOR', (5, i), (5, i), colors.HexColor('#3182CE'))  # Professional blue
+                    style.add('FONTNAME', (5, i), (5, i), 'Helvetica-Bold')
+                
+                # Empty separator rows
+                elif all(not str(cell).strip() for cell in row):
+                    style.add('BACKGROUND', (0, i), (-1, i), colors.HexColor('#EDF2F7'))  # Light separator
+                    style.add('TOPPADDING', (0, i), (-1, i), 3)
+                    style.add('BOTTOMPADDING', (0, i), (-1, i), 3)
             
             table.setStyle(style)
             story.append(table)
             
-            # Add explanation
+            story.append(Spacer(1, 20))
+            
+            # Enhanced explanation section with modern styling
+            explanation_title_style = ParagraphStyle(
+                'ExplanationTitle',
+                parent=styles['Heading2'],
+                fontSize=12,
+                textColor=colors.HexColor('#2D3748'),
+                spaceBefore=15,
+                spaceAfter=10,
+                fontName='Helvetica-Bold'
+            )
+            
             explanation_style = ParagraphStyle(
                 'Explanation',
                 parent=styles['Normal'],
-                fontSize=8,
-                spaceBefore=20,
-                alignment=0  # Left
+                fontSize=9,
+                textColor=colors.HexColor('#4A5568'),
+                spaceBefore=5,
+                spaceAfter=5,
+                leftIndent=20,
+                bulletIndent=10,
+                alignment=0
             )
             
-            explanation = Paragraph("""
-            <b>Penjelasan Laporan Kinerja:</b><br/>
-            • <b>KERANI</b>: % transaksi yang sudah diverifikasi (ada duplikat TRANSNO dengan P1/P5) dari total yang ia buat. Angka dalam kurung menunjukkan jumlah transaksi terverifikasi.<br/>
-            • <b>MANDOR/ASISTEN</b>: % transaksi yang ia buat per total Kerani di divisi tersebut (warna hijau). Semakin tinggi persentase, semakin baik kinerja verifikasi.<br/>
-            • <b>SUMMARY</b>: % verifikasi keseluruhan divisi (Total Transaksi Asisten+Mandor / Total Transaksi Kerani). Angka dalam kurung menunjukkan jumlah total Asisten+Mandor.<br/>
-            • <b>GRAND TOTAL</b>: % verifikasi keseluruhan untuk semua estate yang dipilih (Total Semua Asisten+Mandor / Total Semua Transaksi Kerani). Angka dalam kurung menunjukkan jumlah total Asisten+Mandor.<br/>
-            • <b>Jumlah Transaksi</b>: Untuk SUMMARY dan GRAND TOTAL hanya menghitung transaksi Kerani (tanpa Asisten/Mandor).
-            """, explanation_style)
+            # Main explanation section
+            explanation_title = Paragraph("PENJELASAN LAPORAN KINERJA", explanation_title_style)
+            story.append(explanation_title)
             
-            story.append(explanation)
+            explanations = [
+                "<b>KERANI:</b> % transaksi yang sudah diverifikasi (ada duplikat TRANSNO dengan P1/P5) dari total yang ia buat. Angka dalam kurung menunjukkan jumlah transaksi terverifikasi.",
+                "<b>MANDOR/ASISTEN:</b> % transaksi yang ia buat per total Kerani di divisi tersebut (warna hijau).",
+                "<b>SUMMARY:</b> % verifikasi keseluruhan divisi (Total Transaksi Kerani Terverifikasi / Total Transaksi Kerani). Angka dalam kurung menunjukkan jumlah transaksi Kerani yang terverifikasi.",
+                "<b>GRAND TOTAL:</b> % verifikasi keseluruhan untuk semua estate yang dipilih (Total Semua Transaksi Kerani Terverifikasi / Total Semua Transaksi Kerani). Angka dalam kurung menunjukkan jumlah total transaksi Kerani yang terverifikasi.",
+                "<b>Jumlah Transaksi:</b> Untuk SUMMARY dan GRAND TOTAL hanya menghitung transaksi Kerani (tanpa Asisten/Mandor)."
+            ]
             
-            # Add differences explanation
-            differences_style = ParagraphStyle(
-                'Differences',
+            for explanation_text in explanations:
+                explanation_para = Paragraph(f"• {explanation_text}", explanation_style)
+                story.append(explanation_para)
+            
+            story.append(Spacer(1, 15))
+            
+            # Enhanced differences explanation
+            differences_title = Paragraph("⚠️ KETERANGAN PERBEDAAN INPUT (INDIKATOR KINERJA)", explanation_title_style)
+            story.append(differences_title)
+            
+            differences_explanations = [
+                "<b>Metodologi:</b> Untuk setiap transaksi KERANI yang terverifikasi, sistem menghitung jumlah field yang berbeda antara input KERANI dan input MANDOR/ASISTEN.",
+                "<b>Field yang dibandingkan:</b> RIPEBCH, UNRIPEBCH, BLACKBCH, ROTTENBCH, LONGSTALKBCH, RATDMGBCH, LOOSEFRUIT.",
+                "<b>Format:</b> 'X perbedaan (Y%)' dimana Y% = (X perbedaan / Jumlah transaksi terverifikasi) × 100.",
+                "<b>Interpretasi:</b> Semakin banyak perbedaan, semakin besar kemungkinan ada ketidakakuratan dalam input data."
+            ]
+            
+            for diff_text in differences_explanations:
+                diff_para = Paragraph(f"• {diff_text}", explanation_style)
+                story.append(diff_para)
+            
+            # Add footer with generation info
+            story.append(Spacer(1, 20))
+            
+            footer_style = ParagraphStyle(
+                'Footer',
                 parent=styles['Normal'],
                 fontSize=8,
-                spaceBefore=10,
-                alignment=0  # Left
+                textColor=colors.HexColor('#718096'),
+                alignment=1,
+                spaceBefore=10
             )
             
-            differences_explanation = Paragraph("""
-            <b>Keterangan Perbedaan Input (Indikator Kinerja):</b><br/>
-            • Untuk setiap transaksi KERANI yang terverifikasi, sistem menghitung jumlah field yang berbeda antara input KERANI dan input MANDOR/ASISTEN.<br/>
-            • Field yang dibandingkan: RIPEBCH, UNRIPEBCH, BLACKBCH, ROTTENBCH, LONGSTALKBCH, RATDMGBCH, LOOSEFRUIT.<br/>
-            • Format: "X perbedaan (Y%)" dimana Y% = (X perbedaan / Jumlah transaksi terverifikasi) × 100.<br/>
-            • Semakin sedikit perbedaan, semakin baik akurasi dan kinerja input data KERANI.
-            """, differences_style)
+            footer_text = f"""📅 Laporan dibuat pada: {datetime.now().strftime('%d %B %Y, %H:%M:%S')} | 
+            🔄 Sistem Analisis Real-time | 🏢 PT. Rebinmas Jaya"""
             
-            story.append(differences_explanation)
+            footer = Paragraph(footer_text, footer_style)
+            story.append(footer)
             
             # Build PDF
             doc.build(story)
@@ -1023,4 +1029,4 @@ def main():
     root.mainloop()
 
 if __name__ == "__main__":
-    main() 
+    main()
