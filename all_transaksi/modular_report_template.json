@@ -1,0 +1,297 @@
+{
+  "report_module_template": {
+    "name": "Modular FFB Analysis Report System",
+    "description": "A flexible, modular report system that can be adapted for different analysis types beyond the current Kerani verification system",
+    "version": "1.0",
+    "components": {
+      "data_source": {
+        "type": "firebird_database",
+        "connection_manager": "FirebirdConnector",
+        "supported_databases": [
+          "PTRJ_P1A.FDB",
+          "PTRJ_P1B.FDB",
+          "IFESS_PGE_2A",
+          "PTRJ_P2B.FDB",
+          "PTRJ_IJL_IMPIANJAYALESTARI.FDB",
+          "PTRJ_DME.FDB",
+          "PTRJ_AB2.FDB",
+          "PTRJ_AB1.FDB",
+          "PTRJ_ARA.FDB",
+          "PTRJ_ARC.FDB"
+        ],
+        "tables": {
+          "monthly_transaction_tables": {
+            "pattern": "FFBSCANNERDATA{month:02d}",
+            "columns": [
+              "ID", "SCANUSERID", "OCID", "WORKERID", "CARRIERID", "FIELDID", "TASKNO",
+              "RIPEBCH", "UNRIPEBCH", "BLACKBCH", "ROTTENBCH", "LONGSTALKBCH", "RATDMGBCH",
+              "LOOSEFRUIT", "TRANSNO", "TRANSDATE", "TRANSTIME", "UPLOADDATETIME",
+              "RECORDTAG", "TRANSSTATUS", "TRANSTYPE", "LASTUSER", "LASTUPDATED",
+              "OVERRIPEBCH", "UNDERRIPEBCH", "ABNORMALBCH", "LOOSEFRUIT2"
+            ]
+          },
+          "reference_tables": {
+            "EMP": {
+              "description": "Employee master data",
+              "columns": ["ID", "NAME"]
+            },
+            "OCFIELD": {
+              "description": "Field information with division mapping",
+              "columns": ["ID", "OCID", "DIVID"]
+            },
+            "CRDIVISION": {
+              "description": "Division master data",
+              "columns": ["ID", "DIVNAME", "DIVCODE", "OCID"]
+            }
+          }
+        }
+      },
+      "analysis_engine": {
+        "type": "transaction_based",
+        "logic": {
+          "core_verification_logic": {
+            "description": "Find duplicate TRANSNO with different RECORDTAG values",
+            "record_tags": {
+              "PM": "Kerani (Scanner)",
+              "P1": "Asisten (Assistant)", 
+              "P5": "Mandor (Supervisor)"
+            },
+            "verification_method": "transaction_duplication_detection",
+            "duplicate_detection_field": "TRANSNO",
+            "verification_status_field": "RECORDTAG",
+            "status_filtering": {
+              "enabled": true,
+              "filter_field": "TRANSSTATUS",
+              "filter_value": "704",
+              "applicable_months": [5],
+              "description": "Special filter for May 2025 data to improve verification accuracy"
+            }
+          },
+          "employee_performance_calculation": {
+            "kerani_metrics": {
+              "total_created": "Total transactions created by Kerani",
+              "total_verified": "Verified transactions (with duplicate TRANSNO)",
+              "verification_percentage": "Verified / Total Created * 100",
+              "differences_count": "Count of field differences vs P1/P5",
+              "differences_percentage": "Differences / Verified * 100"
+            },
+            "support_staff_metrics": {
+              "mandor": {
+                "total_transactions": "Number of P1 records per employee",
+                "percentage_of_kerani_work": "Mandor transactions / Total Kerani * 100"
+              },
+              "asisten": {
+                "total_transactions": "Number of P5 records per employee", 
+                "percentage_of_kerani_work": "Asisten transactions / Total Kerani * 100"
+              }
+            }
+          },
+          "field_comparison_logic": {
+            "comparison_fields": [
+              "RIPEBCH", "UNRIPEBCH", "BLACKBCH", "ROTTENBCH",
+              "LONGSTALKBCH", "RATDMGBCH", "LOOSEFRUIT"
+            ],
+            "difference_calculation": "Any field difference counts as 1 transaction difference",
+            "value_conversion": "Convert to float for comparison",
+            "error_handling": "Skip comparison if conversion fails"
+          }
+        }
+      },
+      "report_generator": {
+        "type": "pdf",
+        "engine": "reportlab",
+        "layout": {
+          "orientation": "landscape",
+          "page_size": "A4",
+          "margins": {
+            "left": 30,
+            "right": 30,
+            "top": 40,
+            "bottom": 40
+          }
+        },
+        "sections": {
+          "header": {
+            "company_logo": "assets/logo_rebinmas.jpeg",
+            "company_info": {
+              "name": "PT. REBINMAS JAYA",
+              "subtitle": "SISTEM MONITORING TRANSAKSI FFB"
+            },
+            "title": "LAPORAN KINERJA KERANI, MANDOR, DAN ASISTEN"
+          },
+          "body": {
+            "summary_box": {
+              "format": "<b>RINGKASAN ANALISIS:</b> {total_estates} Estate • {total_divisions} Divisi • Analisis Transaksi Real-time • Verifikasi Otomatis"
+            },
+            "main_table": {
+              "columns": [
+                "ESTATE",
+                "DIVISI", 
+                "KARYAWAN",
+                "ROLE",
+                "JUMLAH<br/>TRANSAKSI",
+                "PERSENTASE<br/>TERVERIFIKASI",
+                "KETERANGAN<br/>PERBEDAAN"
+              ],
+              "column_widths": [
+                90, 90, 140, 70, 80, 110, 120
+              ],
+              "row_types": {
+                "summary": {
+                  "label_pattern": "*TOTAL*",
+                  "color": "#4299E1",
+                  "text_color": "white",
+                  "font": "bold"
+                },
+                "kerani": {
+                  "label_pattern": "KERANI",
+                  "background_color": "#FFF5F5",
+                  "percentage_text_color": "#E53E3E",
+                  "percentage_font": "bold",
+                  "differences_background": "#FED7D7",
+                  "differences_text_color": "#C53030"
+                },
+                "mandor": {
+                  "label_pattern": "MANDOR", 
+                  "background_color": "#F0FFF4",
+                  "percentage_text_color": "#38A169",
+                  "percentage_font": "bold"
+                },
+                "asisten": {
+                  "label_pattern": "ASISTEN",
+                  "background_color": "#F0F9FF", 
+                  "percentage_text_color": "#3182CE",
+                  "percentage_font": "bold"
+                }
+              }
+            }
+          },
+          "explanation": {
+            "definitions": [
+              "KERANI: % transaksi yang sudah diverifikasi (ada duplikat TRANSNO dengan P1/P5) dari total yang ia buat",
+              "MANDOR/ASISTEN: % transaksi yang ia buat per total Kerani di divisi tersebut",
+              "SUMMARY: % verifikasi keseluruhan divisi (Total Transaksi Kerani Terverifikasi / Total Transaksi Kerani)",
+              "Format perbedaan: 'X perbedaan (Y%)' dimana Y% = (X perbedaan / Jumlah transaksi terverifikasi) × 100"
+            ]
+          },
+          "footer": {
+            "generation_info": "Laporan dibuat pada: {timestamp}",
+            "system_info": "Sistem Analisis Real-time | PT. Rebinmas Jaya"
+          }
+        }
+      },
+      "configuration": {
+        "config_file": "config.json",
+        "estate_mapping": {
+          "fields": ["estate_name", "database_path"],
+          "default_values": {
+            "PGE 1A": "C:\\Users\\nbgmf\\Downloads\\PTRJ_P1A\\PTRJ_P1A.FDB",
+            "PGE 1B": "C:\\Users\\nbgmf\\Downloads\\PTRJ_P1B\\PTRJ_P1B.FDB",
+            "PGE 2A": "C:\\Users\\nbgmf\\Downloads\\IFESS_PGE_2A_19-06-2025",
+            "PGE 2B": "C:\\Users\\nbgmf\\Downloads\\IFESS_2B_19-06-2025\\PTRJ_P2B.FDB",
+            "IJL": "C:\\Users\\nbgmf\\Downloads\\IFESS_IJL_19-06-2025\\PTRJ_IJL_IMPIANJAYALESTARI.FDB",
+            "DME": "C:\\Users\\nbgmf\\Downloads\\IFESS_DME_19-06-2025\\PTRJ_DME.FDB",
+            "Are B2": "C:\\Users\\nbgmf\\Downloads\\IFESS_ARE_B2_19-06-2025\\PTRJ_AB2.FDB",
+            "Are B1": "C:\\Users\\nbgmf\\Downloads\\IFESS_ARE_B1_19-06-2025\\PTRJ_AB1.FDB",
+            "Are A": "C:\\Users\\nbgmf\\Downloads\\IFESS_ARE_A_19-06-2025\\PTRJ_ARA.FDB",
+            "Are C": "C:\\Users\\nbgmf\\Downloads\\IFESS_ARE_C_19-06-2025\\PTRJ_ARC.FDB"
+          }
+        }
+      }
+    },
+    "modularity_features": {
+      "adaptable_report_types": [
+        {
+          "name": "verification_report",
+          "description": "Current Kerani verification report",
+          "logic_module": "verification_logic.py",
+          "template": "verification_template.json"
+        },
+        {
+          "name": "productivity_report", 
+          "description": "Employee productivity metrics",
+          "logic_module": "productivity_logic.py",
+          "template": "productivity_template.json"
+        },
+        {
+          "name": "efficiency_report",
+          "description": "Operational efficiency analysis",
+          "logic_module": "efficiency_logic.py", 
+          "template": "efficiency_template.json"
+        },
+        {
+          "name": "compliance_report",
+          "description": "Regulatory compliance monitoring",
+          "logic_module": "compliance_logic.py",
+          "template": "compliance_template.json"
+        },
+        {
+          "name": "productivity_comparison_report",
+          "description": "Cross-division productivity comparison",
+          "logic_module": "comparison_logic.py",
+          "template": "comparison_template.json"
+        }
+      ],
+      "configurable_parameters": [
+        "analysis_logic",
+        "filter_conditions", 
+        "calculation_formulas",
+        "report_sections",
+        "data_aggregation",
+        "visualization_style",
+        "output_format"
+      ],
+      "extension_points": {
+        "data_queries": {
+          "base_query_patterns": [
+            "transaction_based_query",
+            "employee_based_query", 
+            "division_based_query",
+            "time_series_query"
+          ]
+        },
+        "aggregation_rules": {
+          "summarization_methods": [
+            "total_count",
+            "percentage_calculation", 
+            "average_calculation",
+            "trend_analytics"
+          ]
+        },
+        "output_types": {
+          "supported_formats": [
+            "pdf",
+            "excel", 
+            "csv",
+            "html"
+          ]
+        }
+      }
+    },
+    "implementation_guide": {
+      "creating_new_report_type": {
+        "step_1": "Define new analysis logic in a separate module",
+        "step_2": "Create a template configuration file",
+        "step_3": "Register the report type in the configuration",
+        "step_4": "Implement any custom calculation functions",
+        "step_5": "Test with sample data",
+        "example": {
+          "module_name": "overtime_analysis.py",
+          "template_name": "overtime_template.json", 
+          "registration": {
+            "name": "overtime_report",
+            "logic_module": "overtime_analysis.py",
+            "template": "overtime_template.json",
+            "description": "Employee overtime analysis report"
+          }
+        }
+      },
+      "customizing_existing_logic": {
+        "query_modification": "Update SQL patterns in the query builder",
+        "calculation_changes": "Modify calculation functions while maintaining input/output contracts",
+        "filter_adjustment": "Change filter conditions in the configuration",
+        "output_formatting": "Update report template while keeping key data elements"
+      }
+    }
+  }
+}

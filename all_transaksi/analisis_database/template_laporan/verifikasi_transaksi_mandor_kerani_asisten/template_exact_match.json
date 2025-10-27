@@ -1,0 +1,223 @@
+{
+  "ffb_verification_report_template": {
+    "name": "FFB Verification Report - Kerani Mandor Asisten",
+    "description": "Template for generating exact replica of existing verification report with same UI flow and PDF format",
+    "version": "1.0",
+    "ui_flow": {
+      "startup_sequence": [
+        "load_estates_from_config",
+        "display_estate_treeview", 
+        "set_default_dates",
+        "show_ready_status"
+      ],
+      "user_interaction": {
+        "estate_selection": {
+          "select_all_option": true,
+          "individual_selection": true,
+          "path_modification": true
+        },
+        "date_range": {
+          "start_date_picker": "DateEntry widget",
+          "end_date_picker": "DateEntry widget", 
+          "default_range": "first_day_of_selected_month to last_day_of_selected_month"
+        },
+        "execution": {
+          "analyze_button": "Mulai Analisis Kinerja Multi-Estate",
+          "required_selection": "minimum_one_estate"
+        }
+      },
+      "progress_tracking": {
+        "status_updates": [
+          "ready_to_analyze",
+          "analyzing_estate_x",
+          "creating_pdf_report",
+          "analysis_complete"
+        ],
+        "progress_bar": {
+          "maximum": "number_of_selected_estates",
+          "update_per_estate": true
+        }
+      }
+    },
+    "data_processing": {
+      "query_logic": {
+        "monthly_table_generation": {
+          "pattern": "FFBSCANNERDATA{month:02d}",
+          "date_range_calculation": "generate_tables_for_all_months_in_range"
+        },
+        "verification_logic": {
+          "duplicate_detection": {
+            "field": "TRANSNO",
+            "method": "find_records_with_same_TRANSNO_different_RECORDTAG",
+            "status_filtering": {
+              "active_months": [5],
+              "filter_value": "704",
+              "applies_to": "P1_and_P5_records_only",
+              "kerani_flexibility": true
+            }
+          },
+          "role_identification": {
+            "PM": "Kerani",
+            "P1": "Asisten", 
+            "P5": "Mandor",
+            "priority": "P1_over_P5_when_both_exist"
+          }
+        },
+        "employee_mapping": "EMP table (ID to NAME)",
+        "division_mapping": {
+          "tables": ["OCFIELD", "CRDIVISION"],
+          "relationship": "OCFIELD.DIVID to CRDIVISION.ID"
+        }
+      },
+      "calculation_formulas": {
+        "kerani_metrics": {
+          "total_created": "COUNT(PM_records_for_employee)",
+          "total_verified": "COUNT(PM_records_with_duplicate_TRANSNO)",
+          "verification_rate": "(verified_count / total_created) * 100",
+          "differences_count": "COUNT(PM_transactions_with_field_differences_vs_P1P5)",
+          "differences_percentage": "(differences_count / verified_count) * 100"
+        },
+        "support_staff_metrics": {
+          "mandor_count": "COUNT(P1_records_for_employee)",
+          "asisten_count": "COUNT(P5_records_for_employee)",
+          "contribution_percentage": "(individual_count / total_kerani_in_division) * 100"
+        },
+        "division_summary": {
+          "total_kerani_only": "SUM(all_PM_transactions_in_division)",
+          "total_verified_kerani": "SUM(PM_transactions_that_have_duplicates)",
+          "division_verification_rate": "(verified_kerani / total_kerani_only) * 100"
+        },
+        "grand_totals": {
+          "all_kerani": "SUM(kerani_from_all_estates_and_divisions)",
+          "all_verified_kerani": "SUM(verified_kerani_from_all_estates_and_divisions)",
+          "overall_verification_rate": "(all_verified_kerani / all_kerani) * 100"
+        }
+      }
+    },
+    "pdf_format": {
+      "layout": {
+        "orientation": "landscape",
+        "page_size": "A4",
+        "margins": {
+          "left": 30,
+          "right": 30,
+          "top": 40,
+          "bottom": 40
+        }
+      },
+      "header": {
+        "logo_path": "assets/logo_rebinmas.jpeg",
+        "company_name": "PT. REBINMAS JAYA",
+        "subtitle": "SISTEM MONITORING TRANSAKSI FFB",
+        "report_title": "LAPORAN KINERJA KERANI, MANDOR, DAN ASISTEN",
+        "period_format": "Periode: {start_date} - {end_date}",
+        "summary_box": "<b>RINGKASAN ANALISIS:</b> {total_estates} Estate • {total_divisions} Divisi • Analisis Transaksi Real-time • Verifikasi Otomatis"
+      },
+      "table_structure": {
+        "headers": [
+          "ESTATE",
+          "DIVISI",
+          "KARYAWAN",
+          "ROLE", 
+          "JUMLAH<br/>TRANSAKSI",
+          "PERSENTASE<br/>TERVERIFIKASI",
+          "KETERANGAN<br/>PERBEDAAN"
+        ],
+        "column_widths": [90, 90, 140, 70, 80, 110, 120],
+        "data_rows": {
+          "division_summary": {
+            "format": "== {division} TOTAL ==",
+            "role": "SUMMARY",
+            "background_color": "#4299E1",
+            "text_color": "white",
+            "font": "bold"
+          },
+          "employee_kerani": {
+            "role": "KERANI",
+            "background_color": "#FFF5F5",
+            "percentage_format": "{rate:.2f}% ({count})",
+            "differences_format": "{count} perbedaan ({percentage:.1f}%)",
+            "percentage_text_color": "#E53E3E",
+            "differences_background": "#FED7D7",
+            "differences_text_color": "#C53030"
+          },
+          "employee_mandor": {
+            "role": "MANDOR", 
+            "background_color": "#F0FFF4",
+            "percentage_format": "{rate:.2f}%",
+            "percentage_text_color": "#38A169"
+          },
+          "employee_asisten": {
+            "role": "ASISTEN",
+            "background_color": "#F0F9FF", 
+            "percentage_format": "{rate:.2f}%",
+            "percentage_text_color": "#3182CE"
+          },
+          "grand_total": {
+            "label": "=== GRAND TOTAL ===",
+            "background_color": "#4299E1",
+            "text_color": "white", 
+            "font": "bold",
+            "percentage_format": "{rate:.2f}% ({count})"
+          }
+        },
+        "separators": {
+          "type": "empty_row",
+          "background_color": "#EDF2F7",
+          "padding": {"top": 3, "bottom": 3}
+        }
+      },
+      "explanation_section": {
+        "main_explanations": [
+          "KERANI: % transaksi yang sudah diverifikasi (ada duplikat TRANSNO dengan P1/P5) dari total yang ia buat. Angka dalam kurung menunjukkan jumlah transaksi terverifikasi.",
+          "MANDOR/ASISTEN: % transaksi yang ia buat per total Kerani di divisi tersebut (warna hijau).",
+          "SUMMARY: % verifikasi keseluruhan divisi (Total Transaksi Kerani Terverifikasi / Total Transaksi Kerani). Angka dalam kurung menunjukkan jumlah transaksi Kerani yang terverifikasi.",
+          "GRAND TOTAL: % verifikasi keseluruhan untuk semua estate yang dipilih (Total Semua Transaksi Kerani Terverifikasi / Total Semua Transaksi Kerani). Angka dalam kurung menunjukkan jumlah total transaksi Kerani yang terverifikasi.",
+          "Jumlah Transaksi: Untuk SUMMARY dan GRAND TOTAL hanya menghitung transaksi Kerani (tanpa Asisten/Mandor)."
+        ],
+        "differences_explanation": [
+          "Metodologi: Untuk setiap transaksi KERANI yang terverifikasi, sistem menghitung jumlah field yang berbeda antara input KERANI dan input MANDOR/ASISTEN.",
+          "Field yang dibandingkan: RIPEBCH, UNRIPEBCH, BLACKBCH, ROTTENBCH, LONGSTALKBCH, RATDMGBCH, LOOSEFRUIT.",
+          "Format: 'X perbedaan (Y%)' dimana Y% = (X perbedaan / Jumlah transaksi terverifikasi) × 100.",
+          "Interpretasi: Semakin banyak perbedaan, semakin besar kemungkinan ada ketidakakuratan dalam input data."
+        ]
+      },
+      "footer": {
+        "generation_info": "Laporan dibuat pada: {timestamp}",
+        "system_info": "Sistem Analisis Real-time | PT. Rebinmas Jaya"
+      }
+    },
+    "field_comparison_logic": {
+      "compared_fields": [
+        "RIPEBCH", "UNRIPEBCH", "BLACKBCH", "ROTTENBCH",
+        "LONGSTALKBCH", "RATDMGBCH", "LOOSEFRUIT"
+      ],
+      "difference_calculation": "If_any_field_differs_then_count_as_1_difference",
+      "value_handling": "Convert_to_float_for_comparison",
+      "error_handling": "Skip_if_conversion_fails"
+    },
+    "report_filename": {
+      "pattern": "Laporan_Kinerja_Kerani_Mandor_Asisten_{month}_{year}_{timestamp}.pdf",
+      "output_directory": "reports",
+      "timestamp_format": "YYYYMMDD_HHMMSS"
+    },
+    "ui_component_mapping": {
+      "estate_treeview": {
+        "columns": ["estate", "path"],
+        "display_fields": ["Estate", "Path Database"]
+      },
+      "date_entries": {
+        "default_start_date": "first_of_month",
+        "default_end_date": "last_of_month"
+      },
+      "progress_elements": {
+        "status_label": "Progress tracking",
+        "progress_bar": "Determinate progress bar"
+      },
+      "results_display": {
+        "type": "Text widget with scrollbar",
+        "purpose": "Analysis log display"
+      }
+    }
+  }
+}

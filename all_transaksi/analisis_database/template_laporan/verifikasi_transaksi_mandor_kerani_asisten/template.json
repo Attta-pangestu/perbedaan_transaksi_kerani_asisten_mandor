@@ -1,0 +1,282 @@
+{
+  "verification_report_template": {
+    "name": "Verifikasi Transaksi Mandor-Kerani-Asisten",
+    "description": "Template laporan verifikasi transaksi antara Kerani, Mandor, dan Asisten berdasarkan duplikasi TRANSNO",
+    "version": "1.0",
+    "metadata": {
+      "created_date": "2025-10-27",
+      "last_modified": "2025-10-27",
+      "author": "FFB Analysis System"
+    },
+    "analysis_parameters": {
+      "verification_logic": {
+        "duplicate_detection_field": "TRANSNO",
+        "verification_method": "transaction_duplication_detection",
+        "verification_status_field": "RECORDTAG",
+        "record_tag_mapping": {
+          "PM": "Kerani (Scanner)",
+          "P1": "Asisten (Assistant)", 
+          "P5": "Mandor (Supervisor)"
+        },
+        "verification_priority": {
+          "high_priority": "P1", 
+          "medium_priority": "P5",
+          "description": "When both P1 and P5 exist for same TRANSNO, prioritize P1"
+        }
+      },
+      "filtering_rules": {
+        "status_filtering": {
+          "enabled": true,
+          "filter_field": "TRANSSTATUS",
+          "filter_value": "704",
+          "applicable_months": [5],
+          "description": "Special filter for May 2025 data to improve verification accuracy",
+          "applies_to": "Mandor/Asisten records only",
+          "kerani_status_flexibility": true,
+          "kerani_status_values": ["731", "732", "704"]
+        },
+        "date_range_filter": {
+          "required": true,
+          "validation": "start_date <= end_date"
+        },
+        "division_filter": {
+          "required": false,
+          "default_behavior": "include_all_divisions"
+        }
+      },
+      "field_comparison": {
+        "comparison_fields": [
+          "RIPEBCH", "UNRIPEBCH", "BLACKBCH", "ROTTENBCH",
+          "LONGSTALKBCH", "RATDMGBCH", "LOOSEFRUIT"
+        ],
+        "difference_calculation": "Any field difference counts as 1 transaction difference",
+        "value_conversion": "Convert to float for comparison",
+        "error_handling": "Skip comparison if conversion fails",
+        "difference_percentage_base": "verified_transactions_count"
+      }
+    },
+    "data_queries": {
+      "employee_mapping_query": {
+        "sql": "SELECT ID, NAME FROM EMP",
+        "description": "Query untuk mendapatkan mapping ID karyawan ke nama"
+      },
+      "division_mapping_query": {
+        "sql": [
+          "SELECT DISTINCT b.DIVID, c.DIVNAME",
+          "FROM {ffb_table} a",
+          "JOIN OCFIELD b ON a.FIELDID = b.ID",
+          "LEFT JOIN CRDIVISION c ON b.DIVID = c.ID",
+          "WHERE b.DIVID IS NOT NULL AND c.DIVNAME IS NOT NULL"
+        ],
+        "description": "Query untuk mendapatkan mapping ID divisi ke nama divisi",
+        "table_placeholder": "{ffb_table}"
+      },
+      "transaction_data_query": {
+        "sql": [
+          "SELECT a.ID, a.SCANUSERID, a.OCID, a.WORKERID, a.CARRIERID, a.FIELDID, a.TASKNO,",
+          "       a.RIPEBCH, a.UNRIPEBCH, a.BLACKBCH, a.ROTTENBCH, a.LONGSTALKBCH, a.RATDMGBCH,",
+          "       a.LOOSEFRUIT, a.TRANSNO, a.TRANSDATE, a.TRANSTIME, a.UPLOADDATETIME,",
+          "       a.RECORDTAG, a.TRANSSTATUS, a.TRANSTYPE, a.LASTUSER, a.LASTUPDATED,",
+          "       a.OVERRIPEBCH, a.UNDERRIPEBCH, a.ABNORMALBCH, a.LOOSEFRUIT2",
+          "FROM {ffb_table} a",
+          "JOIN OCFIELD b ON a.FIELDID = b.ID",
+          "WHERE b.DIVID = '{div_id}'",
+          "    AND a.TRANSDATE >= '{start_str}'",
+          "    AND a.TRANSDATE <= '{end_str}'"
+        ],
+        "description": "Query utama untuk mendapatkan data transaksi granular",
+        "table_placeholder": "{ffb_table}",
+        "division_placeholder": "{div_id}",
+        "date_placeholders": ["{start_str}", "{end_str}"]
+      },
+      "table_generation_logic": {
+        "monthly_table_pattern": "FFBSCANNERDATA{month:02d}",
+        "date_range_handling": "Generate all month tables within the date range",
+        "duplicate_removal": true,
+        "duplicate_removal_field": "ID"
+      }
+    },
+    "calculation_formulas": {
+      "kerani_metrics": {
+        "total_created_formula": "COUNT(kerani_records_for_user)",
+        "total_verified_formula": "COUNT(kerani_records_with_duplicate_TRANSNO)",
+        "verification_percentage_formula": "(total_verified / total_created) * 100",
+        "differences_count_formula": "COUNT(transactions_with_field_differences)",
+        "differences_percentage_formula": "(differences_count / verified_count) * 100"
+      },
+      "support_staff_metrics": {
+        "mandor_total_formula": "COUNT(P1_records_for_user)",
+        "asisten_total_formula": "COUNT(P5_records_for_user)",
+        "percentage_of_kerani_work_formula": "(support_transactions / total_kerani_transactions) * 100"
+      },
+      "division_metrics": {
+        "verification_rate_formula": "(div_kerani_verified_total / kerani_total) * 100",
+        "total_kerani_only_formula": "SUM(all_kerani_transactions_in_division)",
+        "total_verified_kerani_formula": "SUM(verified_kerani_transactions_in_division)"
+      },
+      "grand_total_metrics": {
+        "grand_verification_rate_formula": "(grand_total_verified_kerani / grand_total_kerani_only) * 100"
+      }
+    },
+    "report_structure": {
+      "header_section": {
+        "company_logo_path": "assets/logo_rebinmas.jpeg",
+        "company_info": {
+          "name": "PT. REBINMAS JAYA",
+          "subtitle": "SISTEM MONITORING TRANSAKSI FFB"
+        },
+        "report_title": "LAPORAN KINERJA KERANI, MANDOR, DAN ASISTEN",
+        "period_format": "Periode: {start_date} - {end_date}"
+      },
+      "summary_section": {
+        "summary_format": "<b>RINGKASAN ANALISIS:</b> {total_estates} Estate • {total_divisions} Divisi • Analisis Transaksi Real-time • Verifikasi Otomatis",
+        "summary_attributes": [
+          "total_estates",
+          "total_divisions", 
+          "analysis_type",
+          "verification_method"
+        ]
+      },
+      "main_table": {
+        "columns": [
+          "ESTATE",
+          "DIVISI",
+          "KARYAWAN", 
+          "ROLE",
+          "JUMLAH<br/>TRANSAKSI",
+          "PERSENTASE<br/>TERVERIFIKASI", 
+          "KETERANGAN<br/>PERBEDAAN"
+        ],
+        "column_widths": [90, 90, 140, 70, 80, 110, 120],
+        "row_types": {
+          "division_summary": {
+            "label_pattern": "*TOTAL*",
+            "format": "== {division} TOTAL ==",
+            "background_color": "#4299E1",
+            "text_color": "white",
+            "font": "bold",
+            "font_size": 9
+          },
+          "employee_kerani": {
+            "label_pattern": "KERANI",
+            "background_color": "#FFF5F5",
+            "percentage_text_color": "#E53E3E", 
+            "percentage_font": "bold",
+            "differences_background": "#FED7D7",
+            "differences_text_color": "#C53030"
+          },
+          "employee_mandor": {
+            "label_pattern": "MANDOR",
+            "background_color": "#F0FFF4",
+            "percentage_text_color": "#38A169",
+            "percentage_font": "bold"
+          },
+          "employee_asisten": {
+            "label_pattern": "ASISTEN",
+            "background_color": "#F0F9FF",
+            "percentage_text_color": "#3182CE",
+            "percentage_font": "bold"
+          },
+          "grand_total": {
+            "label_pattern": "GRAND TOTAL",
+            "format": "=== GRAND TOTAL ===",
+            "background_color": "#4299E1",
+            "text_color": "white",
+            "font": "bold",
+            "font_size": 9
+          },
+          "separator": {
+            "label_pattern": "empty_row",
+            "background_color": "#EDF2F7",
+            "padding_top": 3,
+            "padding_bottom": 3
+          }
+        }
+      },
+      "explanation_section": {
+        "definitions": [
+          "KERANI: % transaksi yang sudah diverifikasi (ada duplikat TRANSNO dengan P1/P5) dari total yang ia buat. Angka dalam kurung menunjukkan jumlah transaksi terverifikasi.",
+          "MANDOR/ASISTEN: % transaksi yang ia buat per total Kerani di divisi tersebut.",
+          "SUMMARY: % verifikasi keseluruhan divisi (Total Transaksi Kerani Terverifikasi / Total Transaksi Kerani). Angka dalam kurung menunjukkan jumlah transaksi Kerani yang terverifikasi.",
+          "GRAND TOTAL: % verifikasi keseluruhan untuk semua estate yang dipilih (Total Semua Transaksi Kerani Terverifikasi / Total Semua Transaksi Kerani). Angka dalam kurung menunjukkan jumlah total transaksi Kerani yang terverifikasi.",
+          "Jumlah Transaksi: Untuk SUMMARY dan GRAND TOTAL hanya menghitung transaksi Kerani (tanpa Asisten/Mandor)."
+        ],
+        "differences_explanation": [
+          "Metodologi: Untuk setiap transaksi KERANI yang terverifikasi, sistem menghitung jumlah field yang berbeda antara input KERANI dan input MANDOR/ASISTEN.",
+          "Field yang dibandingkan: RIPEBCH, UNRIPEBCH, BLACKBCH, ROTTENBCH, LONGSTALKBCH, RATDMGBCH, LOOSEFRUIT.",
+          "Format: 'X perbedaan (Y%)' dimana Y% = (X perbedaan / Jumlah transaksi terverifikasi) × 100.",
+          "Interpretasi: Semakin banyak perbedaan, semakin besar kemungkinan ada ketidakakuratan dalam input data."
+        ]
+      }
+    },
+    "output_format": {
+      "type": "pdf",
+      "engine": "reportlab",
+      "layout": {
+        "orientation": "landscape",
+        "page_size": "A4",
+        "margins": {
+          "left": 30,
+          "right": 30,
+          "top": 40,
+          "bottom": 40
+        }
+      },
+      "styling": {
+        "table_style": [
+          {
+            "property": "header_background",
+            "value": "#2C5282",
+            "targets": "header_row"
+          },
+          {
+            "property": "header_text_color", 
+            "value": "white",
+            "targets": "header_row"
+          },
+          {
+            "property": "grid_color",
+            "value": "#E2E8F0",
+            "targets": "body_rows_only"
+          },
+          {
+            "property": "alternating_row_colors",
+            "value": ["#F7FAFC", "white"],
+            "targets": "body_rows"
+          }
+        ]
+      }
+    },
+    "customization_options": {
+      "report_title_override": null,
+      "custom_period_format": null,
+      "additional_summary_metrics": [],
+      "custom_column_formulas": {},
+      "conditional_formatting_rules": [],
+      "exclude_employee_roles": [],
+      "minimum_transaction_threshold": 0,
+      "custom_differences_calculation": false,
+      "extended_field_comparison": false
+    },
+    "validation_rules": {
+      "required_fields": [
+        "estate",
+        "division", 
+        "employee_name",
+        "role",
+        "transaction_count"
+      ],
+      "data_quality_checks": [
+        "verify_employee_exists_in_EMP_table",
+        "verify_division_exists_in_CRDIVISION_table", 
+        "validate_transaction_date_range",
+        "check_field_values_are_numeric_where_applicable"
+      ],
+      "report_completeness": [
+        "all_estates_have_data_or_are_marked",
+        "all_divisions_within_estate_accounted_for",
+        "employee_totals_match_division_totals"
+      ]
+    }
+  }
+}

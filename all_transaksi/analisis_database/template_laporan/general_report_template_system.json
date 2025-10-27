@@ -1,0 +1,463 @@
+{
+  "general_report_template_system": {
+    "name": "Modular Report Template System",
+    "description": "A flexible, extensible report generation system that allows creating different types of reports from the same database",
+    "version": "2.0",
+    "core_components": {
+      "database_layer": {
+        "connection_manager": "FirebirdConnector (fixed)",
+        "supported_tables": [
+          "FFBSCANNERDATA{month:02d}",
+          "EMP",
+          "OCFIELD", 
+          "CRDIVISION"
+        ],
+        "table_schema": {
+          "FFBSCANNERDATA": {
+            "columns": [
+              "ID", "SCANUSERID", "OCID", "WORKERID", "CARRIERID", "FIELDID", "TASKNO",
+              "RIPEBCH", "UNRIPEBCH", "BLACKBCH", "ROTTENBCH", "LONGSTALKBCH", "RATDMGBCH",
+              "LOOSEFRUIT", "TRANSNO", "TRANSDATE", "TRANSTIME", "UPLOADDATETIME",
+              "RECORDTAG", "TRANSSTATUS", "TRANSTYPE", "LASTUSER", "LASTUPDATED",
+              "OVERRIPEBCH", "UNDERRIPEBCH", "ABNORMALBCH", "LOOSEFRUIT2"
+            ]
+          },
+          "reference_tables": {
+            "EMP": ["ID", "NAME"],
+            "OCFIELD": ["ID", "OCID", "DIVID"],
+            "CRDIVISION": ["ID", "DIVNAME", "DIVCODE", "OCID"]
+          }
+        }
+      },
+      "query_builder": {
+        "type": "dynamic_query_builder",
+        "features": [
+          "parameterized_queries",
+          "date_range_filtering",
+          "estate_filtering", 
+          "division_filtering",
+          "employee_filtering",
+          "record_tag_filtering",
+          "custom_conditions"
+        ],
+        "query_templates": {
+          "aggregation_query": {
+            "base_pattern": "SELECT {fields} FROM {table} WHERE {conditions} GROUP BY {group_by}",
+            "aggregation_functions": [
+              "COUNT(*)",
+              "SUM({field})",
+              "AVG({field})",
+              "MAX({field})",
+              "MIN({field})"
+            ]
+          },
+          "transaction_query": {
+            "base_pattern": "SELECT {fields} FROM {table} WHERE {conditions}",
+            "join_patterns": [
+              "{table} a JOIN OCFIELD b ON a.FIELDID = b.ID",
+              "LEFT JOIN CRDIVISION c ON b.DIVID = c.ID",
+              "JOIN EMP e ON a.SCANUSERID = e.ID"
+            ]
+          }
+        }
+      },
+      "data_processor": {
+        "type": "modular_processor",
+        "calculations": {
+          "generic_calculations": [
+            "percentage_calculation",
+            "average_calculation",
+            "trend_analysis",
+            "comparative_analysis",
+            "custom_formula_calculation"
+          ]
+        },
+        "transformations": {
+          "field_mappings": {
+            "RECORDTAG_mapping": {
+              "PM": "Kerani",
+              "P1": "Asisten", 
+              "P5": "Mandor"
+            }
+          }
+        }
+      },
+      "report_generator": {
+        "engine": "reportlab",
+        "format": "modular_pdf_generator",
+        "components": [
+          "header",
+          "body",
+          "footer",
+          "explanations",
+          "visualizations"
+        ]
+      },
+      "template_registry": {
+        "description": "Registry of available report templates",
+        "storage": "json_templates",
+        "access": "template_manager"
+      }
+    },
+    "modular_report_types": {
+      "verification_report": {
+        "inherits_from": "base_report_template",
+        "specializations": {
+          "data_query": {
+            "type": "duplicate_detection",
+            "duplicate_field": "TRANSNO",
+            "verification_logic": "TRANSNO_with_different_RECORDTAG",
+            "special_filters": {
+              "status_704_filter": {
+                "active_months": [5],
+                "applies_to": "P1/P5_records",
+                "description": "Special filter for May 2025 data"
+              }
+            }
+          },
+          "calculations": {
+            "verification_metrics": [
+              "total_transactions_per_employee",
+              "verified_transactions_per_employee",
+              "verification_percentage",
+              "differences_count",
+              "differences_percentage"
+            ]
+          },
+          "visualizations": [
+            "verification_summary_table",
+            "employee_differences_analysis"
+          ]
+        }
+      },
+      "productivity_report": {
+        "inherits_from": "base_report_template",
+        "specializations": {
+          "data_query": {
+            "type": "productivity_analysis",
+            "metrics": [
+              "transactions_per_hour",
+              "average_bunches_per_transaction",
+              "work_completion_rate"
+            ]
+          },
+          "calculations": {
+            "productivity_metrics": [
+              "daily_productivity_per_employee",
+              "division_average_productivity",
+              "efficiency_comparison"
+            ]
+          },
+          "visualizations": [
+            "productivity_trends",
+            "employee_rankings",
+            "division_productivity_comparison"
+          ]
+        }
+      },
+      "compliance_report": {
+        "inherits_from": "base_report_template",
+        "specializations": {
+          "data_query": {
+            "type": "compliance_analysis",
+            "metrics": [
+              "data_completeness",
+              "field_accuracy",
+              "regulatory_thresholds"
+            ]
+          },
+          "calculations": {
+            "compliance_metrics": [
+              "compliance_rate",
+              "non_compliance_incidents",
+              "corrective_action_required"
+            ]
+          },
+          "visualizations": [
+            "compliance_dashboard",
+            "threshold_breaches",
+            "trend_analysis"
+          ]
+        }
+      },
+      "efficiency_report": {
+        "inherits_from": "base_report_template",
+        "specializations": {
+          "data_query": {
+            "type": "efficiency_analysis",
+            "metrics": [
+              "input_accuracy",
+              "time_efficiency",
+              "resource_utilization"
+            ]
+          },
+          "calculations": {
+            "efficiency_metrics": [
+              "accuracy_rates",
+              "time_per_transaction",
+              "resource_optimization"
+            ]
+          },
+          "visualizations": [
+            "efficiency_metrics",
+            "benchmarking",
+            "improvement_opportunities"
+          ]
+        }
+      },
+      "trend_analysis_report": {
+        "inherits_from": "base_report_template",
+        "specializations": {
+          "data_query": {
+            "type": "time_series_analysis",
+            "metrics": [
+              "daily_trends",
+              "monthly_patterns",
+              "seasonal_variations"
+            ]
+          },
+          "calculations": {
+            "trend_metrics": [
+              "moving_averages",
+              "growth_rates",
+              "seasonal_indices"
+            ]
+          },
+          "visualizations": [
+            "trend_charts",
+            "seasonal_analysis",
+            "forecasting"
+          ]
+        }
+      }
+    },
+    "base_report_template": {
+      "name": "Generic Report Template",
+      "structure": {
+        "header": {
+          "elements": [
+            "company_logo",
+            "company_name",
+            "report_title",
+            "period_range",
+            "summary_box"
+          ]
+        },
+        "body": {
+          "elements": [
+            "main_data_table",
+            "summary_tables",
+            "detailed_analysis",
+            "charts_and_graphs"
+          ]
+        },
+        "footer": {
+          "elements": [
+            "generation_timestamp",
+            "system_info",
+            "page_numbers"
+          ]
+        }
+      },
+      "customizable_parameters": {
+        "ui_flow": {
+          "startup_sequence": [
+            "load_estates_from_config",
+            "display_estate_treeview", 
+            "set_default_dates",
+            "show_ready_status"
+          ],
+          "user_interaction": {
+            "estate_selection": {
+              "select_all_option": true,
+              "individual_selection": true,
+              "path_modification": true
+            },
+            "date_range": {
+              "start_date_picker": "DateEntry widget",
+              "end_date_picker": "DateEntry widget", 
+              "default_range": "first_day_of_selected_month to last_day_of_selected_month"
+            },
+            "report_type_selection": {
+              "enabled": true,
+              "type_selector": "dropdown_widget",
+              "available_types": [
+                "verification_report",
+                "productivity_report", 
+                "compliance_report",
+                "efficiency_report",
+                "trend_analysis_report"
+              ]
+            },
+            "execution": {
+              "analyze_button": "Generate Report",
+              "required_selection": "minimum_one_estate"
+            }
+          },
+          "progress_tracking": {
+            "status_updates": [
+              "ready_to_analyze",
+              "analyzing_estate_x",
+              "processing_data",
+              "creating_visualizations",
+              "generating_pdf_report",
+              "analysis_complete"
+            ],
+            "progress_bar": {
+              "maximum": "number_of_selected_estates",
+              "update_per_estate": true
+            }
+          }
+        },
+        "data_processing": {
+          "query_logic": {
+            "monthly_table_generation": {
+              "pattern": "FFBSCANNERDATA{month:02d}",
+              "date_range_calculation": "generate_tables_for_all_months_in_range"
+            },
+            "filtering": {
+              "generic_filters": [
+                "date_range",
+                "estate_selection",
+                "division_filter",
+                "employee_filter",
+                "record_tag_filter",
+                "custom_conditions"
+              ]
+            },
+            "mapping": {
+              "employee_mapping": "EMP table (ID to NAME)",
+              "division_mapping": {
+                "tables": ["OCFIELD", "CRDIVISION"],
+                "relationship": "OCFIELD.DIVID to CRDIVISION.ID"
+              }
+            }
+          },
+          "calculation_framework": {
+            "aggregation_methods": [
+              "sum",
+              "average",
+              "count",
+              "percentage",
+              "custom_formula"
+            ],
+            "metric_calculations": {
+              "single_employee": [
+                "total_transactions",
+                "performance_metrics",
+                "efficiency_rates"
+              ],
+              "division_level": [
+                "division_totals",
+                "division_averages",
+                "comparative_metrics"
+              ],
+              "estate_level": [
+                "estate_totals",
+                "estate_averages",
+                "cross_division_analysis"
+              ]
+            }
+          }
+        },
+        "report_formatting": {
+          "layout": {
+            "orientation": "landscape",
+            "page_size": "A4",
+            "margins": {
+              "left": 30,
+              "right": 30,
+              "top": 40,
+              "bottom": 40
+            }
+          },
+          "table_structure": {
+            "headers": [
+              "ESTATE",
+              "DIVISI",
+              "KARYAWAN", 
+              "ROLE",
+              "JUMLAH<br/>TRANSAKSI",
+              "PERSENTASE<br/>TERVERIFIKASI",
+              "KETERANGAN<br/>PERBEDAAN"
+            ],
+            "header_configurable": true,
+            "column_widths": [90, 90, 140, 70, 80, 110, 120],
+            "column_widths_configurable": true,
+            "row_types_configurable": true
+          },
+          "styling": {
+            "colors_configurable": true,
+            "fonts_configurable": true,
+            "formatting_configurable": true
+          }
+        }
+      },
+      "customization_options": {
+        "report_title_override": null,
+        "custom_period_format": null,
+        "additional_summary_metrics": [],
+        "custom_column_formulas": {},
+        "conditional_formatting_rules": [],
+        "exclude_employee_roles": [],
+        "minimum_transaction_threshold": 0,
+        "custom_differences_calculation": false,
+        "extended_field_comparison": false,
+        "custom_visualizations": [],
+        "report_sections": ["header", "body", "footer"],
+        "data_aggregation_level": ["employee", "division", "estate", "grand_total"]
+      }
+    },
+    "extensibility_features": {
+      "template_creation_guide": {
+        "step_1": "Define new report type in modular_report_types section",
+        "step_2": "Specify specialized data queries for the report type",
+        "step_3": "Define calculations specific to the report type",
+        "step_4": "Specify visualizations for the report type",
+        "step_5": "Register the new template in the template registry",
+        "step_6": "Test with sample data"
+      },
+      "configuration_parameters": {
+        "query_modification": "Update SQL patterns in the query builder",
+        "calculation_changes": "Modify calculation functions while maintaining input/output contracts",
+        "filter_adjustment": "Change filter conditions in the configuration",
+        "output_formatting": "Update report template while keeping key data elements",
+        "visualization_options": "Add new chart types or modify existing ones"
+      },
+      "integration_points": {
+        "new_report_types": "Add to modular_report_types section",
+        "custom_calculations": "Implement in data_processor section",
+        "specialized_queries": "Define in query_builder section",
+        "new_visualizations": "Add to report_generator section"
+      }
+    },
+    "usage_example": {
+      "new_report_type": {
+        "name": "attendance_report",
+        "inheritance": "base_report_template",
+        "specialization": {
+          "data_query": {
+            "type": "attendance_analysis",
+            "metrics": [
+              "daily_attendance",
+              "absence_rates",
+              "shift_compliance"
+            ]
+          },
+          "calculations": {
+            "attendance_metrics": [
+              "attendance_percentage",
+              "absence_frequency",
+              "shift_adherence"
+            ]
+          },
+          "visualizations": [
+              "attendance_trends",
+              "absence_analysis",
+              "compliance_tracking"
+          ]
+        }
+      }
+    }
+  }
+}
