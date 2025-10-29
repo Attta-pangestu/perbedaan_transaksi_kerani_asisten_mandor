@@ -1,0 +1,15 @@
+2025-10-29 14:57:15,231 - __main__ - ERROR - Failed to start application: No module named 'firebird_connector'
+2025-10-29 15:08:54,385 - __main__ - ERROR - Failed to start application: No module named 'firebird_connector'
+2025-10-29 15:09:19,820 - template_manager - WARNING - Created templates directory: templates
+2025-10-29 15:25:37,915 - template_manager - INFO - TemplateManager initialized with directory: D:\Gawean Rebinmas\Monitoring Database\Laporan_Ifess_beda_transno\all_transaksi\Reporting_System_Ifes\templates
+2025-10-29 15:25:37,915 - template_manager - INFO - Loaded template: laporan_verifikasi_multi_estate
+2025-10-29 15:25:37,915 - report_generator - INFO - ReportGenerator initialized with output directory: D:\Gawean Rebinmas\Monitoring Database\Laporan_Ifess_beda_transno\all_transaksi\Reporting_System_Ifes\reports
+2025-10-29 15:25:37,930 - main_gui - INFO - FFBReportingSystemGUI initialized
+2025-10-29 15:26:05,286 - ffb_analysis_engine - WARNING - Database not found: C:\Users\nbgmf\Downloads\IFESS_2B_19-06-2025\PTRJ_P2B.FDB
+2025-10-29 15:26:17,550 - ffb_analysis_engine - INFO - Tabel yang akan di-query: FFBSCANNERDATA05
+2025-10-29 15:26:18,931 - report_generator - WARNING - Logo file not found: assets/logo_rebinmas.jpeg
+2025-10-29 15:26:18,965 - report_generator - INFO - Generated PDF report: D:\Gawean Rebinmas\Monitoring Database\Laporan_Ifess_beda_transno\all_transaksi\Reporting_System_Ifes\reports\Laporan_Kinerja_Kerani_Mandor_Asisten__to__20251029_152618.pdf
+2025-10-29 15:29:08,206 - template_manager - INFO - TemplateManager initialized with directory: D:\Gawean Rebinmas\Monitoring Database\Laporan_Ifess_beda_transno\all_transaksi\Reporting_System_Ifes\templates
+2025-10-29 15:29:08,206 - template_manager - INFO - Loaded template: laporan_verifikasi_multi_estate
+2025-10-29 15:29:08,206 - report_generator - INFO - ReportGenerator initialized with output directory: D:\Gawean Rebinmas\Monitoring Database\Laporan_Ifess_beda_transno\all_transaksi\Reporting_System_Ifes\reports
+2025-10-29 15:29:08,206 - main_gui - INFO - FFBReportingSystemGUI initialized

@@ -1,0 +1,456 @@
+{% extends "index.html" %}
+
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+<!-- System Status Cards -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="card-title">Total Templates</h5>
+                        <h2 class="mb-0" id="totalTemplates">12</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-file-code fa-2x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-success">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="card-title">Active Connections</h5>
+                        <h2 class="mb-0" id="activeConnections">8</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-network-wired fa-2x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-info">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="card-title">Reports Generated</h5>
+                        <h2 class="mb-0" id="reportsGenerated">156</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-file-pdf fa-2x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-warning">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="card-title">Users Active</h5>
+                        <h2 class="mb-0" id="activeUsers">5</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-users fa-2x opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Templates -->
+<div class="row mb-4">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="fas fa-file-code me-2"></i>Recent Templates</h5>
+                <button class="btn btn-sm btn-outline-primary" onclick="location.href='#templates'">
+                    View All <i class="fas fa-arrow-right ms-1"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="template-card card h-100">
+                            <div class="card-body">
+                                <span class="badge bg-success template-badge">FFB_ANALYSIS</span>
+                                <h6 class="card-title mt-3">Monthly Performance Report</h6>
+                                <p class="card-text small text-muted">
+                                    Detailed analysis of monthly FFB transaction performance with verification metrics.
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">
+                                        <i class="fas fa-user me-1"></i>admin
+                                    </small>
+                                    <small class="text-muted">
+                                        <i class="fas fa-clock me-1"></i>2 hours ago
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <button class="btn btn-sm btn-outline-primary" onclick="editTemplate(1)">
+                                    <i class="fas fa-edit me-1"></i>Edit
+                                </button>
+                                <button class="btn btn-sm btn-outline-success" onclick="runTemplate(1)">
+                                    <i class="fas fa-play me-1"></i>Run
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <div class="template-card card h-100">
+                            <div class="card-body">
+                                <span class="badge bg-info template-badge">EMPLOYEE_PERFORMANCE</span>
+                                <h6 class="card-title mt-3">Employee Performance Analysis</h6>
+                                <p class="card-text small text-muted">
+                                    Individual employee performance metrics with verification rates and quality scores.
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">
+                                        <i class="fas fa-user me-1"></i>manager
+                                    </small>
+                                    <small class="text-muted">
+                                        <i class="fas fa-clock me-1"></i>5 hours ago
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <button class="btn btn-sm btn-outline-primary" onclick="editTemplate(2)">
+                                    <i class="fas fa-edit me-1"></i>Edit
+                                </button>
+                                <button class="btn btn-sm btn-outline-success" onclick="runTemplate(2)">
+                                    <i class="fas fa-play me-1"></i>Run
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <div class="template-card card h-100">
+                            <div class="card-body">
+                                <span class="badge bg-warning template-badge">DATA_QUALITY</span>
+                                <h6 class="card-title mt-3">Data Quality Report</h6>
+                                <p class="card-text small text-muted">
+                                    Comprehensive data quality assessment with discrepancy detection and recommendations.
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">
+                                        <i class="fas fa-user me-1"></i>admin
+                                    </small>
+                                    <small class="text-muted">
+                                        <i class="fas fa-clock me-1"></i>1 day ago
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <button class="btn btn-sm btn-outline-primary" onclick="editTemplate(3)">
+                                    <i class="fas fa-edit me-1"></i>Edit
+                                </button>
+                                <button class="btn btn-sm btn-outline-success" onclick="runTemplate(3)">
+                                    <i class="fas fa-play me-1"></i>Run
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <div class="template-card card h-100">
+                            <div class="card-body">
+                                <span class="badge bg-primary template-badge">SUMMARY</span>
+                                <h6 class="card-title mt-3">Executive Summary Report</h6>
+                                <p class="card-text small text-muted">
+                                    High-level summary report for management with key metrics and trends.
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">
+                                        <i class="fas fa-user me-1"></i>analyst
+                                    </small>
+                                    <small class="text-muted">
+                                        <i class="fas fa-clock me-1"></i>2 days ago
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <button class="btn btn-sm btn-outline-primary" onclick="editTemplate(4)">
+                                    <i class="fas fa-edit me-1"></i>Edit
+                                </button>
+                                <button class="btn btn-sm btn-outline-success" onclick="runTemplate(4)">
+                                    <i class="fas fa-play me-1"></i>Run
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-bolt me-2"></i>Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" onclick="createNewTemplate()">
+                        <i class="fas fa-plus me-2"></i>Create New Template
+                    </button>
+                    <button class="btn btn-outline-success" onclick="generateReport()">
+                        <i class="fas fa-file-pdf me-2"></i>Generate Quick Report
+                    </button>
+                    <button class="btn btn-outline-info" onclick="viewDataExplorer()">
+                        <i class="fas fa-database me-2"></i>Explore Data
+                    </button>
+                    <button class="btn btn-outline-warning" onclick="testConnections()">
+                        <i class="fas fa-network-wired me-2"></i>Test Connections
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Status -->
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-heartbeat me-2"></i>System Status</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="status-indicator status-success"></span>
+                        <span>Database Connections</span>
+                        <span class="badge bg-success">8/10</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="status-indicator status-success"></span>
+                        <span>Jasper Reports</span>
+                        <span class="badge bg-success">Online</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="status-indicator status-warning"></span>
+                        <span>Storage Space</span>
+                        <span class="badge bg-warning">75%</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="status-indicator status-success"></span>
+                        <span>Background Tasks</span>
+                        <span class="badge bg-success">2 Running</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Reports -->
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0"><i class="fas fa-file-pdf me-2"></i>Recent Reports</h5>
+        <button class="btn btn-sm btn-outline-primary" onclick="location.href='#reports'">
+            View All <i class="fas fa-arrow-right ms-1"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Report Name</th>
+                        <th>Template</th>
+                        <th>Generated</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monthly Performance - PGE 1A</td>
+                        <td><span class="badge bg-success">FFB_ANALYSIS</span></td>
+                        <td>2 hours ago</td>
+                        <td><span class="badge bg-success">Success</span></td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary" onclick="downloadReport(1)">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Employee Performance Report</td>
+                        <td><span class="badge bg-info">EMPLOYEE_PERFORMANCE</span></td>
+                        <td>5 hours ago</td>
+                        <td><span class="badge bg-success">Success</span></td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary" onclick="downloadReport(2)">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Data Quality Assessment</td>
+                        <td><span class="badge bg-warning">DATA_QUALITY</span></td>
+                        <td>1 day ago</td>
+                        <td><span class="badge bg-success">Success</span></td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary" onclick="downloadReport(3)">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Executive Summary</td>
+                        <td><span class="badge bg-primary">SUMMARY</span></td>
+                        <td>2 days ago</td>
+                        <td><span class="badge bg-success">Success</span></td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary" onclick="downloadReport(4)">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Dashboard specific functions
+function createNewTemplate() {
+    showLoading();
+    setTimeout(() => {
+        hideLoading();
+        showToast('Opening template editor...', 'info');
+        // Navigate to template editor
+        location.href = '#templates?action=create';
+    }, 500);
+}
+
+function generateReport() {
+    showLoading();
+    // Quick report generation logic
+    apiRequest('/api/reports/quick-generate', {
+        method: 'POST',
+        body: JSON.stringify({
+            template_id: 1, // Default template
+            parameters: {
+                start_date: '2025-09-01',
+                end_date: '2025-09-30',
+                estates: ['PGE 1A']
+            }
+        })
+    }).then(data => {
+        hideLoading();
+        showToast('Report generated successfully!', 'success');
+    }).catch(error => {
+        hideLoading();
+        console.error('Error generating report:', error);
+    });
+}
+
+function viewDataExplorer() {
+    showLoading();
+    setTimeout(() => {
+        hideLoading();
+        location.href = '#data-explorer';
+    }, 500);
+}
+
+function testConnections() {
+    showLoading();
+    apiRequest('/api/connections/test')
+        .then(data => {
+            hideLoading();
+            const successCount = Object.values(data).filter(status => status).length;
+            const totalCount = Object.keys(data).length;
+            showToast(`Connection test complete: ${successCount}/${totalCount} connected`,
+                       successCount === totalCount ? 'success' : 'warning');
+        })
+        .catch(error => {
+            hideLoading();
+            console.error('Error testing connections:', error);
+        });
+}
+
+function editTemplate(templateId) {
+    showLoading();
+    setTimeout(() => {
+        hideLoading();
+        location.href = `#templates?action=edit&id=${templateId}`;
+    }, 500);
+}
+
+function runTemplate(templateId) {
+    showLoading();
+    apiRequest(`/api/templates/${templateId}/run`, {
+        method: 'POST',
+        body: JSON.stringify({
+            parameters: {
+                start_date: '2025-09-01',
+                end_date: '2025-09-30',
+                estates: ['PGE 1A']
+            }
+        })
+    }).then(data => {
+        hideLoading();
+        showToast('Template execution started!', 'info');
+    }).catch(error => {
+        hideLoading();
+        console.error('Error running template:', error);
+    });
+}
+
+function downloadReport(reportId) {
+    showLoading();
+    apiRequest(`/api/reports/${reportId}/download`)
+        .then(data => {
+            hideLoading();
+            // Create download link
+            const link = document.createElement('a');
+            link.href = data.download_url;
+            link.download = data.filename;
+            link.click();
+            showToast('Report downloaded!', 'success');
+        })
+        .catch(error => {
+            hideLoading();
+            console.error('Error downloading report:', error);
+        });
+}
+
+// Load dashboard data on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Load dashboard statistics
+    apiRequest('/api/dashboard/stats')
+        .then(data => {
+            document.getElementById('totalTemplates').textContent = data.total_templates;
+            document.getElementById('activeConnections').textContent = data.active_connections;
+            document.getElementById('reportsGenerated').textContent = data.reports_generated;
+            document.getElementById('activeUsers').textContent = data.active_users;
+        })
+        .catch(error => {
+            console.error('Error loading dashboard stats:', error);
+        });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,630 @@
+{
+  "template_id": "laporan_verifikasi_multi_estate",
+  "name": "LAPORAN KINERJA KERANI, MANDOR, DAN ASISTEN - Multi-Estate",
+  "description": "Template laporan verifikasi transaksi FFB scanner multi-estate dengan analisis kinerja karyawan lengkap termasuk logika verifikasi, query SQL, dan perhitungan detail",
+  "category": "VERIFIKASI_TRANSAKSI",
+  "version": "2.0.0",
+  "created_by": "system",
+  "created_date": "2025-10-29",
+  "last_updated": "2025-10-29",
+  "business_context": {
+    "purpose": "Memantau kinerja data entry karyawan (Kerani, Mandor, Asisten) pada sistem FFB scanner untuk memastikan akurasi dan verifikasi transaksi panen kelapa sawit",
+    "key_concepts": {
+      "TRANSNO": "Nomor transaksi unik yang menjadi acuan verifikasi",
+      "RECORDTAG": "Kode role karyawan: PM=Kerani (Scanner), P1=Asisten, P5=Mandor",
+      "verifikasi_logic": "Transaksi dianggap verified jika ada duplikat TRANSNO dengan RECORDTAG berbeda (PM + P1/P5)",
+      "business_rules": [
+        "Setiap transaksi Kerani (PM) harus diverifikasi oleh Mandor (P5) atau Asisten (P1)",
+        "Verifikasi terjadi ketika ada duplikat TRANSNO dengan RECORDTAG yang berbeda",
+        "Perbedaan input data antara Kerani dan verifikator menunjukkan potensi error",
+        "Filter TRANSSTATUS 704 digunakan untuk bulan Mei karena adanya perubahan sistem"
+      ]
+    },
+    "stakeholders": [
+      "Estate Manager - untuk monitoring kinerja karyawan",
+      "IT Support - untuk troubleshooting sistem",
+      "Management - untuk laporan bulanan",
+      "Quality Assurance - untuk validasi data entry"
+    ]
+  },
+  "parameters": [
+    {
+      "name": "START_DATE",
+      "type": "DATE",
+      "display_name": "Tanggal Mulai",
+      "description": "Tanggal awal periode laporan",
+      "required": true,
+      "ui_component": "DATE_PICKER",
+      "default_value": null
+    },
+    {
+      "name": "END_DATE",
+      "type": "DATE",
+      "display_name": "Tanggal Akhir",
+      "description": "Tanggal akhir periode laporan",
+      "required": true,
+      "ui_component": "DATE_PICKER",
+      "default_value": null
+    },
+    {
+      "name": "ESTATES",
+      "type": "MULTI_SELECT",
+      "display_name": "Estates",
+      "description": "Pilih estates yang akan dianalisis",
+      "required": true,
+      "ui_component": "CHECKBOX_GROUP",
+      "options": [
+        {"value": "PGE 1A", "label": "PGE 1A"},
+        {"value": "PGE 1B", "label": "PGE 1B"},
+        {"value": "PGE 2A", "label": "PGE 2A"},
+        {"value": "PGE 2B", "label": "PGE 2B"},
+        {"value": "IJL", "label": "IJL"},
+        {"value": "DME", "label": "DME"},
+        {"value": "Are B2", "label": "Are B2"},
+        {"value": "Are B1", "label": "Are B1"},
+        {"value": "Are A", "label": "Are A"},
+        {"value": "Are C", "label": "Are C"}
+      ]
+    },
+    {
+      "name": "USE_STATUS_704_FILTER",
+      "type": "BOOLEAN",
+      "display_name": "Filter TRANSSTATUS 704",
+      "description": "Gunakan filter khusus TRANSSTATUS 704 untuk bulan Mei",
+      "required": false,
+      "ui_component": "CHECKBOX",
+      "default_value": false
+    }
+  ],
+  "database_schema": {
+    "tables": {
+      "FFBSCANNERDATA{MM}": {
+        "description": "Monthly transaction table for FFB scanner data",
+        "key_fields": {
+          "ID": "Primary key - unique transaction identifier",
+          "TRANSNO": "Transaction number - used for duplicate detection and verification",
+          "SCANUSERID": "Employee ID who scanned the transaction",
+          "RECORDTAG": "Role code: PM=Kerani, P1=Asisten, P5=Mandor",
+          "TRANSDATE": "Transaction date",
+          "FIELDID": "Field identifier linked to OCFIELD table",
+          "RIPEBCH": "Ripe bunch count",
+          "UNRIPEBCH": "Unripe bunch count",
+          "BLACKBCH": "Black bunch count",
+          "ROTTENBCH": "Rotten bunch count",
+          "LONGSTALKBCH": "Long stalk bunch count",
+          "RATDMGBCH": "Rat damaged bunch count",
+          "LOOSEFRUIT": "Loose fruit count",
+          "TRANSSTATUS": "Transaction status (704 used for May filtering)",
+          "TRANSTYPE": "Transaction type",
+          "TASKNO": "Task number",
+          "OCID": "OC identifier",
+          "WORKERID": "Worker identifier",
+          "CARRIERID": "Carrier identifier"
+        },
+        "data_flow": "Data flows from Kerani input (PM) → Mandor/Asisten verification (P1/P5) → System processing"
+      },
+      "OCFIELD": {
+        "description": "Field reference table containing field information and division mapping",
+        "key_fields": {
+          "ID": "Field primary key",
+          "DIVID": "Division identifier linked to CRDIVISION table"
+        },
+        "purpose": "Maps transactions to specific divisions for estate-level reporting"
+      },
+      "CRDIVISION": {
+        "description": "Division reference table containing division names and details",
+        "key_fields": {
+          "ID": "Division primary key",
+          "DIVNAME": "Division name"
+        },
+        "purpose": "Provides human-readable division names for reporting"
+      },
+      "EMP": {
+        "description": "Employee reference table for mapping employee IDs to names",
+        "key_fields": {
+          "ID": "Employee primary key",
+          "NAME": "Employee name"
+        },
+        "purpose": "Provides human-readable employee names for reporting"
+      }
+    },
+    "monthly_tables": {
+      "naming_pattern": "FFBSCANNERDATA{MM} where MM = 2-digit month (01-12)",
+      "table_detection": "System automatically detects which monthly tables exist for given date range",
+      "data_consistency": "Each monthly table contains data for specific month with consistent schema",
+      "query_scope": "Multiple monthly tables may be queried for date ranges spanning multiple months"
+    }
+  },
+  "sql_queries": {
+    "employee_mapping": {
+      "description": "Retrieve mapping between employee IDs and their names for human-readable reporting",
+      "query": "SELECT ID, NAME FROM EMP ORDER BY NAME",
+      "business_purpose": "Convert employee IDs (SCANUSERID) to employee names in reports",
+      "data_source": "EMP table",
+      "expected_output": "List of all employees with their IDs and names"
+    },
+    "monthly_table_detection": {
+      "description": "Dynamic detection of available monthly tables within date range",
+      "query_logic": "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE 'FFBSCANNERDATA%'",
+      "business_purpose": "Determine which monthly tables contain data for the selected period",
+      "implementation": "System generates table names based on date range: FFBSCANNERDATA01 through FFBSCANNERDATA12"
+    },
+    "divisions": {
+      "description": "Get all active divisions that have transactions within the selected period",
+      "query": "SELECT DISTINCT b.DIVID, c.DIVNAME FROM FFBSCANNERDATA${MONTH} a JOIN OCFIELD b ON a.FIELDID = b.ID LEFT JOIN CRDIVISION c ON b.DIVID = c.ID WHERE b.DIVID IS NOT NULL AND c.DIVNAME IS NOT NULL AND a.TRANSDATE BETWEEN '${START_DATE}' AND '${END_DATE}'",
+      "business_purpose": "Identify divisions to be included in estate-level analysis",
+      "joins": [
+        "FFBSCANNERDATA → OCFIELD (via FIELDID)",
+        "OCFIELD → CRDIVISION (via DIVID)"
+      ],
+      "filtering": "Only includes divisions with actual transactions in the period",
+      "expected_output": "Unique list of division IDs and names with transaction activity"
+    },
+    "main_analysis": {
+      "description": "Core transaction data query for verification analysis",
+      "query": "SELECT a.ID, a.SCANUSERID, a.OCID, a.WORKERID, a.CARRIERID, a.FIELDID, a.TASKNO, a.RIPEBCH, a.UNRIPEBCH, a.BLACKBCH, a.ROTTENBCH, a.LONGSTALKBCH, a.RATDMGBCH, a.LOOSEFRUIT, a.TRANSNO, a.TRANSDATE, a.TRANSTIME, a.UPLOADDATETIME, a.RECORDTAG, a.TRANSSTATUS, a.TRANSTYPE, a.LASTUSER, a.LASTUPDATED, a.OVERRIPEBCH, a.UNDERRIPEBCH, a.ABNORMALBCH, a.LOOSEFRUIT2, b.DIVID, c.DIVNAME FROM FFBSCANNERDATA${MONTH} a JOIN OCFIELD b ON a.FIELDID = b.ID LEFT JOIN CRDIVISION c ON b.DIVID = c.ID WHERE b.DIVID = '${DIV_ID}' AND a.TRANSDATE BETWEEN '${START_DATE}' AND '${END_DATE}'",
+      "business_purpose": "Extract all transaction data needed for verification analysis",
+      "key_fields": [
+        "TRANSNO - for duplicate detection and verification logic",
+        "SCANUSERID - for employee performance tracking",
+        "RECORDTAG - for role identification (PM/P1/P5)",
+        "RIPEBCH, UNRIPEBCH, etc. - for input difference calculation",
+        "TRANSSTATUS - for May 2024 filtering logic"
+      ],
+      "joins": [
+        "FFBSCANNERDATA → OCFIELD (via FIELDID)",
+        "OCFIELD → CRDIVISION (via DIVID)"
+      ],
+      "filtering": "Filtered by division and date range",
+      "data_scope": "All fields needed for verification analysis and difference calculation"
+    }
+  },
+  "data_processing": {
+    "logic": "analisis_verifikasi_transaksi",
+    "algorithm_overview": "Multi-step analysis process that identifies verification patterns, calculates performance metrics, and detects input differences between Kerani and verifiers",
+    "steps": [
+      {
+        "step": 1,
+        "name": "Data Collection and Preprocessing",
+        "description": "Collect all FFB transaction data for selected estates and period with proper data validation",
+        "substeps": [
+          "Connect to each estate database",
+          "Detect available monthly tables (FFBSCANNERDATA01-12)",
+          "Execute main analysis query for each division",
+          "Combine data from multiple monthly tables",
+          "Remove duplicate records by ID",
+          "Validate data integrity"
+        ],
+        "error_handling": "Continue processing if individual monthly tables fail, log warnings for missing tables"
+      },
+      {
+        "step": 2,
+        "name": "Duplicate Detection and Verification Logic",
+        "description": "Identify duplicate transactions by TRANSNO to determine verified transactions",
+        "algorithm": {
+          "primary_key": "TRANSNO",
+          "logic": "df[df.duplicated(subset=['TRANSNO'], keep=False)]",
+          "verification_definition": "Transaction is considered verified when TRANSNO appears with different RECORDTAG values",
+          "verified_condition": "PM (Kerani) + P1/P5 (Mandor/Asisten) transactions with same TRANSNO",
+          "priority_order": "P1 (Asisten) takes priority over P5 (Mandor) when both exist for same TRANSNO"
+        },
+        "output": "Set of verified TRANSNO values for difference calculation"
+      },
+      {
+        "step": 3,
+        "name": "Employee Performance Calculation",
+        "description": "Calculate transaction counts and verification rates for each employee role",
+        "calculations": {
+          "kerani_metrics": {
+            "total_transactions": "Count of all PM transactions for employee",
+            "verified_transactions": "Count of PM transactions with TRANSNO in verified set",
+            "verification_rate": "(verified_transactions / total_transactions) * 100",
+            "difference_count": "Count of verified transactions with field differences"
+          },
+          "mandor_metrics": {
+            "total_transactions": "Count of all P5 transactions for employee",
+            "participation_rate": "(mandor_transactions / total_kerani_transactions) * 100"
+          },
+          "asisten_metrics": {
+            "total_transactions": "Count of all P1 transactions for employee",
+            "participation_rate": "(asisten_transactions / total_kerani_transactions) * 100"
+          }
+        }
+      },
+      {
+        "step": 4,
+        "name": "Input Difference Analysis",
+        "description": "Calculate field differences between Kerani input and verifier transactions",
+        "comparison_logic": {
+          "scope": "Only verified transactions (PM with corresponding P1/P5)",
+          "comparison_fields": ["RIPEBCH", "UNRIPEBCH", "BLACKBCH", "ROTTENBCH", "LONGSTALKBCH", "RATDMGBCH", "LOOSEFRUIT"],
+          "difference_calculation": "For each field: compare Kerani value vs Verifier value",
+          "difference_criteria": "Any field difference counts as 1 transaction difference (not per-field)",
+          "data_conversion": "Convert to float for comparison, treat null/empty as 0"
+        },
+        "status_704_filter": {
+          "purpose": "Special filtering for May 2024 due to system changes",
+          "condition": "Enabled when USE_STATUS_704_FILTER = True and date range includes May",
+          "filter_logic": "Only count differences when verifier (P1/P5) transactions have TRANSSTATUS = 704",
+          "rationale": "System update in May caused transaction status variations"
+        },
+        "output_metrics": {
+          "differences_per_employee": "Number of verified transactions with input differences",
+          "difference_percentage": "(differences_count / verified_transactions) * 100"
+        }
+      },
+      {
+        "step": 5,
+        "name": "Aggregation and Summary Generation",
+        "description": "Aggregate results across employees, divisions, and estates with summary statistics",
+        "aggregation_levels": [
+          "Employee level - individual performance metrics",
+          "Division level - totals and averages per division",
+          "Estate level - consolidated estate-wide metrics",
+          "Multi-estate level - grand totals across all selected estates"
+        ],
+        "summary_calculations": {
+          "total_kerani": "Sum of all Kerani transactions",
+          "total_verified": "Sum of all verified Kerani transactions",
+          "total_differences": "Sum of all input differences",
+          "overall_verification_rate": "(total_verified / total_kerani) * 100"
+        }
+      }
+    ],
+    "verification_logic": {
+      "business_rules": [
+        "Every Kerani (PM) transaction should be verified by Mandor (P5) or Asisten (P1)",
+        "Verification occurs when same TRANSNO exists with different RECORDTAG",
+        "Input differences indicate potential data entry errors",
+        "Higher verification rates indicate better data quality",
+        "Lower difference rates indicate better data accuracy"
+      ],
+      "duplicate_detection": {
+        "field": "TRANSNO",
+        "keep_duplicates": false,
+        "verified_condition": "PM + P1/P5 transactions with same TRANSNO",
+        "algorithm": "pandas.duplicated() with keep=False to get all duplicates"
+      },
+      "role_mapping": {
+        "PM": {
+          "role_name": "KERANI",
+          "responsibility": "Initial data entry (scanner)",
+          "success_metric": "Verification rate of their transactions"
+        },
+        "P1": {
+          "role_name": "ASISTEN",
+          "responsibility": "Verification and correction",
+          "success_metric": "Participation rate in verification"
+        },
+        "P5": {
+          "role_name": "MANDOR",
+          "responsibility": "Verification and correction",
+          "success_metric": "Participation rate in verification"
+        }
+      },
+      "difference_fields": {
+        "RIPEBCH": "Ripe bunch count - primary productivity indicator",
+        "UNRIPEBCH": "Unripe bunch count - quality indicator",
+        "BLACKBCH": "Black bunch count - quality issue indicator",
+        "ROTTENBCH": "Rotten bunch count - quality issue indicator",
+        "LONGSTALKBCH": "Long stalk bunch count - harvesting quality",
+        "RATDMGBCH": "Rat damaged bunch count - pest damage indicator",
+        "LOOSEFRUIT": "Loose fruit count - collection efficiency"
+      },
+      "status_704_filter": {
+        "enabled_parameter": "USE_STATUS_704_FILTER",
+        "condition": "month == 5 (May 2024)",
+        "filter_logic": "Only count differences when Mandor/Asisten transactions have TRANSSTATUS = 704",
+        "business_context": "System implementation change in May 2024 required special handling",
+        "implementation": "Apply filter only to verification transactions (P1/P5), not Kerani (PM)"
+      }
+    },
+    "performance_metrics": {
+      "kerani_kpi": {
+        "verification_rate": {
+          "formula": "(verified_transactions / total_transactions) * 100",
+          "target": ">90%",
+          "description": "Percentage of Kerani transactions that are verified"
+        },
+        "accuracy_rate": {
+          "formula": "100 - ((differences_count / verified_transactions) * 100)",
+          "target": ">95%",
+          "description": "Percentage of verified transactions with no input differences"
+        }
+      },
+      "mandor_asisten_kpi": {
+        "participation_rate": {
+          "formula": "(verification_transactions / total_kerani_transactions) * 100",
+          "target": ">80%",
+          "description": "Percentage of Kerani transactions that are verified"
+        }
+      },
+      "division_kpi": {
+        "overall_verification": "Average of all Kerani verification rates in division",
+        "data_quality_score": "Combined measure of verification and accuracy"
+      }
+    }
+  },
+  "report_structure": {
+    "title": "LAPORAN KINERJA KERANI, MANDOR, DAN ASISTEN",
+    "subtitle": "Periode: ${START_DATE} - ${END_DATE}",
+    "report_purpose": "Menampilkan analisis verifikasi transaksi FFB scanner dan kinerja karyawan multi-estate",
+    "company": {
+      "name": "PT. REBINMAS JAYA",
+      "subtitle": "SISTEM MONITORING TRANSAKSI FFB",
+      "logo_path": "assets/logo_rebinmas.jpeg",
+      "report_type": "Operational Performance Report",
+      "frequency": "Monthly/Ad-hoc"
+    },
+    "layout": {
+      "orientation": "landscape",
+      "margins": {
+        "left": 30,
+        "right": 30,
+        "top": 40,
+        "bottom": 40
+      },
+      "page_size": "A4",
+      "font_family": "Helvetica"
+    },
+    "table_columns": [
+      {
+        "name": "estate",
+        "title": "ESTATE",
+        "width": 90,
+        "alignment": "center",
+        "description": "Nama estate dimana transaksi terjadi",
+        "data_source": "analysis_results.estate"
+      },
+      {
+        "name": "division",
+        "title": "DIVISI",
+        "width": 90,
+        "alignment": "center",
+        "description": "Nama divisi/afdeling dalam estate",
+        "data_source": "analysis_results.division"
+      },
+      {
+        "name": "employee",
+        "title": "KARYAWAN",
+        "width": 140,
+        "alignment": "left",
+        "description": "Nama karyawan (Kerani/Mandor/Asisten)",
+        "data_source": "employee_mapping.name"
+      },
+      {
+        "name": "role",
+        "title": "ROLE",
+        "width": 70,
+        "alignment": "center",
+        "description": "Peran karyawan: KERANI (PM), MANDOR (P5), ASISTEN (P1), SUMMARY",
+        "data_source": "employee_details.role_mapping"
+      },
+      {
+        "name": "total_transactions",
+        "title": "JUMLAH\nTRANSAKSI",
+        "width": 80,
+        "alignment": "center",
+        "description": "Jumlah transaksi yang dibuat oleh karyawan (untuk Kerani) atau total Kerani di divisi (untuk SUMMARY)",
+        "calculation": {
+          "KERANI": "count of PM transactions by employee",
+          "MANDOR": "count of P5 transactions by employee",
+          "ASISTEN": "count of P1 transactions by employee",
+          "SUMMARY": "total Kerani transactions in division"
+        }
+      },
+      {
+        "name": "verification_percentage",
+        "title": "PERSENTASE\nTERVERIFIKASI",
+        "width": 110,
+        "alignment": "center",
+        "description": "Persentase verifikasi dengan format: XX.XX% (count)",
+        "calculation": {
+          "KERANI": "(verified_transactions / total_transactions) * 100",
+          "MANDOR": "(mandor_transactions / total_kerani_division) * 100",
+          "ASISTEN": "(asisten_transactions / total_kerani_division) * 100",
+          "SUMMARY": "(total_verified_kerani / total_kerani) * 100"
+        },
+        "display_format": "{percentage:.2f}% ({count})"
+      },
+      {
+        "name": "difference_notes",
+        "title": "KETERANGAN\nPERBEDAAN",
+        "width": 120,
+        "alignment": "center",
+        "description": "Informasi perbedaan input antara Kerani dan verifikator",
+        "calculation": {
+          "KERANI": "X perbedaan (Y%) where Y = (differences / verified_transactions) * 100",
+          "MANDOR": "empty (not applicable)",
+          "ASISTEN": "empty (not applicable)",
+          "SUMMARY": "empty (not applicable)"
+        },
+        "display_format": "{differences} perbedaan ({percentage:.1f}%)"
+      }
+    ],
+    "table_structure": {
+      "organization": "Hierarchical grouping by Estate → Division → Employee rows",
+      "row_ordering": [
+        "Division SUMMARY row first",
+        "KERANI rows (sorted by name)",
+        "MANDOR rows (sorted by name)",
+        "ASISTEN rows (sorted by name)",
+        "Empty separator row",
+        "Grand TOTAL row at the end"
+      ],
+      "sorting": "Alphabetical by employee name within each role group"
+    },
+    "styling": {
+      "design_philosophy": "Professional corporate report with clear visual hierarchy and role-based color coding",
+      "header": {
+        "background_color": "#2C5282",
+        "text_color": "white",
+        "font_size": 10,
+        "font_name": "Helvetica-Bold",
+        "padding": 12,
+        "purpose": "Clear column identification with professional appearance"
+      },
+      "row_styles": {
+        "summary": {
+          "background_color": "#4299E1",
+          "text_color": "white",
+          "font_name": "Helvetica-Bold",
+          "font_size": 9,
+          "purpose": "Highlight division and grand total summaries for quick identification"
+        },
+        "kerani": {
+          "background_color": "#FFF5F5",
+          "percentage_color": "#E53E3E",
+          "difference_background": "#FED7D7",
+          "difference_text_color": "#C53030",
+          "purpose": "Red theme indicates critical role (data entry) and attention needed for verification rates"
+        },
+        "mandor": {
+          "background_color": "#F0FFF4",
+          "percentage_color": "#38A169",
+          "purpose": "Green theme indicates verification role and positive contribution"
+        },
+        "asisten": {
+          "background_color": "#F0F9FF",
+          "percentage_color": "#3182CE",
+          "purpose": "Blue theme indicates verification role and professional oversight"
+        }
+      },
+      "visual_elements": {
+        "alternating_rows": {
+          "enabled": true,
+          "colors": ["#F7FAFC", "white"],
+          "purpose": "Improved readability for long employee lists"
+        },
+        "grid_lines": {
+          "enabled": true,
+          "color": "#E2E8F0",
+          "width": 0.5,
+          "purpose": "Clear cell separation without visual clutter"
+        },
+        "emphasis_formatting": {
+          "bold_text": ["SUMMARY", "GRAND TOTAL"],
+          "color_highlights": ["percentage columns for KERANI rows"],
+          "purpose": "Draw attention to key metrics and summaries"
+        }
+      }
+    },
+    "calculations_and_formulas": {
+      "kerani_metrics": {
+        "verification_rate": {
+          "formula": "(verified_transactions / total_transactions) * 100",
+          "components": {
+            "verified_transactions": "Count of PM transactions where TRANSNO has duplicates with P1/P5",
+            "total_transactions": "Count of all PM transactions by employee"
+          },
+          "example": "If Kerani made 100 transactions and 85 are verified: (85/100)*100 = 85.00%"
+        },
+        "difference_rate": {
+          "formula": "(differences_count / verified_transactions) * 100",
+          "components": {
+            "differences_count": "Number of verified transactions with any field differences",
+            "verified_transactions": "Same as above - denominator for rate calculation"
+          },
+          "example": "If 85 verified transactions and 12 have differences: (12/85)*100 = 14.12%"
+        }
+      },
+      "mandor_asisten_metrics": {
+        "participation_rate": {
+          "formula": "(role_transactions / total_kerani_division) * 100",
+          "components": {
+            "role_transactions": "Count of P1 (Asisten) or P5 (Mandor) transactions",
+            "total_kerani_division": "Total PM transactions in the same division"
+          },
+          "purpose": "Shows participation level relative to total work volume",
+          "example": "If division has 200 Kerani transactions and Mandor made 150: (150/200)*100 = 75.00%"
+        }
+      },
+      "summary_calculations": {
+        "division_verification": {
+          "formula": "(total_verified_kerani / total_kerani) * 100",
+          "purpose": "Overall division verification rate",
+          "scope": "All Kerani transactions within the division"
+        },
+        "grand_total_verification": {
+          "formula": "(grand_verified_kerani / grand_kerani) * 100",
+          "purpose": "Overall multi-estate verification rate",
+          "scope": "All Kerani transactions across all selected estates"
+        }
+      }
+    },
+    "business_interpretation": {
+      "kerani_performance": {
+        "high_verification": ">90% - Excellent data entry quality",
+        "medium_verification": "70-90% - Good performance with room for improvement",
+        "low_verification": "<70% - Needs attention and training",
+        "difference_indicators": {
+          "low_differences": "<5% - Excellent accuracy",
+          "medium_differences": "5-15% - Acceptable with monitoring",
+          "high_differences": ">15% - Needs intervention"
+        }
+      },
+      "mandor_asisten_performance": {
+        "high_participation": ">80% - Active verification involvement",
+        "medium_participation": "60-80% - Adequate participation",
+        "low_participation": "<60% - Insufficient verification oversight"
+      },
+      "overall_health": {
+        "excellent": ">90% verification AND <10% differences",
+        "good": ">80% verification AND <15% differences",
+        "needs_attention": "<80% verification OR >15% differences",
+        "critical": "<70% verification OR >20% differences"
+      }
+    },
+    "sections": [
+      {
+        "name": "summary",
+        "title": "RINGKASAN EKSEKUTIF",
+        "type": "summary_table",
+        "data_source": "executive_summary"
+      },
+      {
+        "name": "estate_details",
+        "title": "DETAIL PER ESTATE",
+        "type": "estate_tables",
+        "data_source": "estate_results"
+      },
+      {
+        "name": "employee_details",
+        "title": "DETAIL KINERJA KARYAWAN",
+        "type": "employee_table",
+        "data_source": "employee_details"
+      }
+    ],
+    "explanations": [
+      {
+        "title": "PENJELASAN LAPORAN KINERJA",
+        "items": [
+          "<b>KERANI:</b> % transaksi yang sudah diverifikasi (ada duplikat TRANSNO dengan P1/P5) dari total yang ia buat. Angka dalam kurung menunjukkan jumlah transaksi terverifikasi.",
+          "<b>MANDOR/ASISTEN:</b> % transaksi yang ia buat per total Kerani di divisi tersebut (warna hijau).",
+          "<b>SUMMARY:</b> % verifikasi keseluruhan divisi (Total Transaksi Kerani Terverifikasi / Total Transaksi Kerani). Angka dalam kurung menunjukkan jumlah transaksi Kerani yang terverifikasi.",
+          "<b>GRAND TOTAL:</b> % verifikasi keseluruhan untuk semua estate yang dipilih (Total Semua Transaksi Kerani Terverifikasi / Total Semua Transaksi Kerani).",
+          "<b>Jumlah Transaksi:</b> Untuk SUMMARY dan GRAND TOTAL hanya menghitung transaksi Kerani (tanpa Asisten/Mandor)."
+        ]
+      },
+      {
+        "title": "⚠️ KETERANGAN PERBEDAAN INPUT (INDIKATOR KINERJA)",
+        "items": [
+          "<b>Metodologi:</b> Untuk setiap transaksi KERANI yang terverifikasi, sistem menghitung jumlah field yang berbeda antara input KERANI dan input MANDOR/ASISTEN.",
+          "<b>Field yang dibandingkan:</b> RIPEBCH, UNRIPEBCH, BLACKBCH, ROTTENBCH, LONGSTALKBCH, RATDMGBCH, LOOSEFRUIT.",
+          "<b>Format:</b> 'X perbedaan (Y%)' dimana Y% = (X perbedaan / Jumlah transaksi terverifikasi) × 100.",
+          "<b>Interpretasi:</b> Semakin banyak perbedaan, semakin besar kemungkinan ada ketidakakuratan dalam input data."
+        ]
+      }
+    ]
+  },
+  "output": {
+    "formats": ["PDF"],
+    "filename_pattern": "Laporan_Kinerja_Kerani_Mandor_Asisten_{PERIOD}_{TIMESTAMP}.pdf",
+    "output_directory": "reports"
+  },
+  "footer": {
+    "template": "📅 Laporan dibuat pada: {DATETIME} | 🔄 Sistem Analisis Real-time | 🏢 PT. Rebinmas Jaya",
+    "font_size": 8,
+    "text_color": "#718096"
+  }
+}

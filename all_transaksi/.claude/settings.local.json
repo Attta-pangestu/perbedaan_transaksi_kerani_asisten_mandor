@@ -12,7 +12,12 @@
       "mcp__obsidian-mcp-tools__append_to_active_file",
       "Bash(find:*)",
       "Bash(tree:*)",
-      "Bash(touch:*)"
+      "Bash(touch:*)",
+      "Bash(findstr:*)",
+      "Read(//d/Gawean Rebinmas/Monitoring Database/**)",
+      "Bash(pip install:*)",
+      "Bash(curl:*)",
+      "mcp__obsidian-mcp-tools__list_vault_files"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,29 @@
+# GUI Framework
+tkinter
+
+# Date handling
+tkcalendar
+
+# Data processing
+pandas
+
+# PDF generation
+reportlab
+
+# Database (Firebird connectivity - using isql.exe as in original)
+# Note: No Python Firebird driver needed since using isql.exe command line
+
+# Configuration handling
+json5
+
+# Logging (built-in)
+# logging
+
+# Threading (built-in)
+# threading
+
+# File operations (built-in)
+# os, pathlib
+
+# Date/datetime (built-in)
+# datetime, date

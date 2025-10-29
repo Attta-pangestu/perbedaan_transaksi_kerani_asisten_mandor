@@ -1,0 +1,77 @@
+{
+    "name": "template_laporan_verifikasi",
+    "version": "1.0.0",
+    "description": "Template untuk laporan verifikasi FFB Scanner dengan analisis per divisi",
+    "author": "Generated for Modular FFB Analysis System",
+    "created_date": "2024-01-01",
+    "template_class": "TemplateVerifikasiFFB",
+    
+    "database_config": {
+        "default_query_timeout": 30,
+        "batch_size": 1000
+    },
+    
+    "gui_config": {
+        "window_title": "FFB Scanner Verification Analysis",
+        "default_date_range_days": 30,
+        "division_selection": {
+            "allow_multiple": true,
+            "default_all_selected": true
+        },
+        "additional_filters": {
+            "show_transno_filter": true,
+            "show_status_filter": true
+        }
+    },
+    
+    "business_logic_config": {
+        "verification_rules": {
+            "check_duplicate_transno": true,
+            "check_missing_data": true,
+            "check_data_consistency": true
+        },
+        "analysis_options": {
+            "group_by_division": true,
+            "calculate_statistics": true,
+            "identify_anomalies": true
+        }
+    },
+    
+    "report_config": {
+        "excel_format": {
+            "include_summary_sheet": true,
+            "include_detail_sheet": true,
+            "include_charts": true,
+            "auto_fit_columns": true
+        },
+        "pdf_format": {
+            "include_header": true,
+            "include_footer": true,
+            "page_orientation": "landscape",
+            "font_size": 10
+        },
+        "filename_format": "Laporan_Verifikasi_FFB_{division}_{start_date}_{end_date}",
+        "output_formats": ["excel", "pdf"]
+    },
+    
+    "sql_queries": {
+        "main_query": "SELECT TRANSNO, DIVISI, TANGGAL, NOPOL, SUPIR, KEBUN, BLOK, JENIS_TBS, BERAT_BRUTO, BERAT_TARA, BERAT_NETTO, STATUS_VERIFIKASI FROM TRANSAKSI_FFB WHERE TANGGAL BETWEEN ? AND ? {division_filter} ORDER BY DIVISI, TANGGAL, TRANSNO",
+        "division_query": "SELECT DISTINCT DIVISI FROM TRANSAKSI_FFB ORDER BY DIVISI",
+        "summary_query": "SELECT DIVISI, COUNT(*) as TOTAL_TRANSAKSI, SUM(BERAT_NETTO) as TOTAL_BERAT FROM TRANSAKSI_FFB WHERE TANGGAL BETWEEN ? AND ? {division_filter} GROUP BY DIVISI"
+    },
+    
+    "validation_rules": {
+        "required_columns": ["TRANSNO", "DIVISI", "TANGGAL", "BERAT_NETTO"],
+        "data_types": {
+            "TRANSNO": "string",
+            "DIVISI": "string", 
+            "TANGGAL": "datetime",
+            "BERAT_NETTO": "numeric"
+        },
+        "business_rules": {
+            "min_weight": 0,
+            "max_weight": 50000,
+            "valid_divisions": []
+        }
+    }
+}

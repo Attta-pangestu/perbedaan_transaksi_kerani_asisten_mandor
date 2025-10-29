@@ -1,0 +1,237 @@
+{
+  "template_info": {
+    "name": "transaction_verification",
+    "version": "1.0.0",
+    "description": "Template verifikasi transaksi FFB berdasarkan logika dari gui_multi_estate_ffb_analysis.py",
+    "author": "Extracted from GUI Application",
+    "created_date": "2025-01-28",
+    "required_tables": ["EMP", "FFBSCANNERDATA"],
+    "database_type": "firebird"
+  },
+  
+  "queries": {
+    "employee_mapping": {
+      "description": "Query untuk mendapatkan mapping employee ID ke nama",
+      "sql": "SELECT EMPID, EMPNAME FROM EMP WHERE EMPID IS NOT NULL AND EMPNAME IS NOT NULL",
+      "result_type": "mapping",
+      "key_field": "EMPID",
+      "value_field": "EMPNAME"
+    },
+    
+    "division_tables": {
+      "description": "Query untuk mendapatkan daftar tabel FFBSCANNERDATA berdasarkan rentang tanggal",
+      "sql_template": "SELECT RDB$RELATION_NAME FROM RDB$RELATIONS WHERE RDB$RELATION_NAME LIKE 'FFBSCANNERDATA%' AND RDB$RELATION_NAME >= 'FFBSCANNERDATA{start_date}' AND RDB$RELATION_NAME <= 'FFBSCANNERDATA{end_date}' ORDER BY RDB$RELATION_NAME",
+      "parameters": ["start_date", "end_date"],
+      "result_type": "list",
+      "field": "RDB$RELATION_NAME"
+    },
+    
+    "divisions_from_tables": {
+      "description": "Query untuk mendapatkan daftar divisi dari tabel-tabel FFBSCANNERDATA",
+      "sql_template": "SELECT DISTINCT DIVISION FROM ({table_unions}) ORDER BY DIVISION",
+      "union_template": "SELECT DISTINCT DIVISION FROM {table_name}",
+      "result_type": "list",
+      "field": "DIVISION"
+    },
+    
+    "ffb_granular_data": {
+      "description": "Query untuk mendapatkan data granular FFB dari tabel tertentu",
+      "sql_template": "SELECT TRANSNO, EMPID, RECORDTAG, RIPEBCH, UNRIPEBCH, BLACKBCH, ROTTENBCH, LONGSTALKBCH, RATDMGBCH, LOOSEFRUIT, TRANSSTATUS FROM {table_name} WHERE DIVISION = ? ORDER BY TRANSNO, EMPID, RECORDTAG",
+      "parameters": ["division"],
+      "result_type": "dataframe",
+      "indexed_by": ["TRANSNO", "EMPID", "RECORDTAG"]
+    },
+    
+    "ffb_granular_data_with_filter": {
+      "description": "Query untuk mendapatkan data granular FFB dengan filter TRANSSTATUS",
+      "sql_template": "SELECT TRANSNO, EMPID, RECORDTAG, RIPEBCH, UNRIPEBCH, BLACKBCH, ROTTENBCH, LONGSTALKBCH, RATDMGBCH, LOOSEFRUIT, TRANSSTATUS FROM {table_name} WHERE DIVISION = ? AND TRANSSTATUS = ? ORDER BY TRANSNO, EMPID, RECORDTAG",
+      "parameters": ["division", "transstatus"],
+      "result_type": "dataframe",
+      "indexed_by": ["TRANSNO", "EMPID", "RECORDTAG"]
+    }
+  },
+  
+  "business_logic": {
+    "verification_process": {
+      "description": "Proses verifikasi transaksi berdasarkan logika asli",
+      "steps": [
+        {
+          "step": 1,
+          "name": "get_employee_mapping",
+          "description": "Dapatkan mapping employee ID ke nama",
+          "query": "employee_mapping"
+        },
+        {
+          "step": 2,
+          "name": "get_division_tables",
+          "description": "Dapatkan daftar tabel FFBSCANNERDATA berdasarkan rentang tanggal",
+          "query": "division_tables"
+        },
+        {
+          "step": 3,
+          "name": "get_divisions",
+          "description": "Dapatkan daftar divisi dari tabel-tabel yang ditemukan",
+          "query": "divisions_from_tables"
+        },
+        {
+          "step": 4,
+          "name": "analyze_divisions",
+          "description": "Analisis setiap divisi untuk verifikasi transaksi",
+          "process": "division_analysis"
+        }
+      ]
+    },
+    
+    "division_analysis": {
+      "description": "Analisis divisi untuk verifikasi transaksi",
+      "process": [
+        {
+          "step": 1,
+          "name": "get_ffb_data",
+          "description": "Ambil data FFB granular untuk divisi",
+          "query": "ffb_granular_data"
+        },
+        {
+          "step": 2,
+          "name": "handle_duplicates",
+          "description": "Identifikasi dan tangani duplikasi TRANSNO",
+          "logic": "duplicate_handling"
+        },
+        {
+          "step": 3,
+          "name": "calculate_kerani_data",
+          "description": "Hitung data kerani berdasarkan duplikasi dan perbedaan input",
+          "logic": "kerani_calculation"
+        },
+        {
+          "step": 4,
+          "name": "calculate_mandor_data", 
+          "description": "Hitung data mandor berdasarkan RECORDTAG P1",
+          "logic": "mandor_calculation"
+        },
+        {
+          "step": 5,
+          "name": "calculate_asisten_data",
+          "description": "Hitung data asisten berdasarkan RECORDTAG P5",
+          "logic": "asisten_calculation"
+        },
+        {
+          "step": 6,
+          "name": "calculate_verification_rates",
+          "description": "Hitung tingkat verifikasi dan perbedaan",
+          "logic": "verification_calculation"
+        }
+      ]
+    }
+  },
+  
+  "calculation_logic": {
+    "duplicate_handling": {
+      "description": "Logika untuk menangani duplikasi TRANSNO",
+      "rules": [
+        "Identifikasi TRANSNO yang memiliki lebih dari satu record",
+        "Untuk setiap duplikasi, bandingkan field-field yang ditentukan",
+        "Hitung perbedaan antara record duplikat"
+      ],
+      "comparison_fields": ["RIPEBCH", "UNRIPEBCH", "BLACKBCH", "ROTTENBCH", "LONGSTALKBCH", "RATDMGBCH", "LOOSEFRUIT"]
+    },
+    
+    "kerani_calculation": {
+      "description": "Logika perhitungan data kerani",
+      "rules": [
+        "Kerani data dihitung berdasarkan duplikasi TRANSNO",
+        "Untuk setiap employee yang memiliki duplikasi, hitung total perbedaan",
+        "Jika ada filter khusus (TRANSSTATUS 704 untuk bulan tertentu), terapkan filter tersebut"
+      ],
+      "special_filters": {
+        "month_5_filter": {
+          "condition": "month == 5",
+          "transstatus": "704",
+          "description": "Filter khusus untuk bulan Mei dengan TRANSSTATUS 704"
+        }
+      }
+    },
+    
+    "mandor_calculation": {
+      "description": "Logika perhitungan data mandor",
+      "rules": [
+        "Mandor data dihitung dari record dengan RECORDTAG = 'P1'",
+        "Group by EMPID untuk mendapatkan total per employee",
+        "Hitung sum dari semua comparison fields"
+      ],
+      "record_tag": "P1"
+    },
+    
+    "asisten_calculation": {
+      "description": "Logika perhitungan data asisten", 
+      "rules": [
+        "Asisten data dihitung dari record dengan RECORDTAG = 'P5'",
+        "Group by EMPID untuk mendapatkan total per employee",
+        "Hitung sum dari semua comparison fields"
+      ],
+      "record_tag": "P5"
+    },
+    
+    "verification_calculation": {
+      "description": "Logika perhitungan tingkat verifikasi",
+      "rules": [
+        "Hitung total kerani, mandor, dan asisten untuk setiap field",
+        "Bandingkan total kerani dengan mandor dan asisten",
+        "Hitung persentase perbedaan jika ada",
+        "Log perbedaan yang signifikan"
+      ],
+      "tolerance": {
+        "description": "Toleransi perbedaan yang dapat diterima",
+        "percentage": 0.01,
+        "absolute": 1
+      }
+    }
+  },
+  
+  "output_format": {
+    "division_result": {
+      "description": "Format output untuk hasil analisis divisi",
+      "structure": {
+        "division": "string",
+        "table_name": "string", 
+        "kerani_data": "dict",
+        "mandor_data": "dict",
+        "asisten_data": "dict",
+        "verification_rates": "dict",
+        "differences": "list",
+        "summary": "dict"
+      }
+    },
+    
+    "employee_data": {
+      "description": "Format data employee dalam hasil",
+      "structure": {
+        "employee_id": "string",
+        "employee_name": "string",
+        "totals": "dict",
+        "differences": "dict"
+      }
+    },
+    
+    "field_totals": {
+      "description": "Format total untuk setiap field",
+      "fields": ["RIPEBCH", "UNRIPEBCH", "BLACKBCH", "ROTTENBCH", "LONGSTALKBCH", "RATDMGBCH", "LOOSEFRUIT"]
+    }
+  },
+  
+  "configuration": {
+    "date_format": "YYYYMMDD",
+    "table_name_pattern": "FFBSCANNERDATA{date}",
+    "default_batch_size": 1000,
+    "max_retry_attempts": 3,
+    "connection_timeout": 30,
+    "query_timeout": 300
+  },
+  
+  "validation_rules": {
+    "required_fields": ["TRANSNO", "EMPID", "RECORDTAG", "DIVISION"],
+    "numeric_fields": ["RIPEBCH", "UNRIPEBCH", "BLACKBCH", "ROTTENBCH", "LONGSTALKBCH", "RATDMGBCH", "LOOSEFRUIT"],
+    "record_tags": ["PM", "P1", "P5"],
+    "min_records_per_division": 1
+  }
+}

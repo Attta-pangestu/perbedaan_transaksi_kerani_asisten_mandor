@@ -1,0 +1,1019 @@
+{% extends "index.html" %}
+
+{% block page_title %}Template Editor{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Template Properties -->
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="fas fa-cog me-2"></i>Template Properties</h5>
+                <button class="btn btn-sm btn-outline-secondary" onclick="resetForm()">
+                    <i class="fas fa-undo"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <form id="templateForm">
+                    <input type="hidden" id="templateId" value="">
+
+                    <div class="mb-3">
+                        <label for="templateName" class="form-label">Template Name *</label>
+                        <input type="text" class="form-control" id="templateName" required
+                               placeholder="Enter template name">
+                        <div class="invalid-feedback">
+                            Please provide a template name.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="templateDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="templateDescription" rows="3"
+                                  placeholder="Enter template description"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="templateCategory" class="form-label">Category</label>
+                        <select class="form-select" id="templateCategory">
+                            <option value="FFB_ANALYSIS">FFB Analysis</option>
+                            <option value="EMPLOYEE_PERFORMANCE">Employee Performance</option>
+                            <option value="DATA_QUALITY">Data Quality</option>
+                            <option value="SUMMARY">Summary</option>
+                            <option value="CUSTOM">Custom</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="templateType" class="form-label">Template Type</label>
+                        <select class="form-select" id="templateType">
+                            <option value="JASPER">Jasper Reports</option>
+                            <option value="HTML">HTML</option>
+                            <option value="EXCEL">Excel</option>
+                            <option value="CSV">CSV</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isPublic">
+                            <label class="form-check-label" for="isPublic">
+                                Make template public (visible to all users)
+                            </label>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h6><i class="fas fa-database me-2"></i>SQL Query</h6>
+                    <div class="mb-3">
+                        <label for="sqlQuery" class="form-label">SQL Query</label>
+                        <textarea class="form-control font-monospace" id="sqlQuery" rows="8"
+                                  placeholder="SELECT * FROM FFBSCANNERDATA09 WHERE ..."></textarea>
+                        <small class="form-text text-muted">
+                            Use parameter placeholders: $P{parameter_name}
+                        </small>
+                    </div>
+
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-outline-info btn-sm" onclick="validateSQL()">
+                            <i class="fas fa-check-circle me-1"></i>Validate SQL
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="previewSQL()">
+                            <i class="fas fa-eye me-1"></i>Preview Data
+                        </button>
+                    </div>
+
+                    <hr>
+
+                    <h6><i class="fas fa-sliders-h me-2"></i>Parameters</h6>
+                    <div id="parametersContainer">
+                        <!-- Parameters will be dynamically added here -->
+                    </div>
+                    <button type="button" class="btn btn-outline-primary btn-sm" onclick="addParameter()">
+                        <i class="fas fa-plus me-1"></i>Add Parameter
+                    </button>
+
+                    <hr>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-1"></i>Save Template
+                        </button>
+                        <button type="button" class="btn btn-outline-success" onclick="saveAndRun()">
+                            <i class="fas fa-play me-1"></i>Save & Run
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary" onclick="loadSampleTemplate()">
+                            <i class="fas fa-file-import me-1"></i>Load Sample
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template Editor -->
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="fas fa-file-code me-2"></i>
+                    <span id="editorTitle">Template Editor</span>
+                </h5>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-primary" onclick="formatCode()">
+                        <i class="fas fa-code me-1"></i>Format
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-info" onclick="togglePreview()">
+                        <i class="fas fa-eye me-1"></i>Preview
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="uploadJasper()">
+                        <i class="fas fa-upload me-1"></i>Upload .jrxml
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <!-- Monaco Editor Container -->
+                <div id="monacoEditor" class="monaco-container"></div>
+
+                <!-- Preview Container -->
+                <div id="previewContainer" class="monaco-container" style="display: none;">
+                    <iframe id="previewFrame" width="100%" height="100%" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Template Versions -->
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-history me-2"></i>Version History</h5>
+            </div>
+            <div class="card-body">
+                <div id="versionHistory">
+                    <!-- Version history will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Parameter Modal -->
+<div class="modal fade" id="parameterModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add/Edit Parameter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="parameterForm">
+                    <input type="hidden" id="parameterIndex">
+
+                    <div class="mb-3">
+                        <label for="paramName" class="form-label">Parameter Name *</label>
+                        <input type="text" class="form-control" id="paramName" required
+                               placeholder="e.g., START_DATE">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="paramType" class="form-label">Parameter Type *</label>
+                        <select class="form-select" id="paramType" required onchange="updateParameterUI()">
+                            <option value="">Select type</option>
+                            <option value="STRING">String</option>
+                            <option value="NUMBER">Number</option>
+                            <option value="DATE">Date</option>
+                            <option value="BOOLEAN">Boolean</option>
+                            <option value="LIST">List</option>
+                            <option value="ESTATE">Estate Selection</option>
+                            <option value="DATE_RANGE">Date Range</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="paramDisplayName" class="form-label">Display Name</label>
+                        <input type="text" class="form-control" id="paramDisplayName"
+                               placeholder="e.g., Start Date">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="paramDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="paramDescription" rows="2"
+                                  placeholder="Parameter description"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="paramDefaultValue" class="form-label">Default Value</label>
+                        <input type="text" class="form-control" id="paramDefaultValue"
+                               placeholder="Default value">
+                    </div>
+
+                    <div class="mb-3" id="paramOptionsContainer" style="display: none;">
+                        <label for="paramOptions" class="form-label">Options (for LIST type)</label>
+                        <textarea class="form-control" id="paramOptions" rows="3"
+                                  placeholder="Enter options, one per line"></textarea>
+                        <small class="form-text text-muted">Enter each option on a new line</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="paramRequired">
+                            <label class="form-check-label" for="paramRequired">
+                                Required parameter
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="saveParameter()">Save Parameter</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SQL Preview Modal -->
+<div class="modal fade" id="sqlPreviewModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">SQL Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <h6>Generated SQL:</h6>
+                    <pre id="previewSQL" class="bg-light p-3 rounded"></pre>
+                </div>
+                <div class="mb-3">
+                    <h6>Sample Data (first 10 rows):</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm" id="previewData">
+                            <thead>
+                                <tr id="previewHeaders"></tr>
+                            </thead>
+                            <tbody id="previewRows"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let monacoEditor;
+let templateData = {
+    id: null,
+    name: '',
+    description: '',
+    category: 'FFB_ANALYSIS',
+    template_type: 'JASPER',
+    sql_query: '',
+    parameters: [],
+    is_public: false
+};
+
+// Initialize Monaco Editor
+function initializeMonacoEditor() {
+    if (!window.monacoLoaded) {
+        // Wait for Monaco to load
+        setTimeout(initializeMonacoEditor, 100);
+        return;
+    }
+
+    // Create editor
+    monacoEditor = monaco.editor.create(document.getElementById('monacoEditor'), {
+        value: getDefaultTemplate(),
+        language: 'xml',
+        theme: 'vs',
+        automaticLayout: true,
+        minimap: { enabled: false },
+        scrollBeyondLastLine: false,
+        wordWrap: 'on',
+        folding: true,
+        lineNumbers: 'on',
+        renderWhitespace: 'selection',
+        suggestOnTriggerCharacters: true,
+        acceptSuggestionOnEnter: 'on',
+        tabSize: 2,
+        insertSpaces: true
+    });
+
+    // Add custom language features for Jasper XML
+    monaco.languages.register({ id: 'jasper' });
+
+    // Setup editor change handler
+    monacoEditor.onDidChangeModelContent(() => {
+        // Auto-save draft
+        localStorage.setItem('template_draft', monacoEditor.getValue());
+    });
+}
+
+function getDefaultTemplate() {
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+              http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="FFB_Analysis" pageWidth="842" pageHeight="595"
+              orientation="Portrait" columnWidth="802" leftMargin="20"
+              rightMargin="20" topMargin="20" bottomMargin="20">
+
+    <parameter name="REPORT_TITLE" class="java.lang.String"/>
+    <parameter name="START_DATE" class="java.lang.String"/>
+    <parameter name="END_DATE" class="java.lang.String"/>
+    <parameter name="ESTATES" class="java.lang.String"/>
+
+    <field name="TRANSNO" class="java.lang.String"/>
+    <field name="DIVNAME" class="java.lang.String"/>
+    <field name="EMPNAME" class="java.lang.String"/>
+    <field name="RECORDTAG" class="java.lang.String"/>
+    <field name="TRANSDATE" class="java.lang.String"/>
+    <field name="AFD" class="java.lang.String"/>
+    <field name="BLOCK" class="java.lang.String"/>
+    <field name="TREECOUNT" class="java.lang.Integer"/>
+    <field name="BUNCHCOUNT" class="java.lang.Integer"/>
+    <field name="WEIGHT" class="java.lang.Double"/>
+
+    <title>
+        <band height="100">
+            <staticText>
+                <reportElement x="0" y="0" width="802" height="30"
+                             forecolor="#2E4053" backcolor="#FFFFFF"/>
+                <textElement textAlignment="Center" fontName="Arial"
+                             fontSize="18" isBold="true"/>
+                <text><![CDATA[FFB SCANNER DATA ANALYSIS]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="0" y="40" width="802" height="20"/>
+                <textElement textAlignment="Center" fontName="Arial" fontSize="12"/>
+                <textFieldExpression><![CDATA[$P{REPORT_TITLE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="60" width="401" height="15"/>
+                <textElement fontName="Arial" fontSize="10"/>
+                <textFieldExpression><![CDATA["Period: " + $P{START_DATE} + " to " + $P{END_DATE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="401" y="60" width="401" height="15"/>
+                <textElement textAlignment="Right" fontName="Arial" fontSize="10"/>
+                <textFieldExpression><![CDATA["Estates: " + $P{ESTATES}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="20">
+            <staticText>
+                <reportElement x="0" y="0" width="80" height="20"
+                             forecolor="white" backcolor="#2E4053"/>
+                <textElement textAlignment="Center" fontName="Arial"
+                             fontSize="10" isBold="true"/>
+                <text><![CDATA[TRANSNO]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="80" y="0" width="100" height="20"
+                             forecolor="white" backcolor="#2E4053"/>
+                <textElement textAlignment="Center" fontName="Arial"
+                             fontSize="10" isBold="true"/>
+                <text><![CDATA[ESTATE]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="180" y="0" width="100" height="20"
+                             forecolor="white" backcolor="#2E4053"/>
+                <textElement textAlignment="Center" fontName="Arial"
+                             fontSize="10" isBold="true"/>
+                <text><![CDATA[EMPLOYEE]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="280" y="0" width="60" height="20"
+                             forecolor="white" backcolor="#2E4053"/>
+                <textElement textAlignment="Center" fontName="Arial"
+                             fontSize="10" isBold="true"/>
+                <text><![CDATA[TYPE]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="340" y="0" width="60" height="20"
+                             forecolor="white" backcolor="#2E4053"/>
+                <textElement textAlignment="Center" fontName="Arial"
+                             fontSize="10" isBold="true"/>
+                <text><![CDATA[AFD]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="400" y="0" width="60" height="20"
+                             forecolor="white" backcolor="#2E4053"/>
+                <textElement textAlignment="Center" fontName="Arial"
+                             fontSize="10" isBold="true"/>
+                <text><![CDATA[BLOCK]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="460" y="0" width="60" height="20"
+                             forecolor="white" backcolor="#2E4053"/>
+                <textElement textAlignment="Center" fontName="Arial"
+                             fontSize="10" isBold="true"/>
+                <text><![CDATA[TREES]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="520" y="0" width="60" height="20"
+                             forecolor="white" backcolor="#2E4053"/>
+                <textElement textAlignment="Center" fontName="Arial"
+                             fontSize="10" isBold="true"/>
+                <text><![CDATA[BUNCHES]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="580" y="0" width="80" height="20"
+                             forecolor="white" backcolor="#2E4053"/>
+                <textElement textAlignment="Center" fontName="Arial"
+                             fontSize="10" isBold="true"/>
+                <text><![CDATA[WEIGHT (KG)]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="660" y="0" width="80" height="20"
+                             forecolor="white" backcolor="#2E4053"/>
+                <textElement textAlignment="Center" fontName="Arial"
+                             fontSize="10" isBold="true"/>
+                <text><![CDATA[DATE]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="740" y="0" width="62" height="20"
+                             forecolor="white" backcolor="#2E4053"/>
+                <textElement textAlignment="Center" fontName="Arial"
+                             fontSize="10" isBold="true"/>
+                <text><![CDATA[TBS]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="15">
+            <textField>
+                <reportElement x="0" y="0" width="80" height="15"/>
+                <textElement fontName="Arial" fontSize="8"/>
+                <textFieldExpression><![CDATA[$F{TRANSNO}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="80" y="0" width="100" height="15"/>
+                <textElement fontName="Arial" fontSize="8"/>
+                <textFieldExpression><![CDATA[$F{DIVNAME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="180" y="0" width="100" height="15"/>
+                <textElement fontName="Arial" fontSize="8"/>
+                <textFieldExpression><![CDATA[$F{EMPNAME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="280" y="0" width="60" height="15"/>
+                <textElement fontName="Arial" fontSize="8"/>
+                <textFieldExpression><![CDATA[$F{RECORDTAG}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="340" y="0" width="60" height="15"/>
+                <textElement fontName="Arial" fontSize="8"/>
+                <textFieldExpression><![CDATA[$F{AFD}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="400" y="0" width="60" height="15"/>
+                <textElement fontName="Arial" fontSize="8"/>
+                <textFieldExpression><![CDATA[$F{BLOCK}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="460" y="0" width="60" height="15"/>
+                <textElement textAlignment="Right" fontName="Arial" fontSize="8"/>
+                <textFieldExpression><![CDATA[$F{TREECOUNT}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="520" y="0" width="60" height="15"/>
+                <textElement textAlignment="Right" fontName="Arial" fontSize="8"/>
+                <textFieldExpression><![CDATA[$F{BUNCHCOUNT}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="580" y="0" width="80" height="15"/>
+                <textElement textAlignment="Right" fontName="Arial" fontSize="8"/>
+                <textFieldExpression><![CDATA[$F{WEIGHT}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="660" y="0" width="80" height="15"/>
+                <textElement fontName="Arial" fontSize="8"/>
+                <textFieldExpression><![CDATA[$F{TRANSDATE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="740" y="0" width="62" height="15"/>
+                <textElement textAlignment="Right" fontName="Arial" fontSize="8"/>
+                <textFieldExpression><![CDATA[$F{TBS}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <summary>
+        <band height="30">
+            <textField>
+                <reportElement x="0" y="10" width="200" height="15"/>
+                <textElement fontName="Arial" fontSize="10" isBold="true"/>
+                <textFieldExpression><![CDATA["Total Records: " + $V{REPORT_COUNT}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="500" y="10" width="150" height="15"/>
+                <textElement textAlignment="Right" fontName="Arial" fontSize="8"/>
+                <textFieldExpression><![CDATA["Generated: " + new Date()]]></textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+
+</jasperReport>`;
+}
+
+// Form handling
+document.getElementById('templateForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    saveTemplate();
+});
+
+function saveTemplate() {
+    if (!validateTemplateForm()) {
+        return;
+    }
+
+    // Collect form data
+    templateData = {
+        id: document.getElementById('templateId').value || null,
+        name: document.getElementById('templateName').value,
+        description: document.getElementById('templateDescription').value,
+        category: document.getElementById('templateCategory').value,
+        template_type: document.getElementById('templateType').value,
+        sql_query: document.getElementById('sqlQuery').value,
+        template_content: monacoEditor.getValue(),
+        parameters: templateData.parameters,
+        is_public: document.getElementById('isPublic').checked
+    };
+
+    showLoading();
+
+    const url = templateData.id ? `/api/templates/${templateData.id}` : '/api/templates';
+    const method = templateData.id ? 'PUT' : 'POST';
+
+    apiRequest(url, {
+        method: method,
+        body: JSON.stringify(templateData)
+    }).then(data => {
+        hideLoading();
+        showToast('Template saved successfully!', 'success');
+
+        // Update template ID for subsequent saves
+        document.getElementById('templateId').value = data.id;
+
+        // Load version history
+        loadVersionHistory(data.id);
+    }).catch(error => {
+        hideLoading();
+        console.error('Error saving template:', error);
+    });
+}
+
+function validateTemplateForm() {
+    const form = document.getElementById('templateForm');
+    const name = document.getElementById('templateName').value.trim();
+
+    if (!name) {
+        document.getElementById('templateName').classList.add('is-invalid');
+        return false;
+    }
+
+    document.getElementById('templateName').classList.remove('is-invalid');
+    return true;
+}
+
+function resetForm() {
+    document.getElementById('templateForm').reset();
+    document.getElementById('templateId').value = '';
+    monacoEditor.setValue(getDefaultTemplate());
+    templateData.parameters = [];
+    renderParameters();
+}
+
+// Parameter management
+function addParameter() {
+    templateData.parameters.push({
+        name: '',
+        type: 'STRING',
+        display_name: '',
+        description: '',
+        default_value: '',
+        is_required: false,
+        options: []
+    });
+    renderParameters();
+}
+
+function editParameter(index) {
+    const param = templateData.parameters[index];
+    document.getElementById('parameterIndex').value = index;
+    document.getElementById('paramName').value = param.name;
+    document.getElementById('paramType').value = param.type;
+    document.getElementById('paramDisplayName').value = param.display_name;
+    document.getElementById('paramDescription').value = param.description;
+    document.getElementById('paramDefaultValue').value = param.default_value;
+    document.getElementById('paramRequired').checked = param.is_required;
+    document.getElementById('paramOptions').value = param.options.join('\n');
+
+    updateParameterUI();
+
+    const modal = new bootstrap.Modal(document.getElementById('parameterModal'));
+    modal.show();
+}
+
+function saveParameter() {
+    const index = document.getElementById('parameterIndex').value;
+    const param = {
+        name: document.getElementById('paramName').value,
+        type: document.getElementById('paramType').value,
+        display_name: document.getElementById('paramDisplayName').value,
+        description: document.getElementById('paramDescription').value,
+        default_value: document.getElementById('paramDefaultValue').value,
+        is_required: document.getElementById('paramRequired').checked,
+        options: document.getElementById('paramOptions').value.split('\n').filter(o => o.trim())
+    };
+
+    if (index === '') {
+        templateData.parameters.push(param);
+    } else {
+        templateData.parameters[index] = param;
+    }
+
+    renderParameters();
+
+    const modal = bootstrap.Modal.getInstance(document.getElementById('parameterModal'));
+    modal.hide();
+}
+
+function deleteParameter(index) {
+    templateData.parameters.splice(index, 1);
+    renderParameters();
+}
+
+function renderParameters() {
+    const container = document.getElementById('parametersContainer');
+    container.innerHTML = '';
+
+    templateData.parameters.forEach((param, index) => {
+        const paramHtml = `
+            <div class="card mb-2">
+                <div class="card-body py-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>${param.display_name || param.name}</strong>
+                            <span class="badge bg-secondary ms-2">${param.type}</span>
+                            ${param.is_required ? '<span class="badge bg-warning ms-1">Required</span>' : ''}
+                        </div>
+                        <div>
+                            <button class="btn btn-sm btn-outline-primary" onclick="editParameter(${index})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="deleteParameter(${index})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    ${param.description ? `<small class="text-muted">${param.description}</small>` : ''}
+                </div>
+            </div>
+        `;
+        container.innerHTML += paramHtml;
+    });
+}
+
+function updateParameterUI() {
+    const type = document.getElementById('paramType').value;
+    const optionsContainer = document.getElementById('paramOptionsContainer');
+
+    if (type === 'LIST') {
+        optionsContainer.style.display = 'block';
+    } else {
+        optionsContainer.style.display = 'none';
+    }
+}
+
+// SQL functions
+function validateSQL() {
+    const sqlQuery = document.getElementById('sqlQuery').value;
+
+    if (!sqlQuery.trim()) {
+        showToast('Please enter an SQL query', 'warning');
+        return;
+    }
+
+    showLoading();
+
+    apiRequest('/api/templates/validate-sql', {
+        method: 'POST',
+        body: JSON.stringify({ sql_query: sqlQuery })
+    }).then(data => {
+        hideLoading();
+        if (data.valid) {
+            showToast('SQL query is valid!', 'success');
+        } else {
+            showToast(`SQL validation failed: ${data.errors.join(', ')}`, 'danger');
+        }
+    }).catch(error => {
+        hideLoading();
+        console.error('Error validating SQL:', error);
+    });
+}
+
+function previewSQL() {
+    const sqlQuery = document.getElementById('sqlQuery').value;
+
+    if (!sqlQuery.trim()) {
+        showToast('Please enter an SQL query', 'warning');
+        return;
+    }
+
+    showLoading();
+
+    apiRequest('/api/templates/preview-sql', {
+        method: 'POST',
+        body: JSON.stringify({
+            sql_query: sqlQuery,
+            parameters: templateData.parameters
+        })
+    }).then(data => {
+        hideLoading();
+
+        document.getElementById('previewSQL').textContent = data.generated_sql;
+
+        const headers = document.getElementById('previewHeaders');
+        const rows = document.getElementById('previewRows');
+
+        headers.innerHTML = '';
+        rows.innerHTML = '';
+
+        if (data.data.length > 0) {
+            // Create headers
+            Object.keys(data.data[0]).forEach(key => {
+                headers.innerHTML += `<th>${key}</th>`;
+            });
+
+            // Create rows
+            data.data.slice(0, 10).forEach(row => {
+                const rowHtml = Object.values(row).map(value => `<td>${value}</td>`).join('');
+                rows.innerHTML += `<tr>${rowHtml}</tr>`;
+            });
+        } else {
+            rows.innerHTML = '<tr><td colspan="100%" class="text-center">No data returned</td></tr>';
+        }
+
+        const modal = new bootstrap.Modal(document.getElementById('sqlPreviewModal'));
+        modal.show();
+    }).catch(error => {
+        hideLoading();
+        console.error('Error previewing SQL:', error);
+    });
+}
+
+// Editor functions
+function formatCode() {
+    if (monacoEditor) {
+        monacoEditor.getAction('editor.action.formatDocument').run();
+    }
+}
+
+function togglePreview() {
+    const editorContainer = document.getElementById('monacoEditor');
+    const previewContainer = document.getElementById('previewContainer');
+
+    if (editorContainer.style.display === 'none') {
+        editorContainer.style.display = 'block';
+        previewContainer.style.display = 'none';
+    } else {
+        editorContainer.style.display = 'none';
+        previewContainer.style.display = 'block';
+
+        // Generate preview HTML
+        const templateContent = monacoEditor.getValue();
+        const previewHtml = generatePreviewHTML(templateContent);
+
+        document.getElementById('previewFrame').srcdoc = previewHtml;
+    }
+}
+
+function generatePreviewHTML(xmlContent) {
+    // This is a simple HTML preview generator
+    // In a real implementation, you would use Jasper Reports engine
+    return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            .header { background: #2E4053; color: white; padding: 20px; text-align: center; }
+            .content { padding: 20px; }
+            table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+            th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+            th { background-color: #f2f2f2; }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>FFB SCANNER DATA ANALYSIS</h1>
+            <p>Report Preview</p>
+        </div>
+        <div class="content">
+            <p>This is a preview of your Jasper Report template.</p>
+            <p>Actual rendering requires Jasper Reports engine.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>TRANSNO</th>
+                        <th>ESTATE</th>
+                        <th>EMPLOYEE</th>
+                        <th>TYPE</th>
+                        <th>DATE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sample Data</td>
+                        <td>PGE 1A</td>
+                        <td>John Doe</td>
+                        <td>PM</td>
+                        <td>2025-09-01</td>
+                    </tr>
+                    <tr>
+                        <td>Sample Data</td>
+                        <td>PGE 1A</td>
+                        <td>Jane Smith</td>
+                        <td>P1</td>
+                        <td>2025-09-01</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+    </html>`;
+}
+
+function uploadJasper() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.jrxml,.xml';
+    input.onchange = function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                monacoEditor.setValue(e.target.result);
+                showToast('Jasper template loaded successfully!', 'success');
+            };
+            reader.readAsText(file);
+        }
+    };
+    input.click();
+}
+
+function loadSampleTemplate() {
+    monacoEditor.setValue(getDefaultTemplate());
+    document.getElementById('templateName').value = 'FFB Analysis Report';
+    document.getElementById('templateDescription').value = 'Standard FFB transaction analysis report';
+    document.getElementById('templateCategory').value = 'FFB_ANALYSIS';
+    showToast('Sample template loaded!', 'info');
+}
+
+function saveAndRun() {
+    saveTemplate().then(() => {
+        if (templateData.id) {
+            // Show run modal with parameters
+            showRunModal();
+        }
+    });
+}
+
+function showRunModal() {
+    // This would open a modal for parameter input and report generation
+    showLoading();
+
+    apiRequest(`/api/templates/${templateData.id}/run`, {
+        method: 'POST',
+        body: JSON.stringify({
+            parameters: {}
+        })
+    }).then(data => {
+        hideLoading();
+        showToast('Report generation started!', 'info');
+    }).catch(error => {
+        hideLoading();
+        console.error('Error running template:', error);
+    });
+}
+
+function loadVersionHistory(templateId) {
+    apiRequest(`/api/templates/${templateId}/versions`)
+        .then(data => {
+            const container = document.getElementById('versionHistory');
+            container.innerHTML = '';
+
+            data.versions.forEach(version => {
+                const versionHtml = `
+                    <div class="card mb-2">
+                        <div class="card-body py-2">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>Version ${version.version_number}</strong>
+                                    <small class="text-muted ms-2">by ${version.created_by}</small>
+                                    <br>
+                                    <small class="text-muted">${version.created_at}</small>
+                                    ${version.changelog ? `<br><small>${version.changelog}</small>` : ''}
+                                </div>
+                                <div>
+                                    ${version.is_active ?
+                                        '<span class="badge bg-success">Active</span>' :
+                                        `<button class="btn btn-sm btn-outline-primary" onclick="restoreVersion(${version.id})">Restore</button>`
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += versionHtml;
+            });
+        })
+        .catch(error => {
+            console.error('Error loading version history:', error);
+        });
+}
+
+function restoreVersion(versionId) {
+    if (confirm('Are you sure you want to restore this version? This will create a new version.')) {
+        showLoading();
+
+        apiRequest(`/api/templates/${templateData.id}/versions/${versionId}/restore`, {
+            method: 'POST'
+        }).then(data => {
+            hideLoading();
+            showToast('Version restored successfully!', 'success');
+            loadVersionHistory(templateData.id);
+        }).catch(error => {
+            hideLoading();
+            console.error('Error restoring version:', error);
+        });
+    }
+}
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', function() {
+    initializeMonacoEditor();
+
+    // Load draft from localStorage if exists
+    const draft = localStorage.getItem('template_draft');
+    if (draft && monacoEditor) {
+        monacoEditor.setValue(draft);
+    }
+
+    // Parse URL parameters for edit mode
+    const urlParams = new URLSearchParams(window.location.search);
+    const templateId = urlParams.get('id');
+    const action = urlParams.get('action');
+
+    if (templateId && action === 'edit') {
+        loadTemplate(templateId);
+    }
+});
+
+function loadTemplate(templateId) {
+    showLoading();
+
+    apiRequest(`/api/templates/${templateId}`)
+        .then(data => {
+            hideLoading();
+
+            // Populate form
+            document.getElementById('templateId').value = data.id;
+            document.getElementById('templateName').value = data.name;
+            document.getElementById('templateDescription').value = data.description;
+            document.getElementById('templateCategory').value = data.category;
+            document.getElementById('templateType').value = data.template_type;
+            document.getElementById('sqlQuery').value = data.sql_query;
+            document.getElementById('isPublic').checked = data.is_public;
+
+            if (data.template_content && monacoEditor) {
+                monacoEditor.setValue(data.template_content);
+            }
+
+            templateData.parameters = data.parameters || [];
+            renderParameters();
+
+            loadVersionHistory(templateId);
+
+            document.getElementById('editorTitle').textContent = `Edit Template: ${data.name}`;
+        })
+        .catch(error => {
+            hideLoading();
+            console.error('Error loading template:', error);
+            showToast('Error loading template', 'danger');
+        });
+}
+</script>
+{% endblock %}
