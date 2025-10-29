@@ -1,0 +1,41 @@
+{
+  "system": {
+    "name": "Modular Report System",
+    "version": "1.0.0",
+    "description": "Sistem laporan modular untuk analisis data estate"
+  },
+  "database": {
+    "type": "firebird",
+    "connection_timeout": 30,
+    "query_timeout": 300,
+    "max_retries": 3
+  },
+  "reports": {
+    "output_directory": "./reports",
+    "temp_directory": "./temp",
+    "max_concurrent_generations": 2,
+    "default_formats": ["pdf", "excel"],
+    "auto_cleanup_temp": true
+  },
+  "ui": {
+    "theme": "default",
+    "window_size": {
+      "width": 1200,
+      "height": 800
+    },
+    "auto_save_preferences": true,
+    "show_progress_details": true
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "./logs/modular_report_system.log",
+    "max_file_size": "10MB",
+    "backup_count": 5,
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  },
+  "templates": {
+    "directory": "./templates",
+    "auto_reload": true,
+    "validation_strict": true
+  }
+}

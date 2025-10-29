@@ -1,0 +1,36 @@
+# FFB Analysis System Requirements
+
+## Core Dependencies
+tkinter  # GUI framework (included with Python)
+pandas>=2.0.0  # Data manipulation
+reportlab>=4.0.0  # PDF generation
+tkcalendar  # Date selection widget
+Pillow>=8.0.0  # Image processing for logo
+firebird-driver  # Firebird database connectivity (if available)
+
+## Development Dependencies (optional)
+pytest>=6.0.0  # Unit testing
+black  # Code formatting
+flake8  # Linting
+mypy  # Static type checking
+
+## Python Version
+Python 3.8 or higher (recommended Python 3.10+)
+
+## Platform Requirements
+Windows OS (required for isql.exe compatibility)
+Firebird database server
+Minimum 4GB RAM for multi-estate processing
+
+## Installation Commands
+
+```bash
+# Install basic requirements
+pip install pandas reportlab tkcalendar Pillow
+
+# Install development dependencies
+pip install pytest black flake8 mypy
+
+# Install firebird driver (if needed)
+pip install firebird-driver
+```

@@ -1,0 +1,253 @@
+{
+  "application": {
+    "name": "FFB Scanner Analysis System",
+    "version": "2.0",
+    "description": "Multi-Estate FFB Scanner Transaction Analysis System",
+    "author": "Claude AI Assistant",
+    "debug": false,
+    "auto_save": true,
+    "backup_enabled": true,
+    "max_backup_files": 10
+  },
+  "database": {
+    "type": "firebird",
+    "connection_timeout": 30,
+    "query_timeout": 300,
+    "auto_detect_firebird": true,
+    "default_encoding": "UTF8",
+    "connection_pool_size": 5,
+    "retry_attempts": 3,
+    "retry_delay": 1000
+  },
+  "estates": {
+    "PGE 1A": {
+      "name": "PGE 1A",
+      "database_path": "",
+      "description": "Palm Golden Estate 1A",
+      "active": true,
+      "priority": 1
+    },
+    "PGE 1B": {
+      "name": "PGE 1B",
+      "database_path": "",
+      "description": "Palm Golden Estate 1B",
+      "active": true,
+      "priority": 2
+    },
+    "PGE 2A": {
+      "name": "PGE 2A",
+      "database_path": "",
+      "description": "Palm Golden Estate 2A",
+      "active": true,
+      "priority": 3
+    },
+    "PGE 2B": {
+      "name": "PGE 2B",
+      "database_path": "",
+      "description": "Palm Golden Estate 2B",
+      "active": true,
+      "priority": 4
+    },
+    "IJL": {
+      "name": "IJL",
+      "database_path": "",
+      "description": "Indo Jaya Lestari",
+      "active": true,
+      "priority": 5
+    },
+    "DME": {
+      "name": "DME",
+      "database_path": "",
+      "description": "Dharma Multi Ekspor",
+      "active": true,
+      "priority": 6
+    },
+    "Are B2": {
+      "name": "Are B2",
+      "database_path": "",
+      "description": "Are B2 Estate",
+      "active": true,
+      "priority": 7
+    },
+    "B1": {
+      "name": "B1",
+      "database_path": "",
+      "description": "B1 Estate",
+      "active": true,
+      "priority": 8
+    },
+    "A": {
+      "name": "A",
+      "database_path": "",
+      "description": "A Estate",
+      "active": true,
+      "priority": 9
+    },
+    "C": {
+      "name": "C",
+      "database_path": "",
+      "description": "C Estate",
+      "active": true,
+      "priority": 10
+    }
+  },
+  "analysis": {
+    "default_date_range": "current_month",
+    "max_date_range_days": 365,
+    "cache_enabled": true,
+    "cache_duration_hours": 24,
+    "parallel_processing": true,
+    "max_worker_threads": 4,
+    "batch_size": 1000,
+    "status_704_filter": {
+      "enabled": true,
+      "target_month": "2025-05",
+      "description": "Filter status 704 untuk data Mei 2025"
+    },
+    "verification_threshold": {
+      "minimum": 0.8,
+      "warning": 0.9,
+      "target": 0.95
+    },
+    "performance_metrics": {
+      "track_employee_performance": true,
+      "calculate_daily_averages": true,
+      "include_discrepancy_analysis": true
+    }
+  },
+  "reports": {
+    "default_format": "PDF",
+    "output_directory": "reports",
+    "template_directory": "templates",
+    "auto_generate": true,
+    "include_charts": true,
+    "chart_style": "seaborn",
+    "color_scheme": "blue",
+    "page_orientation": "portrait",
+    "page_size": "A4",
+    "margins": {
+      "top": 20,
+      "bottom": 20,
+      "left": 15,
+      "right": 15
+    },
+    "fonts": {
+      "title": "Helvetica-Bold",
+      "heading": "Helvetica-Bold",
+      "body": "Helvetica",
+      "caption": "Helvetica"
+    },
+    "company_info": {
+      "name": "PT. Rebinmas",
+      "address": "Jakarta, Indonesia",
+      "phone": "",
+      "email": "",
+      "logo": ""
+    }
+  },
+  "gui": {
+    "theme": "default",
+    "window_size": "1200x800",
+    "resizable": true,
+    "center_window": true,
+    "show_splash_screen": true,
+    "auto_refresh_interval": 30,
+    "progress_update_interval": 100,
+    "max_log_entries": 1000,
+    "confirm_exit": true,
+    "remember_window_state": true,
+    "enable_tooltips": true,
+    "animation_speed": "normal"
+  },
+  "export": {
+    "default_path": "reports/exports",
+    "compression_enabled": false,
+    "max_file_size_mb": 50,
+    "date_format": "YYYY-MM-DD",
+    "time_format": "HH:MM:SS",
+    "filename_pattern": "FFB_Analysis_{estate}_{date}_{type}",
+    "formats": {
+      "PDF": {
+        "enabled": true,
+        "description": "PDF Laporan Lengkap"
+      },
+      "Excel": {
+        "enabled": true,
+        "description": "Excel Data Analysis"
+      },
+      "CSV": {
+        "enabled": true,
+        "description": "CSV Data mentah"
+      },
+      "JSON": {
+        "enabled": true,
+        "description": "JSON Data Terstruktur"
+      }
+    },
+    "email": {
+      "enabled": false,
+      "smtp_server": "",
+      "smtp_port": 587,
+      "use_tls": true,
+      "username": "",
+      "password": "",
+      "from_address": "",
+      "default_recipients": []
+    }
+  },
+  "logging": {
+    "level": "INFO",
+    "file_enabled": true,
+    "console_enabled": true,
+    "log_directory": "logs",
+    "max_file_size_mb": 10,
+    "max_files": 5,
+    "rotation": "daily",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "components": {
+      "database": true,
+      "analysis": true,
+      "reports": true,
+      "gui": true,
+      "export": true
+    }
+  },
+  "security": {
+    "encrypt_sensitive_data": false,
+    "mask_database_paths": true,
+    "session_timeout_minutes": 60,
+    "require_auth": false,
+    "allowed_file_extensions": [".fdb", ".gdb"],
+    "scan_for_malware": false
+  },
+  "performance": {
+    "enable_caching": true,
+    "cache_size_mb": 100,
+    "memory_limit_mb": 512,
+    "gc_threshold": 0.8,
+    "optimize_queries": true,
+    "use_indexes": true,
+    "bulk_operations": true,
+    "lazy_loading": true
+  },
+  "paths": {
+    "root": ".",
+    "data": "data",
+    "temp": "temp",
+    "logs": "logs",
+    "reports": "reports",
+    "exports": "reports/exports",
+    "templates": "templates",
+    "backups": "backups",
+    "config": "config"
+  },
+  "development": {
+    "debug_mode": false,
+    "test_mode": false,
+    "mock_database": false,
+    "show_query_times": false,
+    "enable_profiling": false,
+    "log_sql_queries": false,
+    "auto_reload_config": false
+  }
+}
